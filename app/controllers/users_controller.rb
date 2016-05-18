@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def new 
+  def new
     @user = User.new
   end
 
@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to @user
-    else 
-      render 'new'  
+    else
+      render 'new'
     end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:username, :birth_date, :bio, :img_url)
+    params.require(:user).permit(:username, :first_name, :last_name, :birth_date, :bio, :img_url)
   end
 
 end
