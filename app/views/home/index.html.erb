@@ -1,4 +1,16 @@
 <h2>Recipes</h2>
-<% @recipes.each do |recipe| %>
-  
-<% end %>
+<div id="index_recipes" class="row">
+  <% @recipes.each do |recipe| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img class="index_img" src="<%= recipe.img_url %>" alt="...">
+          <div class="caption">
+            <h3><%= recipe.name %></h3>
+            <span class="tag_line"><i>"This is a tagline for the cocktail."</i></span>
+            <p class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span>Difficulty: <%= recipe.display_difficulty %></span></p><br>
+            <p class="favorites">Favorites: <span class="badge"><%= recipe.favorites.size %></span></p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
