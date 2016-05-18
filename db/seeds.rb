@@ -53,3 +53,10 @@ comment2 = Review.create(user_id: 2, recipe_id: 3, comment: "This could really u
 comment3 = Review.create(user_id: 3, recipe_id: 4, comment: "This take on the classic drink has converted me for good.")
 comment4 = Review.create(user_id: 4, recipe_id: 6, comment: "Like your recipe, would be great if you tried to tackle a margarita as well!")
 
+dean.favorites << Favorite.create(recipe: dirty_bongwater);
+dean.favorites << Favorite.create(recipe: sidecar);
+daniella.favorites << Favorite.create(recipe: bloody_mary);
+daniella.favorites << Favorite.create(recipe: manhattan);
+daniella.favorites << Favorite.create(recipe: sidecar);
+liana.favorites << Favorite.create(recipe: bloody_mary);
+liana.favorites << Favorite.create(recipe: cucumber_margarita);
