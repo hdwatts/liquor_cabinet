@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .index_img {
-  max-height: 250px; 
+  max-height: 250px;
   width: auto;
 }
 
@@ -64,4 +64,8 @@ div.caption span.tag_line {
 
 .thumbnail {
   border: none;
+}
+
+.blank-amount-ingredient-field {
+  display: none;
 }
