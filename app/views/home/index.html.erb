@@ -15,16 +15,20 @@
 </div>
 <div id="index_recipes" class="row">
   <% @recipes.each do |recipe| %>
+    <%= link_to recipe do %>
       <div class="col-sm-6 col-md-4">
+        <div class="item">
         <div class="thumbnail">
-          <img class="index_img" src="<%= recipe.img_url %>" alt="...">
+          <%= image_tag recipe.img_url, class: "thumbnail" %>
+        </div>
           <div class="caption">
             <h3><%= recipe.name %></h3>
             <span class="tag_line"><i>"This is a tagline for the cocktail."</i></span>
-            <p class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span>Difficulty: <%= recipe.display_difficulty %></span></p><br>
-            <p class="favorites">Favorites: <span class="badge"><%= recipe.favorites.size %></span></p>
+            <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span>Difficulty: <%= recipe.display_difficulty %></span></div>
+            <div class="favorites">Favorites: <span class="badge"><%= recipe.favorites.size %></span></div>
           </div>
         </div>
       </div>
+    <% end %>
   <% end %>
 </div>
