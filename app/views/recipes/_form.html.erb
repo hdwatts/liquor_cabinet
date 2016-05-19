@@ -1,0 +1,40 @@
+<%= form_for @recipe do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description%>
+  </div>
+  <div class="field">
+    <%= f.label :tools %>
+    <%= f.text_field :tools %>
+  </div>
+  <div class="field">
+    <%= f.label :difficulty %>
+    <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
+  </div>
+  <div class="field">
+    <%= f.label :ingredient %>
+    <%= form_for @amount do |amount_attribute| %>
+      <%= amount_attribute.collection_select :amount, Amount.all, :quantity, :unit %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :steps %>
+    <%= f.text_area :steps %>
+  </div>
+  <div class="field">
+    <%= f.label :servings %>
+    <%= f.text_field :servings %>
+  </div>
+  <div class="field">
+      <%= f.label :img_url %>
+      <%= f.text_field :img_url%>
+  </div>
+
+
+<%= f.submit %>
+<% end %>
