@@ -1,0 +1,70 @@
+<script>
+  $(function() {
+    var ingredient = [""
+        <% Ingredient.all.each do |ingredient| %>
+          , "<%= ingredient.name %>"
+        <% end %>
+      ];
+    $( ".ingredient_input" ).autocomplete({
+      source: ingredient
+    });
+
+    $(document).on('click', '.amount-ingredient-field .add-ingredient', function(e){
+      e.preventDefault();
+      //e.stopPropagation();
+      var x = $('.blank-amount-ingredient-field')
+      x.removeClass('blank-amount-ingredient-field');
+
+      var num_amounts = parseInt($("#num_amounts").val());
+      $("#num_amounts").val(num_amounts + 1);
+      $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
+                                          + x.html().replace(/\d/g, (num_amounts + 1))
+                                        + '</div>');
+
+    });
+  });
+</script>
+
+
+<%= form_for @recipe do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description%>
+  </div>
+  <div class="field">
+    <%= f.label :tools %>
+    <%= f.text_field :tools %>
+  </div>
+  <div class="field">
+    <%= f.label :difficulty %>
+    <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
+  </div>
+  <div class="field" id='amounts-ingredients'>
+    <% @recipe.amounts.each do |amount| %>
+      <%= f.fields_for :amounts, amount do |amount_attributes| %>
+        <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amount_attributes: amount_attributes} %>
+      <% end %>
+    <% end %>
+    <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size - 1 %>">
+  </div>
+
+  <div class="field">
+    <%= f.label :steps %>
+    <%= f.text_area :steps %>
+  </div>
+  <div class="field">
+    <%= f.label :servings %>
+    <%= f.text_field :servings %>
+  </div>
+  <div class="field">
+      <%= f.label :img_url %>
+      <%= f.text_field :img_url%>
+  </div>
+
+
+<%= f.submit %>
+<% end %>
