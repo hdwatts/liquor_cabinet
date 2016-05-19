@@ -22,7 +22,18 @@
                                         + '</div>');
 
     });
+
+    $(".new_recipe").on('submit', function(e){
+      updateHiddenAll();
+    })
   });
+
+  function updateHiddenAll() {
+    $(".ui-autocomplete-input").each(function(){
+      var hidden = $(this).prevUntil('input[type="hidden"]').prev();
+      hidden.val($(this).val());
+    });
+  }
 </script>
 
 

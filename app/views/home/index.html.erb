@@ -14,7 +14,7 @@
       value: 5,
       slide: function( event, ui ) {
         $( "#difficulty" ).val( ui.value );
-        
+
         $.ajax({
           method: "GET",
           url: "/recipe/filter",
@@ -34,7 +34,7 @@
       value: <%= @max_servings %>,
       slide: function( event, ui ) {
         $( "#servings" ).val( ui.value );
-        
+
         $.ajax({
           method: "GET",
           url: "/recipe/filter",
@@ -50,7 +50,6 @@
   });
 </script>
 
-<h2>Recipes</h2>
 <div id="index_filter">
    <div class="difficulty">
     <label for="difficulty">Max Difficulty:</label>

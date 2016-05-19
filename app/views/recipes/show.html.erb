@@ -1,8 +1,14 @@
 <h1><%= @recipe.name %></h1>
 
-<h2><%= @recipe.description %></h2>
-<h2><%= @recipe.tools %></h2>
-<h2><%= @recipe.steps %></h2>
-<h2><%= @recipe.difficulty %></h2>
-<h2><%= @recipe.img_url %></h2>
-<h2><%= @recipe.servings %></h2>
+<%= image_tag @recipe.img_url %>
+
+<h3>Description: <%= @recipe.description %></h3>
+<h3>Tools: <%= @recipe.tools %></h3>
+<h3>Instructions: <%= @recipe.steps %></h3>
+<h3>Ingredients:</h3>
+    <% @recipe.amounts.each do |amount| %>
+      <h3><%= amount.ingredient.name %> Quantity: <%= amount.quantity %> Unit: <%= amount.unit %></h3>
+    <% end %>
+<h3>Difficulty Level: <%= @recipe.difficulty %></h3>
+
+<h3>Servings: <%= @recipe.servings %></h3>

@@ -1,13 +1,15 @@
 <% if amount == recipe.amounts.last %>
-      <div class="blank-amount-ingredient-field">
-          <label for="ingredient">Ingredient</label>
-          <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>              <% end %>
-          <input type="text" class="ingredient_input">
+    <div class="blank-amount-ingredient-field">
+      <label for="ingredient">Ingredient</label>
+      <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
+        <%= ingredients_attributes.hidden_field :name %>
+      <% end %>
+      <input type="text" class="ingredient_input">
 
-          <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
-          <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
+      <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
+      <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
 
-        </div>
+  </div>
 <% else %>
   <div class="amount-ingredient-field">
     <label for="ingredient">Ingredient</label>
