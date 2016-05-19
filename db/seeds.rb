@@ -5,10 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-daniella = User.create(first_name: "Daniella", last_name: "Corricelli", email: "daniella@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!")
+daniella = User.create(first_name: "Daniella", last_name: "Corricelli", email: "daniella@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!", img_url: 'http://www.clikklac.com/design_services/media/k2/items/cache/2a14beb1aee2d71c6fecb12f25c690f7_XL.jpg' )
 liana = User.create(first_name: "Liana", last_name: "Grobstein", email: "liana@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!")
 dean = User.create(first_name: "Dean", last_name: "Watts", email: "dean@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!")
-eve = User.create(first_name: "Eve", last_name: "Essex", email: "eve@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!")
+eve = User.create(first_name: "Eve", last_name: "Essex", email: "eve@cocktails.com", password: "asdf", birth_date: DateTime.new(2012,12,12), bio: "I love to drink!", img_url: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTTFQDxzvS7GngqGB5qC4Ik2wNdagZWwSrsIYTkiVkIwJcpD2FPfaq-XIY')
 
 kosher_salt = Ingredient.create(name: "Kosher salt")
 grapefruit = Ingredient.create(name: "Grapefruit")
