@@ -38,7 +38,20 @@ div.caption span.tag_line {
 #index_filter {
   width: 100%;
   height: auto;
-  background-color: grey;
+  background-color: #ccc;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 5px 5px 0px rgb(0,0,0);
+}
+
+#index_filter .difficulty {
+  width: 10%;
+}
+
+.difficulty #difficulty {
+  width: 1em;
+  border: none;
+  background-color: transparent;
 }
 
 .item {
