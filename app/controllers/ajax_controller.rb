@@ -2,7 +2,7 @@ class AjaxController < ApplicationController
 
   def filter
     @recipes = Recipe.where(print_params)
-    render "home/_print_recipes"
+    render template: "home/_print_recipes", layout: false
   end
 
   private
