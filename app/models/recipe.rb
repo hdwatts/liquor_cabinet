@@ -30,8 +30,7 @@ class Recipe < ActiveRecord::Base
       quantity = amount_attribute["quantity"]
       unit = amount_attribute["unit"]
       amount = Amount.find_or_create_by(quantity: quantity, unit: unit)
-      amount.build_ingredient(amount_attribute["ingredient_attribute"])
-
+      amount.build_ingredient(amount_attribute["ingredient_attributes"])
       self.amounts << amount
       self.save
     end
