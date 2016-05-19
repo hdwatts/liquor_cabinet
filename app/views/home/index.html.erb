@@ -1,6 +1,13 @@
 <script>
+  function get_filter_params() {
+    var difficulty_val = $("#difficulty").val();
+    var servings_val = $("#servings").val();
+
+    return { difficulty: difficulty_val, servings: servings_val }
+  }
+
   $(function() {
-    $( "#slider-range" ).slider({
+    $( "#difficulty-slider-range" ).slider({
       range: "min",
       min: 1,
       max: 5,
@@ -11,45 +18,52 @@
         $.ajax({
           method: "GET",
           url: "/recipe/filter",
-          data: { difficulty: ui.value }
+          data: get_filter_params()
         }).done(function( data ) {
           $("#index_recipes").empty();
           $("#index_recipes").append(data);
         });
       }
     });
-    $( "#difficulty" ).val( $( "#slider-range" ).slider( "value" ) );
+
+
+    $( "#servings-slider-range" ).slider({
+      range: "min",
+      min: 1,
+      max: <%= @max_servings %>,
+      value: <%= @max_servings %>,
+      slide: function( event, ui ) {
+        $( "#servings" ).val( ui.value );
+        
+        $.ajax({
+          method: "GET",
+          url: "/recipe/filter",
+          data: get_filter_params()
+        }).done(function( data ) {
+          $("#index_recipes").empty();
+          $("#index_recipes").append(data);
+        });
+      }
+    });
+
+    $( "#servings" ).val( $( "#servings-slider-range" ).slider( "value" ) );
   });
 </script>
 
 <h2>Recipes</h2>
 <div id="index_filter">
-  <!-- <div class="btn-group">
-    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Max Difficulty <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="#">1</a></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-    </ul>
-  </div>
-   -->
-
    <div class="difficulty">
     <label for="difficulty">Max Difficulty:</label>
     <input type="text" id="difficulty" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    <div id="slider-range"></div>
+    <div id="difficulty-slider-range"></div>
+  </div>
+  <div class="servings">
+    <label for="servings">Serves:</label>
+    <input type="text" id="servings" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <div id="servings-slider-range"></div>
   </div>
 </div>
 
-<script>
-$(function() {
-  $('.datepicker').datepicker();
-});
-</script>
 <div id="index_recipes" class="row">
   <%= render "print_recipes" %>
 </div>

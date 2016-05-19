@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .index_img {
-  max-height: 250px; 
+  max-height: 250px;
   width: auto;
 }
 
@@ -37,19 +37,21 @@ div.caption span.tag_line {
 
 #index_filter {
   width: 100%;
-  height: auto;
+  height: 65px;
   background-color: #ccc;
   padding: 20px;
   margin-bottom: 15px;
   box-shadow: 0px 5px 5px 0px rgb(0,0,0);
 }
 
-#index_filter .difficulty {
-  width: 10%;
+#index_filter > div {
+  float: left;
+  margin-right: 30px;
+  width: 12%;
 }
 
-.difficulty #difficulty {
-  width: 1em;
+#index_filter input[type="text"] {
+  width: 2em;
   border: none;
   background-color: transparent;
 }
@@ -62,4 +64,8 @@ div.caption span.tag_line {
 
 .thumbnail {
   border: none;
+}
+
+.blank-amount-ingredient-field {
+  display: none;
 }

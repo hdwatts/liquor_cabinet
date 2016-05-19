@@ -2,7 +2,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @amount = @recipe.amounts()
+    @recipe.amounts.build()
+    @recipe.amounts.first.build_ingredient();
+    @recipe.amounts.build();
+    @recipe.amounts.last.build_ingredient();
   end
 
   def create
@@ -38,7 +41,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficult, :img_url, :servings, amount_id: [], amount_attributes: [:quantity, :unit])
+    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficult, :img_url, :servings, amount_attributes: [:quantity, :unit, ingredients_attributes: [:name]])
   end
 
 end

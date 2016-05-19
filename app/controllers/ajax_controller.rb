@@ -12,6 +12,10 @@ class AjaxController < ApplicationController
       str << "difficulty <= #{params['difficulty']}"
     end
 
+    if params["servings"]
+      str << "AND servings <= #{params['servings']}"
+    end
+
     str
   end
 end

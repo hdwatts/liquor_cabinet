@@ -2,15 +2,18 @@
   <div class="container">
     <%= link_to 'Cocktail Cabinet', root_path, class: 'navbar-brand' %>
     <% if current_user %>
-      <a href= '/logout' type="button" class="btn btn-default navbar-btn">Sign out</a>
+      <div class="navbar-right">
       <%= link_to user_path(current_user) do %>
-          <div type="button" class="btn btn-default navbar-btn"><%= current_user.first_name %><%= image_tag current_user.img_url, class: 'profile_img' %></div>
-
+          <div type="button" class="btn btn-default navbar-btn"><%= image_tag current_user.img_url, class: 'profile_img' %><%= current_user.first_name %></div>
       <% end  %>
-
+      <a href= '/recipes/new' type="button" class="btn btn-default navbar-btn">Add Recipe</a>
+      <a href= '/logout' type="button" class="btn btn-default navbar-btn">Sign out</a>
+      </div>
       <% else %>
+      <div class="navbar-right">
       <a href= '/login' type="button" class="btn btn-default navbar-btn">Sign in</a>
       <a href= '/users/new' type="button" class="btn btn-default navbar-btn">Sign Up</a>
+    </div>
     <% end  %>
   </div>
 </nav>
