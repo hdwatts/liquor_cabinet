@@ -52,15 +52,24 @@
 
 <h2>Recipes</h2>
 <div id="index_filter">
-   <div class="difficulty">
-    <label for="difficulty">Max Difficulty:</label>
-    <input type="text" id="difficulty" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    <div id="difficulty-slider-range"></div>
+  <div id="filters">
+     <div class="difficulty">
+      <label for="difficulty">Max Difficulty:</label>
+      <input type="text" id="difficulty" readonly style="border:0; color:#f6931f; font-weight:bold;">
+      <div id="difficulty-slider-range"></div>
+    </div>
+    <div class="servings">
+      <label for="servings">Serves:</label>
+      <input type="text" id="servings" readonly style="border:0; color:#f6931f; font-weight:bold;">
+      <div id="servings-slider-range"></div>
+    </div>
   </div>
-  <div class="servings">
-    <label for="servings">Serves:</label>
-    <input type="text" id="servings" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    <div id="servings-slider-range"></div>
+  
+  <span><b>Sort By:</b></span>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
+    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
   </div>
 </div>
 
