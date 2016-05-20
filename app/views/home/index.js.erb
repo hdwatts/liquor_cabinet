@@ -1,0 +1,46 @@
+function get_filter_params() {
+  var difficulty_val = $("#difficulty").val();
+  var servings_val = $("#servings").val();
+
+  return { difficulty: difficulty_val, servings: servings_val }
+}
+
+$(function() {
+  $( "#difficulty-slider-range" ).slider({
+    range: "min",
+    min: 1,
+    max: 5,
+    value: 5,
+    slide: function( event, ui ) {
+      $( "#difficulty" ).val( ui.value );
+
+      $.ajax({
+        method: "GET",
+        url: "/recipe/filter",
+        data: get_filter_params()
+      }).done(function( data ) {
+        $("#index_recipes").empty();
+        $("#index_recipes").append(data);
+      });
+    }
+  });
+
+
+  $( "#servings-slider-range" ).slider({
+    range: "min",
+    min: 1,
+    max: 12 ,
+    value: 12 ,
+    slide: function( event, ui ) {
+      $( "#servings" ).val( ui.value );
+
+      $.ajax({
+        method: "GET",
+        url: "/recipe/filter",
+        data: get_filter_params()
+      }).done(function( data ) {
+        $("#index_recipes").empty();
+        $("#index_recipes").append(data);
+      });
+    }
+  });

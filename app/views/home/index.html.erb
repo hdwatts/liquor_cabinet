@@ -1,54 +1,3 @@
-<script>
-  function get_filter_params() {
-    var difficulty_val = $("#difficulty").val();
-    var servings_val = $("#servings").val();
-
-    return { difficulty: difficulty_val, servings: servings_val }
-  }
-
-  $(function() {
-    $( "#difficulty-slider-range" ).slider({
-      range: "min",
-      min: 1,
-      max: 5,
-      value: 5,
-      slide: function( event, ui ) {
-        $( "#difficulty" ).val( ui.value );
-        
-        $.ajax({
-          method: "GET",
-          url: "/recipe/filter",
-          data: get_filter_params()
-        }).done(function( data ) {
-          $("#index_recipes").empty();
-          $("#index_recipes").append(data);
-        });
-      }
-    });
-
-
-    $( "#servings-slider-range" ).slider({
-      range: "min",
-      min: 1,
-      max: <%= @max_servings %>,
-      value: <%= @max_servings %>,
-      slide: function( event, ui ) {
-        $( "#servings" ).val( ui.value );
-        
-        $.ajax({
-          method: "GET",
-          url: "/recipe/filter",
-          data: get_filter_params()
-        }).done(function( data ) {
-          $("#index_recipes").empty();
-          $("#index_recipes").append(data);
-        });
-      }
-    });
-
-    $( "#servings" ).val( $( "#servings-slider-range" ).slider( "value" ) );
-  });
-</script>
 
 <h2>Recipes</h2>
 <div id="index_filter">
@@ -64,12 +13,12 @@
       <div id="servings-slider-range"></div>
     </div>
   </div>
-  
+
   <span><b>Sort By:</b></span>
-  <div class="btn-group" role="group" aria-label="...">
-    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
-    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
-    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
+  <div class="btn-group sort-by" role="group" aria-label="...">
+    <button type="button" class="btn btn-default date"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
+    <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
+    <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
   </div>
 </div>
 
