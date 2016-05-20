@@ -12,3 +12,7 @@
 <h3>Difficulty Level: <%= @recipe.difficulty %></h3>
 
 <h3>Servings: <%= @recipe.servings %></h3>
+
+
+<%= button_to('Delete Recipe', :action => 'destroy', :confirm => 'Are you sure?',
+          :method => "delete", :disable_with => 'loading...') %>
