@@ -1,26 +1,36 @@
 <% if amount == recipe.amounts.last %>
-    <div class="blank-amount-ingredient-field">
+  <div class="blank-amount-ingredient-field">
+    <div class="col-sm-7">
+    <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
+      <%= ingredients_attributes.hidden_field :name %>
+    <% end %>
+    <input type="text" class="ingredient_input">
+    </div>
+    <div class="col-sm-2">
+      <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
+    </div>  
+    <div class="col-sm-2">
+      <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
+    </div>    
+  </div>
+<% else %>
+  <div class="amount-ingredient-field">
+    <div class="col-sm-7">
       <label for="ingredient">Ingredient</label>
       <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
         <%= ingredients_attributes.hidden_field :name %>
       <% end %>
       <input type="text" class="ingredient_input">
-
-      <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
-      <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
-
-  </div>
-<% else %>
-  <div class="amount-ingredient-field">
-    <label for="ingredient">Ingredient</label>
-    <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
-      <%= ingredients_attributes.hidden_field :name %>
-    <% end %>
-    <input type="text" class="ingredient_input">
-
-    <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
-    <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
-
+    </div>
+    <div class="col-sm-2">
+      <%= label_tag :quantity %>
+      <%= amount_attributes.text_field :quantity, placeholder: "3" %>
+    </div>
+    <div class="col-sm-2">
+      <%= label_tag :amount %>
+      <%= amount_attributes.text_field :unit, placeholder: "cups" %>
+    </div>
+    <label>Add New</label>
     <button class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></button>
   </div>
 <% end %>

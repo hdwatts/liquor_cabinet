@@ -1,35 +1,37 @@
 <%= form_for @user do |f| %>
-  <div class="field">
+  <fieldset>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :email %>
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :password %>
     <%= f.password_field :password %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :birth_date %>
     <%= f.date_field :birth_date %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :bio %>
     <%= f.text_area :bio %>
-  </div>
-    <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :img_url %>
     <%= f.text_field :img_url %>
-  </div>
-<%= f.submit %>
+  </fieldset>
+  <fieldset>
+<%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
+  </fieldset>
 <% end %>

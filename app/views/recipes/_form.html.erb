@@ -17,9 +17,8 @@
 
       var num_amounts = parseInt($("#num_amounts").val());
       $("#num_amounts").val(num_amounts + 1);
-      $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
-                                          + x.html().replace(/\d/g, (num_amounts + 1))
-                                        + '</div>');
+      $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field col-sm-12">'
+                                          + x.html().replace(/\d/g, (num_amounts + 1)) + '</div>');
 
     });
 
@@ -36,46 +35,51 @@
   }
 </script>
 
-
 <%= form_for @recipe do |f| %>
-  <div class="field">
+   <fieldset>
     <%= f.label :name %>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
+  </fieldset>
+   <fieldset>
     <%= f.label :description %>
     <%= f.text_area :description%>
-  </div>
-  <div class="field">
-    <%= f.label :tools %>
-    <%= f.text_field :tools %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <div style="clear: both;">
+  <fieldset class="col-sm-3">
     <%= f.label :difficulty %>
     <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
-  </div>
-  <div class="field" id='amounts-ingredients'>
-    <% @recipe.amounts.each do |amount| %>
+  </fieldset>
+    <fieldset class="col-sm-8">
+    <%= f.label :tools, class: "col-sm-2" %>
+    <%= f.text_field :tools, class: "col-sm-7"  %>
+  </fieldset>
+</div>
+   <div class="amounts-ingredients">
+   <fieldset id='amounts-ingredients'>
+   
+    <% @recipe.amounts.each do |amount| %>   
       <%= f.fields_for :amounts, amount do |amount_attributes| %>
         <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amount_attributes: amount_attributes} %>
       <% end %>
     <% end %>
-    <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size - 1 %>">
+  </fieldset>
+  <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size - 1 %>">
+   
   </div>
-
-  <div class="field">
+  <fieldset>
     <%= f.label :steps %>
     <%= f.text_area :steps %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
     <%= f.label :servings %>
     <%= f.text_field :servings %>
-  </div>
-  <div class="field">
+  </fieldset>
+  <fieldset>
       <%= f.label :img_url %>
       <%= f.text_field :img_url%>
-  </div>
+  </fieldset>
 
 
 <%= f.submit %>
 <% end %>
+
