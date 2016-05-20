@@ -6,8 +6,8 @@ class Amount < ActiveRecord::Base
 
   def ingredient_attributes=(ingredient_attributes)
     debugger
-    ingredients_attributes.each do |ingredient_attribute|
-      ingredient = Ingredient.find_or_create_by(name: ingredient_attribute["name"])
+    ingredient_attributes.each do |ingredient_attribute|
+      ingredient = Ingredient.find_or_create_by(name: ingredient_attribute[1])
       self.ingredient = ingredient
       self.save
     end
