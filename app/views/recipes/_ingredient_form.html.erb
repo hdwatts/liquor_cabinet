@@ -8,7 +8,7 @@
 
       <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
       <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
-
+      <button onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></button>
   </div>
 <% else %>
   <div class="amount-ingredient-field">
@@ -21,6 +21,6 @@
     <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
     <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
 
-    <button class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></button>
+    <button onclick="addIngredient(); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></button>
   </div>
 <% end %>

@@ -9,20 +9,6 @@
       source: ingredient
     });
 
-    $(document).on('click', '.amount-ingredient-field .add-ingredient', function(e){
-      e.preventDefault();
-      //e.stopPropagation();
-      var x = $('.blank-amount-ingredient-field')
-      x.removeClass('blank-amount-ingredient-field');
-
-      var num_amounts = parseInt($("#num_amounts").val());
-      $("#num_amounts").val(num_amounts + 1);
-      $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
-                                          + x.html().replace(/\d/g, (num_amounts + 1))
-                                        + '</div>');
-
-    });
-
     $(".new_recipe").on('submit', function(e){
       updateHiddenAll();
     })
@@ -33,6 +19,28 @@
       var hidden = $(this).prevUntil('input[type="hidden"]').prev();
       hidden.val($(this).val());
     });
+  }
+
+  function addIngredient(){
+    var x = $('.blank-amount-ingredient-field')
+    x.removeClass('blank-amount-ingredient-field');
+
+    var num_amounts = parseInt($("#num_amounts").val());
+    $("#num_amounts").val(num_amounts + 1);
+    $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
+                                        + x.html().replace(/\d/g, (num_amounts + 1))
+                                      + '</div>');
+    
+    return false;
+  }
+
+  function removeIngredient(element){
+    var x = $(element).parent();
+    x.remove();
+    var num_amounts = parseInt($("#num_amounts").val());
+    $("#num_amounts").val(num_amounts - 1);
+
+    return false;
   }
 </script>
 
