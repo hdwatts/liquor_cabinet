@@ -13,6 +13,4 @@
 
 <h3>Servings: <%= @recipe.servings %></h3>
 
-
-<%= button_to('Delete Recipe', :action => 'destroy', :confirm => 'Are you sure?',
-          :method => "delete", :disable_with => 'loading...') %>
+<%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
