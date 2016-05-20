@@ -5,4 +5,5 @@ class HomeController < ApplicationController
     @max_servings = Recipe.maximum(:servings)
   end
 
+
 end

@@ -1,7 +1,8 @@
 class Recipe < ActiveRecord::Base
   belongs_to :user
+  has_many :recipes_tags
   has_many :favorites
-  has_many :tags
+  has_many :tags, through: :recipes_tags
   has_many :amounts
   has_many :ingredients, through: :amounts
   has_many :reviews
@@ -34,6 +35,38 @@ class Recipe < ActiveRecord::Base
       self.amounts << amount
       self.save
     end
+  end
+
+  def self.sort_by_popularity
+   @sorted = Recipe.all.sort_by do |recipe|
+      recipe.favorites.count
+    end
+   @sorted.reverse
+  end
+
+  def self.sort_by_difficulty
+    @sorted = Recipe.all.sort_by do |recipe|
+      recipe.difficulty
+    end
+    @sorted
+  end
+
+  def self.sort_by_servings
+    @sorted = Recipe.all.sort_by do |recipe|
+      if recipe.servings != nil
+        recipe.servings
+      else
+        1
+      end
+    end
+    @sorted
+  end
+
+  def self.sort_by_date
+    @sorted = Recipe.all.sort_by do |recipe|
+      recipe.created_at
+    end
+    @sorted.reverse
   end
 
 end
