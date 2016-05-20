@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
   end
 
   def update
-    debugger
     @recipe = Recipe.find(params[:id])
     @recipe.user_id = current_user.id
     if @recipe.update(recipe_params)
