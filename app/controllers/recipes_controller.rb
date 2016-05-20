@@ -2,10 +2,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @recipe.amounts.build()
-    @recipe.amounts.first.build_ingredient();
-    @recipe.amounts.build();
-    @recipe.amounts.last.build_ingredient();
+    am1 = @recipe.amounts.build
+    am2 = @recipe.amounts.build
+    am1.build_ingredient
+    am2.build_ingredient
   end
 
   def create

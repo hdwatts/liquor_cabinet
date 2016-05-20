@@ -5,26 +5,14 @@
           , "<%= ingredient.name %>"
         <% end %>
       ];
-    $( ".ingredient_input" ).autocomplete({
-      source: ingredient
-    });
-
-    $(document).on('click', '.amount-ingredient-field .add-ingredient', function(e){
-      e.preventDefault();
-      //e.stopPropagation();
-      var x = $('.blank-amount-ingredient-field')
-      x.removeClass('blank-amount-ingredient-field');
-
-      var num_amounts = parseInt($("#num_amounts").val());
-      $("#num_amounts").val(num_amounts + 1);
-      $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field col-sm-12">'
-                                          + x.html().replace(/\d/g, (num_amounts + 1)) + '</div>');
-
-    });
 
     $(".new_recipe").on('submit', function(e){
       updateHiddenAll();
     })
+
+    $(document).on('keydown.autocomplete', ".ingredient_input", function() {
+        $(this).autocomplete({source: ingredient});
+    });
   });
 
   function updateHiddenAll() {
@@ -32,6 +20,32 @@
       var hidden = $(this).prevUntil('input[type="hidden"]').prev();
       hidden.val($(this).val());
     });
+  }
+
+  function addIngredient(){
+    var x = $('.blank-amount-ingredient-field')
+    x.removeClass('blank-amount-ingredient-field');
+
+    var num_amounts = parseInt($("#num_amounts").val());
+    $("#num_amounts").val(num_amounts + 1);
+    //update [X] and _X_
+    var hiddenhtml = x.html().replace(/\[\d+\]/g, "["+(num_amounts + 1)+"]");
+    hiddenhtml = hiddenhtml.replace(/_\d+_/, "_"+(num_amounts + 1)+"_");
+
+    $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
+                                      + hiddenhtml
+                                      + '</div>');
+    
+    return false;
+  }
+
+  function removeIngredient(element){
+    var x = $(element).parent();
+    x.remove();
+    var num_amounts = parseInt($("#num_amounts").val());
+    $("#num_amounts").val(num_amounts - 1);
+
+    return false;
   }
 </script>
 
