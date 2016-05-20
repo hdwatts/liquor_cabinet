@@ -11,6 +11,8 @@ function get_sort_params() {
       param_to_sort_by = "difficulty"
   } else if ($( this ).hasClass('servings')) {
       param_to_sort_by = 'servings'
+  } else if ($( this ).hasClass('popularity')) {
+      param_to_sort_by = 'popularity'
     }
     $.ajax({
     method: "GET",

@@ -37,7 +37,7 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def self.sort_by_popular
+  def self.sort_by_popularity
    @sorted = Recipe.all.sort_by do |recipe|
       recipe.favorites.count
     end
