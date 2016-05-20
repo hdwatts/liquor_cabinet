@@ -27,7 +27,6 @@ class Recipe < ActiveRecord::Base
 
   def amounts_attributes= (amounts_attributes)
     amounts_attributes.values.each do |amounts_attributes_attribute|
-      debugger
       quantity = amounts_attributes_attribute["quantity"]
       unit = amounts_attributes_attribute["unit"]
       amount = Amount.find_or_create_by(quantity: quantity, unit: unit)

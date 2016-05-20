@@ -70,7 +70,6 @@
 </div>
    <div class="amounts-ingredients">
    <fieldset id='amounts-ingredients'>
-   
     <% @recipe.amounts.each do |amount| %>   
       <%= f.fields_for :amounts, amount do |amounts_attributes| %>
         <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amounts_attributes: amounts_attributes} %>
@@ -78,7 +77,7 @@
     <% end %>
   </fieldset>
   <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size - 1 %>">
-   
+
   </div>
   <fieldset>
     <%= f.label :steps %>
@@ -96,4 +95,3 @@
 
 <%= f.submit %>
 <% end %>
-
