@@ -53,7 +53,11 @@ class Recipe < ActiveRecord::Base
 
   def self.sort_by_servings
     @sorted = Recipe.all.sort_by do |recipe|
-      recipe.servings
+      if recipe.servings != nil
+        recipe.servings
+      else
+        1
+      end
     end
     @sorted
   end
