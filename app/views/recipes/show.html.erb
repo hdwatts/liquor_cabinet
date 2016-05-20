@@ -12,3 +12,5 @@
 <h3>Difficulty Level: <%= @recipe.difficulty %></h3>
 
 <h3>Servings: <%= @recipe.servings %></h3>
+
+<%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>

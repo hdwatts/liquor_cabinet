@@ -8,10 +8,11 @@
     </div>
     <div class="col-sm-2">
       <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
-    </div>  
+    </div>
     <div class="col-sm-2">
       <%= amount_attributes.text_field :unit, placeholder: "Unit" %>
-    </div>    
+
+    </div>
     <button onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></button>
   </div>
 <% else %>
