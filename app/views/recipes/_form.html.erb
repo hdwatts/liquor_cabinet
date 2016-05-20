@@ -70,10 +70,9 @@
 </div>
    <div class="amounts-ingredients">
    <fieldset id='amounts-ingredients'>
-
-    <% @recipe.amounts.each do |amount| %>
-      <%= f.fields_for :amounts, amount do |amount_attributes| %>
-        <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amount_attributes: amount_attributes} %>
+    <% @recipe.amounts.each do |amount| %>   
+      <%= f.fields_for :amounts, amount do |amounts_attributes| %>
+        <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amounts_attributes: amounts_attributes} %>
       <% end %>
     <% end %>
   </fieldset>
