@@ -5,13 +5,14 @@
           , "<%= ingredient.name %>"
         <% end %>
       ];
-    $( ".ingredient_input" ).autocomplete({
-      source: ingredient
-    });
 
     $(".new_recipe").on('submit', function(e){
       updateHiddenAll();
     })
+
+    $(document).on('keydown.autocomplete', ".ingredient_input", function() {
+        $(this).autocomplete({source: ingredient});
+    });
   });
 
   function updateHiddenAll() {
@@ -32,7 +33,7 @@
     hiddenhtml = hiddenhtml.replace(/_\d+_/, "_"+(num_amounts + 1)+"_");
 
     $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
-                                        + hiddenhtml
+                                      + hiddenhtml
                                       + '</div>');
     
     return false;

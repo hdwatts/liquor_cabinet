@@ -4,7 +4,7 @@
     <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
       <%= ingredients_attributes.hidden_field :name %>
     <% end %>
-    <input type="text" class="ingredient_input">
+    <input type="text" class="ingredient_input ui-autocomplete-input">
     </div>
     <div class="col-sm-2">
       <%= amount_attributes.text_field :quantity, placeholder: "Quantity" %>
@@ -21,7 +21,7 @@
       <%= amount_attributes.fields_for :ingredient do |ingredients_attributes| %>
         <%= ingredients_attributes.hidden_field :name %>
       <% end %>
-      <input type="text" class="ingredient_input">
+      <input type="text" class="ingredient_input ui-autocomplete-input">
     </div>
     <div class="col-sm-2">
       <%= label_tag :quantity %>
