@@ -1,0 +1,33 @@
+<%= form_for @user do |f| %>
+  <fieldset>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :birth_date %>
+    <%= f.date_field :birth_date %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :img_url %>
+    <%= f.text_field :img_url %>
+  </fieldset>
+  <fieldset>
+<%= f.submit class: 'btn btn-lg btn-primary btn-block' %>
+  </fieldset>
+<% end %>
