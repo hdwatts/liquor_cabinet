@@ -2,6 +2,8 @@
 <%= image_tag @user.img_url %>
 <p><%= @user.bio %></p>
 
+<%= link_to "Edit Profile", edit_user_path, class: 'btn btn-info btn-s'%>
+
 
 <h2>My Recipes</h2>
 <ul>
