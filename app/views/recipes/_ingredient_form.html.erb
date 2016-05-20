@@ -1,37 +1,43 @@
-<% if blank == 1 %>
-  <div class="blank-amount-ingredient-field">
-     <div class="col-sm-7">
-       <label class="form-control-label" for="ingredient">Ingredient</label>
-       <input class="form-control" value="" name="recipe[amounts_attributes][999][ingredient_attributes][name]" id="recipe_amounts_attributes_999_ingredient_attributes_name" type="hidden">
-       <input class="ingredient_input ui-autocomplete-input form-control" type="text">
-     </div>
-     <div class="col-sm-2">
-       <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][999][quantity]" id="recipe_amounts_attributes_999_quantity" type="text">
-     </div>
-     <div class="col-sm-2">
-       <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][999][unit]" id="recipe_amounts_attributes_999_unit" type="text">
-     </div>
-      <button onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></button>
-   </div>
-<% else %>
+<% @recipe.amounts.each_with_index do |amount, index| %>
   <div class="amount-ingredient-field">
     <div class="col-sm-7">
-      <label for="ingredient">Ingredient</label>
-      <%= amounts_attributes.fields_for :ingredient do |ingredient_attributes| %>
-        <%= ingredient_attributes.hidden_field :name %>
-        <%= :ingredient %>
+      <input class="ingredient_input ui-autocomplete-input form-control" name="recipe[amounts_attributes][<%= index %>][ingredient_attributes][name]" id="recipe_amounts_attributes_<%= index %>_ingredient_attributes_name" type="text" value="<%= amount.ingredient.name %>"/>
+    </div>
+
+    <div class="col-sm-2">
+      <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][<%= index %>][quantity]" id="recipe_amounts_attributes_<%= index %>_quantity" type="text" value="<%= amount.quantity %>">
+    </div>
+
+    <div class="col-sm-2">
+       <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][<%= index %>][unit]" id="recipe_amounts_attributes_<%= index %>_unit" type="text" value="<%= amount.unit %>">
+    </div>
+    <div class="col-sm-1">
+      <% if index == 0 %>
+      <a onclick="addIngredient(); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></a>
+      <% else %>
+        <a onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></a>
       <% end %>
-      <input type="text" class="ingredient_input ui-autocomplete-input">
-    </div>
-    <div class="col-sm-2">
-      <%= label_tag :quantity %>
-      <%= amounts_attributes.text_field :quantity, placeholder: "3" %>
-    </div>
-    <div class="col-sm-2">
-      <%= label_tag :amount %>
-      <%= amounts_attributes.text_field :unit, placeholder: "cups" %>
-    </div>
-    <label>Add New</label>
-    <button onclick="addIngredient(); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></button>
+     </div>
   </div>
+
 <% end %>
+
+<% amount = @blank_amount %>
+<% index = @recipe.amounts.size %>
+
+<div class="blank-amount-ingredient-field">
+  <div class="col-sm-7">
+    <input class="ingredient_input ui-autocomplete-input form-control" name="recipe[amounts_attributes][<%= index %>][ingredient_attributes][name]" id="recipe_amounts_attributes_<%= index %>_ingredient_attributes_name" type="text" value="<%= amount.ingredient.name %>"/>
+  </div>
+
+  <div class="col-sm-2">
+    <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][<%= index %>][quantity]" id="recipe_amounts_attributes_<%= index %>_quantity" type="text">
+  </div>
+
+  <div class="col-sm-2">
+     <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][<%= index %>][unit]" id="recipe_amounts_attributes_<%= index %>_unit" type="text">
+  </div>
+  <div class="col-sm-1">
+    <a onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></a>
+   </div>
+</div>
