@@ -20,9 +20,10 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    am1 = Amount.new
-    am1.build_ingredient
-    @recipe.amounts << am1
+    @blank_amount = Amount.new
+    @blank_amount.ingredient = Ingredient.new
+    #@recipe.amounts << @blank_amount
+    #debugger
   end
 
   def update

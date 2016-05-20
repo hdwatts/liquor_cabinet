@@ -1,5 +1,65 @@
 <script>
-  
+var doload = function() {
+  var ingredient = [""
+      <% Ingredient.all.each do |ingredient| %>
+        , "<%= ingredient.name %>"
+      <% end %>
+    ];
+
+  $('.new_recipe,.edit_recipe').on('submit', function(e){
+    updateHiddenAll();
+    debugger
+  })
+
+  $(".ui-autocomplete-input").each(function(){
+    var hidden = $(this).parent().children()[1];
+    $(this).val($(hidden).val());
+  });
+
+  $(document).on('keydown.autocomplete', ".ingredient_input", function() {
+      $(this).autocomplete({source: ingredient});
+  });
+};
+
+$(document).ready(doload);
+$(document).on("page:load", doload);
+
+function updateHiddenAll() {
+  $(".ui-autocomplete-input").each(function(){
+    var hidden = $(this).parent().children()[1];
+    hidden.val($(this).val());
+  });
+  debugger
+
+}
+
+function addIngredient(){
+  var x = $('.blank-amount-ingredient-field')
+  x.removeClass('blank-amount-ingredient-field');
+
+  var num_amounts = parseInt($("#num_amounts").val());
+  $("#num_amounts").val(num_amounts + 1);
+  //update [X] and _X_
+  var hiddenhtml = x.html().replace(/\[\d+\]/g, "["+(num_amounts + 1)+"]");
+  hiddenhtml = hiddenhtml.replace(/_\d+_/, "_"+(num_amounts + 1)+"_");
+
+  $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
+                                    + hiddenhtml
+                                    + '</div>');
+
+  return false;
+}
+
+function removeIngredient(element){
+  var x = $(element).parent();
+  x.remove();
+  var num_amounts = parseInt($("#num_amounts").val());
+  $("#num_amounts").val(num_amounts - 1);
+
+  return false;
+}
+
+
 </script>
 
 <%= form_for @recipe do |f| %>
@@ -25,8 +85,11 @@
    <fieldset id='amounts-ingredients'>
     <% @recipe.amounts.each do |amount| %>
       <%= f.fields_for :amounts, amount do |amounts_attributes| %>
-        <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amounts_attributes: amounts_attributes} %>
+        <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amounts_attributes: amounts_attributes, blank: 0} %>
       <% end %>
+    <% end %>
+    <%= f.fields_for @blank_amount do |blank_attributes| %>
+      <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: @blank_amount, amounts_attributes: blank_attributes, blank: 1} %>
     <% end %>
   </fieldset>
   <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size - 1 %>">

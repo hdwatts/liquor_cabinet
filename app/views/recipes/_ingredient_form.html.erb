@@ -1,19 +1,18 @@
-<% if amount == recipe.amounts.last %>
+<% if blank == 1 %>
   <div class="blank-amount-ingredient-field">
-    <div class="col-sm-7">
-    <%= amounts_attributes.fields_for :ingredient do |ingredient_attributes| %>
-      <%= ingredient_attributes.hidden_field :name %>
-    <% end %>
-    <input type="text" class="ingredient_input ui-autocomplete-input">
-    </div>
-    <div class="col-sm-2">
-      <%= amounts_attributes.text_field :quantity, placeholder: "Quantity" %>
-    </div>
-    <div class="col-sm-2">
-      <%= amounts_attributes.text_field :unit, placeholder: "Unit" %>
-    </div>
-    <button onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></button>
-  </div>
+     <div class="col-sm-7">
+       <label class="form-control-label" for="ingredient">Ingredient</label>
+       <input class="form-control" value="" name="recipe[amounts_attributes][999][ingredient_attributes][name]" id="recipe_amounts_attributes_999_ingredient_attributes_name" type="hidden">
+       <input class="ingredient_input ui-autocomplete-input form-control" type="text">
+     </div>
+     <div class="col-sm-2">
+       <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][999][quantity]" id="recipe_amounts_attributes_999_quantity" type="text">
+     </div>
+     <div class="col-sm-2">
+       <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][999][unit]" id="recipe_amounts_attributes_999_unit" type="text">
+     </div>
+      <button onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></button>
+   </div>
 <% else %>
   <div class="amount-ingredient-field">
     <div class="col-sm-7">

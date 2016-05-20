@@ -40,7 +40,7 @@ class Recipe < ActiveRecord::Base
     end
   end
 
-  def self.sort_by_popular
+  def self.sort_by_popularity
    @sorted = Recipe.all.sort_by do |recipe|
       recipe.favorites.count
     end
@@ -56,7 +56,11 @@ class Recipe < ActiveRecord::Base
 
   def self.sort_by_servings
     @sorted = Recipe.all.sort_by do |recipe|
-      recipe.servings
+      if recipe.servings != nil
+        recipe.servings
+      else
+        1
+      end
     end
     @sorted
   end
