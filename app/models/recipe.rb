@@ -25,12 +25,12 @@ class Recipe < ActiveRecord::Base
     str
   end
 
-  def amounts_attributes= (amount_attributes)
-    amount_attributes.values.each do |amount_attribute|
-      quantity = amount_attribute["quantity"]
-      unit = amount_attribute["unit"]
+  def amounts_attributes= (amounts_attributes)
+    amounts_attributes.values.each do |amounts_attributes_attribute|
+      quantity = amounts_attributes_attribute["quantity"]
+      unit = amounts_attributes_attribute["unit"]
       amount = Amount.find_or_create_by(quantity: quantity, unit: unit)
-      amount.build_ingredient(amount_attribute["ingredient_attributes"])
+      amount.ingredient_attributes = amounts_attributes_attribute["ingredient_attributes"];
       self.amounts << amount
       self.save
     end
