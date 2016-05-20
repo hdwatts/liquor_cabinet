@@ -10,6 +10,11 @@
       updateHiddenAll();
     })
 
+    $(".ui-autocomplete-input").each(function(){
+      var hidden = $(this).parent().children()[1];
+      $(this).val($(hidden).val());
+    });
+
     $(document).on('keydown.autocomplete', ".ingredient_input", function() {
         $(this).autocomplete({source: ingredient});
     });
@@ -35,7 +40,7 @@
     $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
                                       + hiddenhtml
                                       + '</div>');
-    
+
     return false;
   }
 
@@ -70,7 +75,7 @@
 </div>
    <div class="amounts-ingredients">
    <fieldset id='amounts-ingredients'>
-    <% @recipe.amounts.each do |amount| %>   
+    <% @recipe.amounts.each do |amount| %>
       <%= f.fields_for :amounts, amount do |amounts_attributes| %>
         <%= render partial: 'ingredient_form', locals: {recipe: @recipe, amount: amount, amounts_attributes: amounts_attributes} %>
       <% end %>
