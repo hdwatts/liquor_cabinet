@@ -27,9 +27,12 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
     @recipe.user_id = current_user.id
-    redirect_to recipe_path(@recipe)
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      redirect_to edit_recipe_path(@recipe)
+    end
   end
 
   def show
