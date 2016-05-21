@@ -1,25 +1,36 @@
 <% @recipes.each do |recipe| %>
-  <%= link_to recipe do %>
     <div class="col-sm-6 col-md-4">
+      <%= link_to recipe do %>
       <div class="item">
       <div class="thumbnail">
         <%= image_tag recipe.img_url, class: "thumbnail" %>
       </div>
         <div class="caption">
-          <header>
-          <h3><%= recipe.name %></h3>
-          </header>
           <div class="description" style="display:none;">
             <%= recipe.description %>
           </div>
-          <div class="meta col-sm-6">
-            <div class="favorites col-sm-4"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= recipe.favorites.size %></div>
-            <div class="reviews col-sm-4"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= recipe.servings %></div>
-            <div class="difficulty col-sm-4"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></div>
+
+          <header>
+          <h3><%= recipe.name %></h3>
+          </header>
+            <% end %>
                       </div>
-            <div class="author col-sm-6"><%= recipe.user.first_name %><%= image_tag recipe.user.img_url, class: "profile-sm" %></div>
-        </div>
+          <footer>
+          <div class="author col-xs-8 col-sm-5">
+            <%= link_to recipe.user do %>
+            <%= image_tag recipe.user.img_url, class: "profile-sm" %><span class="username"><%= recipe.user.first_name %></span></div>
+         <% end %>
+          <div class="meta col-xs-4 col-sm-7">    
+            <div class="reviews col-xs-4"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= recipe.servings %></div>
+          
+            <div class="difficulty col-xs-4"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span><%= recipe.difficulty %></div>
+            <div class="favorites col-xs-4"><%= link_to favorite_path(id: recipe.id), method: :post do %>
+              <div class="favorite-btn text-center" recipe_id="<%= recipe.id %>">
+                <span class="<%= recipe.heart_class(current_user) %>"></span><%= recipe.favorites.count %></div>
+              </div>
+            </footer>
+            <% end %>
+
       </div>
     </div>
-  <% end %>
 <% end %>

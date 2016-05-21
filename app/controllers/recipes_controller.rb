@@ -46,6 +46,13 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
+  def favorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.update_favorites(current_user)
+    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id }
+  end
+
+
   private
 
   def recipe_params
