@@ -6,11 +6,18 @@
         <%= image_tag recipe.img_url, class: "thumbnail" %>
       </div>
         <div class="caption">
+          <header>
           <h3><%= recipe.name %></h3>
-          <span class="tag_line"><i>"This is a tagline for the cocktail."</i></span>
-          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> <span>Difficulty: <%= recipe.display_difficulty %></span></div>
-          <div class="favorites">Favorites: <span class="badge"><%= recipe.favorites.size %></span></div>
-          <div class="servings"><span> Serves: <%= recipe.servings %> </span></div>
+          </header>
+          <div class="description" style="display:none;">
+            <%= recipe.description %>
+          </div>
+          <div class="meta col-sm-6">
+            <div class="favorites col-sm-4"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= recipe.favorites.size %></div>
+            <div class="reviews col-sm-4"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= recipe.servings %></div>
+            <div class="difficulty col-sm-4"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></div>
+                      </div>
+            <div class="author col-sm-6"><%= recipe.user.first_name %><%= image_tag recipe.user.img_url, class: "profile-sm" %></div>
         </div>
       </div>
     </div>
