@@ -8,34 +8,44 @@ class Recipe < ActiveRecord::Base
   has_many :reviews
   accepts_nested_attributes_for :amounts
 
+### DISPLAY
+
   def display_difficulty
     str = "#{self.difficulty}"
     case self.difficulty
       when 1
-        str << " (No sweat)"
+        str << "<span>No sweat</span>"
       when 2
-        str << " (Easy)"
+        str << "<span>Easy</span>"
       when 3
-        str << " (Medium)"
+        str << "<span>Medium</span>"
       when 4
-        str << " (Hard)"
+        str << "<span>Hard</span>"
       when 5
-        str << " (Experts Only)"
+        str << "<span>Experts Only</span>"
     end
 
     str
   end
 
+### RECIPE FORM
+
   def amounts_attributes= (amounts_attributes)
+    self.amounts.clear
     amounts_attributes.values.each do |amounts_attributes_attribute|
-      quantity = amounts_attributes_attribute["quantity"]
-      unit = amounts_attributes_attribute["unit"]
-      amount = Amount.find_or_create_by(quantity: quantity, unit: unit)
-      amount.ingredient_attributes = amounts_attributes_attribute["ingredient_attributes"];
-      self.amounts << amount
-      self.save
+      if !amounts_attributes_attribute["ingredient_attributes"].nil? && amounts_attributes_attribute["ingredient_attributes"]["name"] != ""
+        quantity = amounts_attributes_attribute["quantity"]
+        unit = amounts_attributes_attribute["unit"]
+        amount = Amount.find_or_create_by(quantity: quantity, unit: unit)
+        amount.ingredient_attributes = amounts_attributes_attribute["ingredient_attributes"]
+        self.amounts << amount
+      end
     end
+
+    self.save
   end
+
+### INDEX SORT
 
   def self.sort_by_popularity
    @sorted = Recipe.all.sort_by do |recipe|
@@ -71,6 +81,38 @@ class Recipe < ActiveRecord::Base
 
   def self.search
     @search_results = Recipe.all.find_by(search_params)
+  end
+
+### USER FAVORITES METHODS
+  def update_favorites(user)
+    user_favorited?(user) ? unfavorite(user) : favorite(user)
+  end
+
+  def favorites_message(user)
+    if user_favorited?(user)
+      "<span>Saved to your favorites.</span>".html_safe
+    end
+  end
+
+  def heart_class(user)
+    if user_favorited?(user)
+      "glyphicon glyphicon-heart red-heart"
+    else
+      "glyphicon glyphicon-heart grey-heart"
+    end
+  end
+
+private
+  def user_favorited?(user)
+    self.favorites.where(user: user).any?
+  end
+
+  def favorite(user)
+    self.favorites.create(user_id: user.id)
+  end
+
+  def unfavorite(user)
+    self.favorites.find_by(user_id: user.id).destroy
   end
 
 end
