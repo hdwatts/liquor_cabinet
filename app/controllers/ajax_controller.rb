@@ -10,9 +10,12 @@ class AjaxController < ApplicationController
     elsif params.keys[0] == "popularity"
      @recipes = Recipe.sort_by_popularity
     end
-    render template: "home/_print_recipes", layout: false    
+    render template: "home/_print_recipes", layout: false
+  end
+
+  def search
+    params.values[1].split
+    render template: "home/_print_recipes", layout: false
   end
 
 end
-
-

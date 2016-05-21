@@ -69,4 +69,8 @@ class Recipe < ActiveRecord::Base
     @sorted.reverse
   end
 
+  def self.search
+    @search_results = Recipe.all.find_by(search_params)
+  end
+
 end

@@ -1,5 +1,5 @@
 $(function() {
-  get_sort_params() 
+  get_sort_params()
 })
 
 function get_sort_params() {
@@ -26,4 +26,18 @@ function get_sort_params() {
   });
  }
 
+ function get_search_params() {
+  $('#search form').submit(function(event) {
+    var search_params = $('#search form .search-params').val()
+    // event.preventDefault();
 
+    $.ajax({
+      method: "POST",
+      url: "/search",
+      data: search_params,
+    }).done(function(data) {
+      $("#index_recipes").empty();
+      $("#index_recipes").append(data);
+    })
+ })
+ }
