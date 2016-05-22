@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :sign_in_user, except: [:index, :show]
+
   def index
     @users = User.all
   end

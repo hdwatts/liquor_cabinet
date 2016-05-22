@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
     @blank_amount = Amount.new
     @blank_amount.ingredient = Ingredient.new
     #@recipe.amounts << @blank_amount
-    #debugger
   end
 
   def update
@@ -38,6 +37,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @reviews = @recipe.reviews
+    @new_review = @recipe.reviews.new
   end
 
   def destroy

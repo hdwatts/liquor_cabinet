@@ -1,5 +1,6 @@
 $(function() {
-  get_sort_params() 
+  get_sort_params()
+  // get_description()
 })
 
 function get_sort_params() {
@@ -26,4 +27,8 @@ function get_sort_params() {
   });
  }
 
-
+// Description shows when image index hovered over.
+ // function get_description(){
+ //   var recipeDescr = $('h3.recipe-descrp').text()
+ //   $.('span.description').append(recipeDescr)
+ // }

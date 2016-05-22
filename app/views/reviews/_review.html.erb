@@ -1,0 +1,12 @@
+<%= div_for review do %>
+  <span class="date"><small><%= time_ago_in_words(review.created_at) %> ago</small></span>
+
+  <p class="review-comment">
+    <%= sanitize(review.comment) %>
+  </p>
+
+  <% if signed_in? %>
+      <%= link_to '', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Delete comment?' },
+                  id: "#{review.id}_delete", remote: true %>
+  <% end %>
+<% end %>
