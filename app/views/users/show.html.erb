@@ -8,8 +8,17 @@
 <h2>My Recipes</h2>
 <ul>
 <% @user.recipes.each do |recipe| %>
-  <li>
+<li>  
   <%= link_to recipe.name, recipe %>
+  </li>
+<% end %>
+</ul>
+
+<h2>My Favorites</h2>
+<ul>
+<% @user.favorites.each do |favorite| %>
+  <li>
+  <%= link_to favorite.recipe.name, recipe_path(favorite.recipe) %>
   </li>
 <% end %>
 </ul>
