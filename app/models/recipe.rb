@@ -14,8 +14,12 @@ class Recipe < ActiveRecord::Base
     arr = self.tags.map do |tag|
       tag.name
     end
-    
-    arr.join(", ")
+
+    if !arr.empty?
+      arr.join(", ")
+    else
+      ""
+    end
   end
 
   def display_difficulty

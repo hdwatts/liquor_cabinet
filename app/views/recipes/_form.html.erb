@@ -79,9 +79,7 @@ function removeIngredient(element){
   </div>
   <fieldset>
     <%= f.label :tags %>
-    <div data-tags-input-name="recipe[tag_names]" id="tagBox">
-      <%= @recipe.print_tag_names %>
-    </div>
+    <div data-tags-input-name="recipe[tag_names]" id="tagBox"><%= @recipe.print_tag_names %></div>
   </fieldset>
   <fieldset>
     <%= f.label :steps %>
