@@ -2,12 +2,14 @@
 <div class="item-spacer col-sm-0 col-md-2"></div>
 <div class="item-body col-sm-12 col-md-8">
 <header>
+  <div class="page-header">
 <h1><%= @recipe.name %></h1>
-<div class="meta"> 
   <h4 class="author">
     <%= link_to @recipe.user do %>
       <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
     <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>   
+</div>
+<div class="meta"> 
     <div class="favorites">
       <%= link_to favorite_path(id: @recipe.id), method: :post do %>
       <div class="favorite-btn" recipe_id="<%= @recipe.id %>"><span class="<%= @recipe.heart_class(current_user) %>"></span><span class="count"><%= @recipe.favorites_count(current_user) %></span></div>
