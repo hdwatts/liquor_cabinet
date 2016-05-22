@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
   def favorite
     @recipe = Recipe.find(params[:id])
     @recipe.update_favorites(current_user)
-    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id }
+    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id, count: @recipe.favorites_count(current_user) }
   end
 
 

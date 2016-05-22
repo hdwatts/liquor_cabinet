@@ -86,7 +86,17 @@ class Recipe < ActiveRecord::Base
 
   def favorites_message(user)
     if user_favorited?(user)
-      "<span>Saved to your favorites.</span>".html_safe
+      "<span class='added'>Saved to your favorites.</span>".html_safe
+    else
+      "<span class='removed'></span>".html_safe
+    end
+  end
+
+  def favorites_count(user)
+    if user_favorited?(user)
+      self.favorites.count
+    else
+      self.favorites.count 
     end
   end
 

@@ -1,17 +1,47 @@
+<div class="recipe recipe-<%= @recipe.id %> show">
+<div class="item-spacer col-sm-0 col-md-2"></div>
+<div class="item-body col-sm-12 col-md-8">
+<header>
 <h1><%= @recipe.name %></h1>
-
+<div class="meta"> 
+  <h4 class="author">
+    <%= link_to @recipe.user do %>
+      <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
+    <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>   
+    <div class="favorites">
+      <%= link_to favorite_path(id: @recipe.id), method: :post do %>
+      <div class="favorite-btn" recipe_id="<%= @recipe.id %>"><span class="<%= @recipe.heart_class(current_user) %>"></span><span class="count"><%= @recipe.favorites_count(current_user) %></span></div>
+      <% end %>
+      <div class="favorites-message" recipe_message_id="<%= @recipe.id %>"><%= @recipe.favorites_message(current_user) %></div>
+    </div>
+      <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
+  </div>
+<div class="item-img">
 <%= image_tag @recipe.img_url %>
+</div>
+<h3><%= @recipe.description %></h3>
 
-<h3>Description: <%= @recipe.description %></h3>
-<h3>Tools: <%= @recipe.tools %></h3>
-<h3>Instructions: <%= @recipe.steps %></h3>
-<h3>Ingredients:</h3>
+<h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
+          
+<h4>Serves <%= @recipe.servings %></h4>
+
+<h4>Tools: <%= @recipe.tools %></h4>
+</header>
+<div class="content">
+<h3>Ingredients</h3>
     <% @recipe.amounts.each do |amount| %>
       <h3><%= amount.ingredient.name %> Quantity: <%= amount.quantity %> Unit: <%= amount.unit %></h3>
     <% end %>
-<h3>Difficulty Level: <%= @recipe.difficulty %></h3>
+<p><%= @recipe.steps %></p>
+</div>
 
-<h3>Servings: <%= @recipe.servings %></h3>
+<div class="item-edit">
+  <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
+  <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
+</div>
 
-<%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
-<%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
+</div>
+
+
+
+</div>
