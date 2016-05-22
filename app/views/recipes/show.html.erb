@@ -6,9 +6,18 @@
 <h3>Tools: <%= @recipe.tools %></h3>
 <h3>Instructions: <%= @recipe.steps %></h3>
 <h3>Ingredients:</h3>
+  <ul>
     <% @recipe.amounts.each do |amount| %>
-      <h3><%= amount.ingredient.name %> Quantity: <%= amount.quantity %> Unit: <%= amount.unit %></h3>
+      <li><%= amount.ingredient.name %> Quantity: <%= amount.quantity %> Unit: <%= amount.unit %></li>
     <% end %>
+    </ul>
+<h3>Tags:</h3>
+  <ul>
+    <% @recipe.tags.each do |tag| %>
+      <li><%= link_to tag.name, tag_path(tag.name) %>
+    <% end %>
+  </ul>
+
 <h3>Difficulty Level: <%= @recipe.difficulty %></h3>
 
 <h3>Servings: <%= @recipe.servings %></h3>

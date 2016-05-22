@@ -7,8 +7,16 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :amounts
   has_many :reviews
   accepts_nested_attributes_for :amounts
+  accepts_nested_attributes_for :tags
 
 ### DISPLAY
+  def print_tag_names
+    arr = self.tags.map do |tag|
+      tag.name
+    end
+    
+    arr.join(", ")
+  end
 
   def display_difficulty
     str = "#{self.difficulty}"
@@ -29,6 +37,18 @@ class Recipe < ActiveRecord::Base
   end
 
 ### RECIPE FORM 
+
+  def tag_names=(tag_names)
+    self.tags.clear
+    tag_names.each do |tag_name|
+      if tag_name != ""
+        tag = Tag.find_or_create_by(name: tag_name)
+        self.tags << tag
+      end
+    end
+
+    self.save
+  end
 
   def amounts_attributes= (amounts_attributes)
     self.amounts.clear

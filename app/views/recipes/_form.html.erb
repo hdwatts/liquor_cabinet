@@ -1,5 +1,7 @@
 <script>
 $(function() {
+  $("#tagBox").tagging();
+
   var ingredient = [""
       <% Ingredient.all.each do |ingredient| %>
         , "<%= ingredient.name %>"
@@ -58,23 +60,25 @@ function removeIngredient(element){
   </fieldset>
 </div>
    <div class="amounts-ingredients">
-   <fieldset id='amounts-ingredients'>
-    <div class="col-sm-7">
-      <label class="form-control-label" for="ingredient">Ingredient</label>
-    </div>
-    <div class="col-sm-2">
-      <label class="form-control-label" for="quantity">Quantity</label>
-    </div>
-    <div class="col-sm-2">
-      <label class="form-control-label" for="amount">Amount</label>
-    </div>
-    <div class="col-sm-1">
-      <label>Add</label>
-    </div>
-    <%= render partial: 'ingredient_form', locals: {recipe: @recipe, blank_amount: @blank_amount} %>
-  </fieldset>
-  <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size %>">
-
+     <fieldset id='amounts-ingredients'>
+      <div class="col-sm-7">
+        <label class="form-control-label" for="ingredient">Ingredient</label>
+      </div>
+      <div class="col-sm-2">
+        <label class="form-control-label" for="quantity">Quantity</label>
+      </div>
+      <div class="col-sm-2">
+        <label class="form-control-label" for="amount">Amount</label>
+      </div>
+      <div class="col-sm-1">
+        <label>Add</label>
+      </div>
+      <%= render partial: 'ingredient_form', locals: {recipe: @recipe, blank_amount: @blank_amount} %>
+    </fieldset>
+    <input type="hidden" id="num_amounts" value="<%= @recipe.amounts.size %>">
+  </div>
+  <div data-tags-input-name="recipe[tag_names]" id="tagBox">
+    <%= @recipe.print_tag_names %>
   </div>
   <fieldset>
     <%= f.label :steps %>
