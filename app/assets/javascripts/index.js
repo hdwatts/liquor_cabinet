@@ -35,5 +35,3 @@ function get_sort_params() {
   }
   return tag
 }
-
-
