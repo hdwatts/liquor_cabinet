@@ -19,6 +19,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    correct_user
     @recipe = Recipe.find(params[:id])
     @blank_amount = Amount.new
     @blank_amount.ingredient = Ingredient.new
@@ -58,6 +59,11 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]], :tag_names => [])
+  end
+
+  def correct_user
+    @recipe = Recipe.find(params[:id])
+    redirect_to(user_path(current_user)) unless current_user?(@recipe.user)
   end
 
 end
