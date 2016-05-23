@@ -81,21 +81,41 @@ class Recipe < ActiveRecord::Base
 
 ### INDEX SORT  
 
-  def self.sort_by_ajax(sort, tag)
+  def self.sort_by_ajax(sort, tag, order)
     recipes = Recipe.all
     if tag != ""
       recipes = Recipe.filter_tag(tag)
     end
 
     case sort
-      when "date"
-        Recipe.sort_by_date(recipes)
+      when "date"       
+        if order == "default"
+          Recipe.sort_by_date(recipes)
+        else
+          recipes = Recipe.sort_by_date(recipes)
+          recipes.reverse
+        end
       when "difficulty"
-        Recipe.sort_by_difficulty(recipes)
+        if order == "default"
+          Recipe.sort_by_difficulty(recipes)
+        else
+          recipes = Recipe.sort_by_difficulty(recipes)
+          recipes.reverse
+        end
       when "servings"
-        Recipe.sort_by_servings(recipes)
+        if order == "default"
+          Recipe.sort_by_servings(recipes)
+        else
+          recipes = Recipe.sort_by_servings(recipes)
+          recipes.reverse
+        end
       when "popularity"
-        Recipe.sort_by_popularity(recipes)
+        if order == "default"
+          Recipe.sort_by_popularity(recipes)
+        else
+          recipes = Recipe.sort_by_popularity(recipes)
+          recipes.reverse
+        end
       else
         Recipe.all
     end
