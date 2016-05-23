@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/recipe/sort' => 'ajax#sort'
+  get '/search' => 'ajax#search'
+  #post '/search' => 'ajax#search'
   get '/tags/:name' => 'tags#show', as: :tag
+  get '/ingredients/:name' => 'ingredients#show', as: :ingredient
   post '/recipe/:id/favorite' => 'recipes#favorite', as: :favorite
+
 
 end
