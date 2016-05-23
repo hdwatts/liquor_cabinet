@@ -55,11 +55,6 @@
       </div>
     </div>
 
-    <div class="item-edit">
-      <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
-      <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
-    </div>
-
     <h3>Tags:</h3>
       <ul>
         <% @recipe.tags.each do |tag| %>
@@ -67,5 +62,20 @@
         <% end %>
       </ul>
 
+<div class="item-edit">
+  <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
+  <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
+</div>
+
+  <h2>Comments:</h2>
+      <div id='reviews'>
+        <%= render partial: @recipe.reload.reviews %>
+      </div>
+
+  <h2>Add a Comment:</h2>
+  <div id="review-form">
+    <%= render "reviews/form" %>
   </div>
+</div>
+
 </div>

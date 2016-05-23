@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   has_many :tags, through: :recipes_tags
   has_many :amounts
   has_many :ingredients, through: :amounts
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   accepts_nested_attributes_for :amounts
   accepts_nested_attributes_for :tags
 

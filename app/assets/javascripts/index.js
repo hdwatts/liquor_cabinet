@@ -1,5 +1,5 @@
 $(function() {
-  get_sort_params() 
+  get_sort_params()
 })
 
 function get_sort_params() {

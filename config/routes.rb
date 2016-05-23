@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources 'users'
-  resources 'recipes'
+  resources 'recipes' do
+    resources 'reviews'
+  end
 
 
   get '/login' => 'sessions#new'

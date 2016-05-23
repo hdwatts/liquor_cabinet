@@ -19,6 +19,12 @@
     text-align: center;
   }
 
+div.caption span.description
+ {
+  text-align: center;
+  width: 100%;
+  display:block;
+}
   .index_description{
     min-height:120px;
   }
@@ -62,7 +68,7 @@
 
 // SHOW PAGES
 .recipe.show {
-  
+
   .author img {
     height: 1.5em;
     padding-right: .35em;
@@ -71,14 +77,14 @@
   .item-img img {
     width: 100%;
     height: auto;
-  }  
+  }
   .meta .favorites, .meta .comments {
     display: inline-block;
     margin-right: 1em;
   }
   .meta .comments {
     vertical-align: top;
-  } 
+  }
   .meta .glyphicon {
     padding-right: .35em;
   }
