@@ -4,21 +4,19 @@
 
 <%= link_to "Edit Profile", edit_user_path, class: 'btn btn-info btn-s'%>
 
-
+<div class="user-recipes">
 <h2>My Recipes</h2>
-<ul>
-<% @user.recipes.each do |recipe| %>
-<li>  
-  <%= link_to recipe.name, recipe %>
-  </li>
+<% @user.recipes.each do |recipe| %> 
+  <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
 <% end %>
-</ul>
+</div>
 
+<div class="user-favorites">
 <h2>My Favorites</h2>
-<ul>
 <% @user.favorites.each do |favorite| %>
-  <li>
-  <%= link_to favorite.recipe.name, recipe_path(favorite.recipe) %>
-  </li>
+  <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: favorite.recipe} %>
 <% end %>
-</ul>
+</div>
+
+
+
