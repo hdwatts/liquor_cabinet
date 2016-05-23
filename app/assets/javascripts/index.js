@@ -17,7 +17,7 @@ function get_sort_params() {
     $.ajax({
     method: "GET",
     url: "/recipe/sort",
-    data: param_to_sort_by
+    data: {sort: param_to_sort_by, tag: get_tag_from_url()}
     }).done(function( data ) {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
@@ -25,5 +25,15 @@ function get_sort_params() {
 
   });
  }
+
+ function get_tag_from_url(){
+  url = window.location.href
+  tag = null
+  if (url.indexOf("/tags/") != -1) {
+    tag = url.split('/').pop()
+    tag = tag.split("?")[0]
+  }
+  return tag
+}
 
 

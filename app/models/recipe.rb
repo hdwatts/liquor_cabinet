@@ -69,24 +69,54 @@ class Recipe < ActiveRecord::Base
     self.save
   end
 
+  def self.filter_tag(tag)
+    if t = Tag.find_by(name: tag)
+      recipes = t.recipes
+    else
+      recipes = []
+    end
+
+    recipes
+  end
+
 ### INDEX SORT  
 
-  def self.sort_by_popularity
-   @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_ajax(sort, tag)
+    recipes = Recipe.all
+    if tag != ""
+      recipes = Recipe.filter_tag(tag)
+    end
+
+    case sort
+    when "date"
+      Recipe.sort_by_date(recipes)
+    when "difficulty"
+      Recipe.sort_by_difficulty(recipes)
+    when "servings"
+      Recipe.sort_by_servings(recipes)
+    when "popularity"
+      Recipe.sort_by_popularity(recipes)
+    else
+      Recipe.all
+    end
+  end
+
+  def self.sort_by_popularity(recipes)
+   @sorted = recipes.sort_by do |recipe|
       recipe.favorites.count
     end
    @sorted.reverse
   end
 
-  def self.sort_by_difficulty
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_difficulty(recipes)
+    @sorted = recipes.sort_by do |recipe|
       recipe.difficulty
     end
     @sorted
   end
 
-  def self.sort_by_servings
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_servings(recipes)
+    @sorted = recipes.sort_by do |recipe|
       if recipe.servings != nil
         recipe.servings
       else
@@ -96,8 +126,8 @@ class Recipe < ActiveRecord::Base
     @sorted
   end
 
-  def self.sort_by_date
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_date(recipes)
+    @sorted = recipes.sort_by do |recipe|
       recipe.created_at
     end
     @sorted.reverse
