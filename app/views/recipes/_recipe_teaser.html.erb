@@ -18,7 +18,12 @@
     <footer>
       <div class="author col-xs-8 col-sm-5">
         <%= link_to the_recipe.user do %>
-          <%= image_tag the_recipe.user.img_url, class: "profile-sm" %><span class="username"><%= the_recipe.user.first_name %></span>
+          <% if the_recipe.user.img_url %>
+            <%= image_tag the_recipe.user.img_url, class: "profile-sm" %>
+          <% else %>
+            <span class="glyphicon glyphicon-user"></span>
+        <% end %>
+          <span class="username"><%= the_recipe.user.first_name %></span>
         <% end %>
       </div>
       

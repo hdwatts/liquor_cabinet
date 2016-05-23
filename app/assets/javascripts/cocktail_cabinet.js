@@ -8,7 +8,7 @@ var ready = function() {
 
 // replace empty profile imgs with icons
   $('img[src=""]').hide()
-  $('img[src=""].profile-sm').hide().before('<span class="glyphicon glyphicon-user"></span>')
+  // $('img[src=""].profile-sm').hide().before('<span class="glyphicon glyphicon-user"></span>')
 };
 
 $(document).ready(ready);

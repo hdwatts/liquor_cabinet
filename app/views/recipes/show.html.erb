@@ -16,7 +16,6 @@
     
     position: absolute;
     bottom: 0;
-    animation-iteration-count:infinite;
 }
 
 .water div div {
@@ -67,9 +66,19 @@
 
     <h4 class="author">
       <%= link_to @recipe.user do %>
+        <% if @recipe.user.img_url %>
         <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
+        <% else %>
+        <span class="glyphicon glyphicon-user"></span>
+        <% end %>
       <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>
-  </div>
+      <div style="float:right;">
+  <span class='st_facebook_hcount' displayText='Facebook'></span>
+  <span class='st_twitter_hcount' displayText='Tweet'></span>
+  <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+  <span class='st_email_hcount' displayText='Email'></span>
+</div>
+
   <div class="meta">
       <div class="favorites">
         <%= link_to favorite_path(id: @recipe.id), method: :post do %>
@@ -79,6 +88,7 @@
       </div>
         <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
     </div>
+      </div>
   <div class="item-img">
     <% if @recipe.img_url != "" %>
       <%= image_tag @recipe.img_url %>
@@ -92,24 +102,22 @@
       </div>
     <% end %>
   </div>
-<div style="float:right;">
-  <span class='st_facebook_hcount' displayText='Facebook'></span>
-  <span class='st_twitter_hcount' displayText='Tweet'></span>
-  <span class='st_pinterest_hcount' displayText='Pinterest'></span>
-  <span class='st_email_hcount' displayText='Email'></span>
-</div><br>
+
   <h3><%= @recipe.description %></h3>
 
     <h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
 
     <h4>Serves <%= @recipe.servings %></h4>
 
-    <h4>Tools: <%= @recipe.tools %></h4>
+    <% if @recipe.tools %>
+      <h4>Tools: <%= @recipe.tools %></h4>
+    <% end %>
+
   </header>
     <div class="content">
 
       <div class="ingredients">
-        <h3>Ingredients</h3>
+        <h4>Ingredients</h4>
         <ul>
           <% @recipe.amounts.each do |amount| %>
             <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>
@@ -121,12 +129,15 @@
       </div>
     </div>
 
-    <h3>Tags:</h3>
-      <ul>
+      <% if @recipe.tags %>
+      <div class="item-tags">
+      <h5><span class="label-dark">Filed Under: </span>
         <% @recipe.tags.each do |tag| %>
-          <li><%= link_to tag.name, tag_path(tag.name) %></li>
+          <span class="btn btn-default btn-sm"><%= link_to tag.name, tag_path(tag.name) %></span>
         <% end %>
-      </ul>
+      </h5>
+      </div>
+       <% end %>
 
 <div class="item-edit">
   <% if @recipe.user.first_name == current_user.first_name  %>
@@ -135,15 +146,15 @@
   <% end %>
 </div>
 
+<div class="item-comments">
   <h2>Comments:</h2>
       <div id='reviews'>
         <%= render partial: @recipe.reload.reviews %>
       </div>
 
-  <h2>Add a Comment:</h2>
   <div id="review-form">
     <%= render "reviews/form" %>
   </div>
 </div>
-
+</div>
 </div>
