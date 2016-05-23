@@ -1,15 +1,36 @@
-<h1><%= @user.first_name %> <%= @user.last_name %></h1>
-<%= image_tag @user.img_url %>
-<p><%= @user.bio %></p>
+<div class="user user-<%= @user.id %> show">
+<div class="item-spacer col-sm-0 col-md-2"></div>
+<div class="item-body col-sm-12 col-md-8">
+  <div class="page-header">
+    <h1 class="author"><%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="meta">
+      <span class="recipe-count"><%= @user.recipes.count %> Recipes</span>
+      <span class="recipe-count"><%= @user.favorites.count %> Favorites</span> 
+    </div>  
+    <%= link_to "Edit Profile", edit_user_path, class: 'btn btn-info btn-s'%>
+  </div>
+  <div class="content">
+    <h3 class="bio"><%= @user.bio %></h3>
+  </div>
+  <div class="item-img">
+    <%= image_tag @user.img_url %>
+  </div>
+</div>  
 
-<%= link_to "Edit Profile", edit_user_path, class: 'btn btn-info btn-s'%>
+<div class="item-related">  
+  <div class="user-recipes">
+  <h2>My Recipes</h2>
+  <% @user.recipes.each do |recipe| %> 
+    <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
+  <% end %>
+  </div>
+
+  <div class="user-favorites">
+  <h2>My Favorites</h2>
+  <% @user.favorites.each do |favorite| %>
+    <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: favorite.recipe} %>
+  <% end %>
+  </div>
+</div>
 
 
-<h2>My Recipes</h2>
-<ul>
-<% @user.recipes.each do |recipe| %>
-  <li>
-  <%= link_to recipe.name, recipe %>
-  </li>
-<% end %>
-</ul>

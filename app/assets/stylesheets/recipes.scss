@@ -4,80 +4,94 @@
 
 
 // TEASER CARDS
+.recipe.teaser {
+  .item {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 3em;
+  }
 
-.item {
-  border: 1px solid #ccc;
-  padding: 1em;
-  margin-bottom: 3em;
-}
+  .thumbnail {
+    border: none;
+  }
 
-.thumbnail {
-  border: none;
-}
+  .caption h3{
+    text-align: center;
+  }
 
-.caption h3{
+div.caption span.description
+ {
   text-align: center;
-}
-
-.index_description{
-  min-height:120px;
-}
-
-.author {
-  text-align: left;
-  padding-left: 0;
-}
-
-.author .profile-sm {
-  height: 1.5em;
-  width: auto;
-  margin-right: 10px;
-}
-.meta div {
-  padding-right: 0;
-  padding-left: 10px;
-  text-align: right;
-}
-
-.meta .glyphicon {
-  padding-right: 5px;
-}
-
-a .glyphicon .red-heart {
-  color: red !important;
-}
-
-footer {
-  clear: both;
-  padding-bottom: 1em;
-  padding-top: 1em;
-}
-
-
-// HOMEPAGE SEARCH BAR OPTIONS  
-
-#index_filter {
   width: 100%;
-  height: 65px;
-  background-color: #ccc;
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0px 5px 5px 0px rgb(0,0,0);
+  display:block;
+}
+  .index_description{
+    min-height:120px;
+  }
+
+  .author {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .author .profile-sm {
+    height: 1.5em;
+    width: auto;
+    margin-right: .35em;
+  }
+  .meta div {
+    padding-right: 0;
+    padding-left: 10px;
+    text-align: right;
+  }
+
+  .glyphicon {
+    padding-right: .35em;
+  }
+
+  .glyphicon.red-heart {
+    color: red !important;
+  }
+  .favorites-message {
+  display: none;
+  }
+  .favorites a {
+  text-decoration: none;
+  }
+
+  footer {
+    clear: both;
+    padding-bottom: 1em;
+    padding-top: 1em;
+  }
 }
 
-#filters > div {
-  float: left;
-  margin-right: 30px;
-  width: 12%;
+// SHOW PAGES
+.recipe.show {
+
+  .author img {
+    height: 1.5em;
+    padding-right: .35em;
+  }
+
+  .item-img img {
+    width: 100%;
+    height: auto;
+  }
+  .meta .favorites, .meta .comments {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  .meta .comments {
+    vertical-align: top;
+  }
+  .meta .glyphicon {
+    padding-right: .35em;
+  }
+  .glyphicon.red-heart {
+    color: red !important;
+  }
 }
-
-#index_filter input[type="text"] {
-  width: 2em;
-  border: none;
-  background-color: transparent;
-}
-
-
 
 // NEW AND EDIT FORMS
 
@@ -90,4 +104,62 @@ form .amounts-ingredients {
     margin-left: -15px;
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+/* Tagging Basic Style */
+.tagging {
+  border: 1px solid #CCCCCC;
+  cursor: text;
+  font-size: 1em;
+  height: auto;
+  padding: 10px 10px 15px;
+}
+
+.tag {
+  background: none repeat scroll 0 0 #EE7407;
+  border-radius: 2px;
+  color: white;
+  cursor: default;
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  padding: 4px 20px 4px 0;
+  margin: 5px 10px 0 0;
+}
+
+.tag span {
+  background: none repeat scroll 0 0 #D66806;
+  border-radius: 2px 0 0 2px;
+  margin-right: 5px;
+  padding: 5px 10px 5px;
+}
+
+.tag .tag-i {
+  color: white;
+  cursor: pointer;
+  font-size: 1.3em;
+  height: 0;
+  line-height: 0.1em;
+  position: absolute;
+  right: 5px;
+  top: 0.7em;
+  text-align: center;
+  width: 10px;
+}
+
+.tag .tag-i:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.type-zone {
+  border: 0 none;
+  height: auto;
+  width: auto;
+  min-width: 20px;
+  display: inline-block;
+}
+
+.type-zone:focus {
+  outline: none;
 }

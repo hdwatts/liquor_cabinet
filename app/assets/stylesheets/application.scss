@@ -2,6 +2,7 @@
 @import "bootstrap";
 @import "jquery.ui.all";
 @import "recipes";
+@import "users";
 
 body {
   padding-top: 70px;
@@ -17,4 +18,27 @@ body {
   margin-right: 10px;
   padding: 5px 5px 5px 10px;
   // border: none;
+}
+
+.navbar {
+  .profile-sm {
+    max-height: 1em;
+    width: auto;
+    margin-right: .35em;
+  }
+  .glyphicon-user {
+    margin-right: .35em;
+  }
+
+  .dropdown {
+    display: inline-block; 
+  }
+
+  .btn .caret {
+    margin-left: .35em;
+  }
+}
+
+footer#footer {
+  min-height: 2em;
 }

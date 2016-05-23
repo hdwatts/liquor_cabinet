@@ -1,14 +1,17 @@
-<div id="index_filter">
-  <span><b>Sort By:</b></span>
+<div id="index-filter" class="well">
+  <span class="header">Sort By:</span>
 
 
-  <div class="btn-group sort-by" role="group" aria-label="...">
+  <div class="btn-group sort-by" role="group">
     <button type="button" class="btn btn-default date"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
     <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
     <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
     <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
   </div>
 </div>
-<div id="index_recipes" class="row">
-  <%= render "print_recipes" %>
+
+<div id="index-recipes" class="row">
+  <% @recipes.each do |recipe| %>
+      <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
+  <% end %>
 </div>

@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   has_many :tags, through: :recipes_tags
   has_many :amounts
   has_many :ingredients, through: :amounts
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   accepts_nested_attributes_for :amounts
   accepts_nested_attributes_for :tags
 
@@ -54,6 +54,18 @@ class Recipe < ActiveRecord::Base
     self.save
   end
 
+  def tag_names=(tag_names)
+    self.tags.clear
+    tag_names.each do |tag_name|
+      if tag_name != ""
+        tag = Tag.find_or_create_by(name: tag_name)
+        self.tags << tag
+      end
+    end
+
+    self.save
+  end
+
   def amounts_attributes= (amounts_attributes)
     self.amounts.clear
     amounts_attributes.values.each do |amounts_attributes_attribute|
@@ -70,23 +82,52 @@ class Recipe < ActiveRecord::Base
   end
 
 ### INDEX SORT
+  def self.filter_tag(tag)
+    if t = Tag.find_by(name: tag)
+      recipes = t.recipes
+    else
+      recipes = []
+    end
 
-  def self.sort_by_popularity
-   @sorted = Recipe.all.sort_by do |recipe|
+    recipes
+  end
+
+  def self.sort_by_ajax(sort, tag)
+    recipes = Recipe.all
+    if tag != ""
+      recipes = Recipe.filter_tag(tag)
+    end
+
+    case sort
+      when "date"
+        Recipe.sort_by_date(recipes)
+      when "difficulty"
+        Recipe.sort_by_difficulty(recipes)
+      when "servings"
+        Recipe.sort_by_servings(recipes)
+      when "popularity"
+        Recipe.sort_by_popularity(recipes)
+      else
+        Recipe.all
+    end
+  end
+
+  def self.sort_by_popularity(recipes)
+   @sorted = recipes.sort_by do |recipe|
       recipe.favorites.count
     end
    @sorted.reverse
   end
 
-  def self.sort_by_difficulty
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_difficulty(recipes)
+    @sorted = recipes.sort_by do |recipe|
       recipe.difficulty
     end
     @sorted
   end
 
-  def self.sort_by_servings
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_servings(recipes)
+    @sorted = recipes.sort_by do |recipe|
       if recipe.servings != nil
         recipe.servings
       else
@@ -96,8 +137,8 @@ class Recipe < ActiveRecord::Base
     @sorted
   end
 
-  def self.sort_by_date
-    @sorted = Recipe.all.sort_by do |recipe|
+  def self.sort_by_date(recipes)
+    @sorted = recipes.sort_by do |recipe|
       recipe.created_at
     end
     @sorted.reverse
@@ -105,7 +146,7 @@ class Recipe < ActiveRecord::Base
 
   def self.search(search)
     if search.present?
-        where('lower(name) LIKE ? OR lower(description) LIKE ?' , "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC")
+        self.where('lower(name) LIKE ? OR lower(description) LIKE ?' , "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC")
     else
       Recipe.all
     end
@@ -118,7 +159,17 @@ class Recipe < ActiveRecord::Base
 
   def favorites_message(user)
     if user_favorited?(user)
-      "<span>Saved to your favorites.</span>".html_safe
+      "<span class='added'>Saved to your favorites.</span>".html_safe
+    else
+      "<span class='removed'></span>".html_safe
+    end
+  end
+
+  def favorites_count(user)
+    if user_favorited?(user)
+      self.favorites.count
+    else
+      self.favorites.count 
     end
   end
 

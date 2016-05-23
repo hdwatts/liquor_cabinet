@@ -23,7 +23,6 @@ class RecipesController < ApplicationController
     @blank_amount = Amount.new
     @blank_amount.ingredient = Ingredient.new
     #@recipe.amounts << @blank_amount
-    #debugger
   end
 
   def update
@@ -38,6 +37,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @reviews = @recipe.reviews
+    @new_review = @recipe.reviews.new
   end
 
   def destroy
@@ -49,14 +50,14 @@ class RecipesController < ApplicationController
   def favorite
     @recipe = Recipe.find(params[:id])
     @recipe.update_favorites(current_user)
-    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id }
+    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id, count: @recipe.favorites_count(current_user) }
   end
 
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]])
+    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]], :tag_names => [])
   end
 
 end

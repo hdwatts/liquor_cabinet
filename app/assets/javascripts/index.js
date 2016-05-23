@@ -5,7 +5,7 @@ $(function() {
 
 function sort_params() {
   var param_to_sort_by
-  $('#index_filter .btn').on('click', function() {
+  $('#index-filter .btn').on('click', function() {
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
   } else if ($( this ).hasClass('difficulty')) {
@@ -18,10 +18,10 @@ function sort_params() {
     $.ajax({
     method: "GET",
     url: "/recipe/sort",
-    data: param_to_sort_by
+    data: {sort: param_to_sort_by, tag: get_tag_from_url()}
     }).done(function( data ) {
-    $("#index_recipes").empty();
-    $("#index_recipes").append(data);
+    $("#index-recipes").empty();
+    $("#index-recipes").append(data);
   });
 
   });
@@ -37,8 +37,17 @@ function sort_params() {
       url: "/search",
       data: {query: search_params}
     }).done(function(data) {
-      $("#index_recipes").empty();
-      $("#index_recipes").append(data);
+      $("#index-recipes").empty();
+      $("#index-recipes").append(data);
     })
  })
  }
+ function get_tag_from_url(){
+  url = window.location.href
+  tag = null
+  if (url.indexOf("/tags/") != -1) {
+    tag = url.split('/').pop()
+    tag = tag.split("?")[0]
+  }
+  return tag
+}

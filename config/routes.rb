@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resources :tags
   root 'home#index'
   resources 'users'
-  resources 'recipes'
+  resources 'recipes' do
+    resources 'reviews'
+  end
 
 
   get '/login' => 'sessions#new'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/recipe/sort' => 'ajax#sort'
   get '/search' => 'ajax#search'
   #post '/search' => 'ajax#search'
+  get '/tags/:name' => 'tags#show', as: :tag
   post '/recipe/:id/favorite' => 'recipes#favorite', as: :favorite
 
 
