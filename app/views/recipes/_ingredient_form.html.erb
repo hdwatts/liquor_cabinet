@@ -1,29 +1,49 @@
-<% @recipe.amounts.each_with_index do |amount, index| %>
+<% if !@recipe.amounts.empty? %>
+  <% @recipe.amounts.each_with_index do |amount, index| %>
+    <div class="amount-ingredient-field">
+      <div class="col-sm-7">
+        <input class="ingredient_input ui-autocomplete-input form-control" name="recipe[amounts_attributes][<%= index %>][ingredient_attributes][name]" id="recipe_amounts_attributes_<%= index %>_ingredient_attributes_name" type="text" value="<%= amount.ingredient.name %>"/>
+      </div>
+
+      <div class="col-sm-2">
+        <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][<%= index %>][quantity]" id="recipe_amounts_attributes_<%= index %>_quantity" type="text" value="<%= amount.quantity %>">
+      </div>
+
+      <div class="col-sm-2">
+         <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][<%= index %>][unit]" id="recipe_amounts_attributes_<%= index %>_unit" type="text" value="<%= amount.unit %>">
+      </div>
+      <div class="col-sm-1">
+        <% if index == 0 %>
+        <a onclick="addIngredient(); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></a>
+        <% else %>
+          <a onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></a>
+        <% end %>
+       </div>
+    </div>
+  <% end %>
+
+  <% index = @recipe.amounts.size %>
+<% else %>
   <div class="amount-ingredient-field">
     <div class="col-sm-7">
-      <input class="ingredient_input ui-autocomplete-input form-control" name="recipe[amounts_attributes][<%= index %>][ingredient_attributes][name]" id="recipe_amounts_attributes_<%= index %>_ingredient_attributes_name" type="text" value="<%= amount.ingredient.name %>"/>
+      <input class="ingredient_input ui-autocomplete-input form-control" name="recipe[amounts_attributes][0][ingredient_attributes][name]" id="recipe_amounts_attributes_0_ingredient_attributes_name" type="text" value=""/>
     </div>
 
     <div class="col-sm-2">
-      <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][<%= index %>][quantity]" id="recipe_amounts_attributes_<%= index %>_quantity" type="text" value="<%= amount.quantity %>">
+      <input class="form-control" placeholder="Quantity" name="recipe[amounts_attributes][0][quantity]" id="recipe_amounts_attributes_0_quantity" type="text" value="">
     </div>
 
     <div class="col-sm-2">
-       <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][<%= index %>][unit]" id="recipe_amounts_attributes_<%= index %>_unit" type="text" value="<%= amount.unit %>">
+       <input class="form-control" placeholder="Unit" name="recipe[amounts_attributes][0][unit]" id="recipe_amounts_attributes_0_unit" type="text" value="">
     </div>
     <div class="col-sm-1">
-      <% if index == 0 %>
       <a onclick="addIngredient(); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-plus"></span></a>
-      <% else %>
-        <a onclick="removeIngredient(this); return false;" class="btn btn-default add-ingredient"><span class="glyphicon glyphicon-minus"></span></a>
-      <% end %>
      </div>
   </div>
 
+  <% index = 1%>
 <% end %>
-
 <% amount = @blank_amount %>
-<% index = @recipe.amounts.size %>
 
 <div class="blank-amount-ingredient-field">
   <div class="col-sm-7">

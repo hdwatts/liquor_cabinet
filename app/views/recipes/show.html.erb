@@ -1,67 +1,81 @@
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "9167ee52-20dc-45c3-8509-e77bd5a5884b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
 <div class="recipe recipe-<%= @recipe.id %> show">
 <div class="item-spacer col-sm-0 col-md-2"></div>
 <div class="item-body col-sm-12 col-md-8">
-<header>
-  <div class="page-header">
-<h1><%= @recipe.name %></h1>
+  <header>
+    <div class="page-header">
+  <h1><%= @recipe.name %></h1>
 
-  <h4 class="author">
-    <%= link_to @recipe.user do %>
-      <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
-    <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>
-</div>
-<div class="meta">
-    <div class="favorites">
-      <%= link_to favorite_path(id: @recipe.id), method: :post do %>
-      <div class="favorite-btn" recipe_id="<%= @recipe.id %>"><span class="<%= @recipe.heart_class(current_user) %>"></span><span class="count"><%= @recipe.favorites_count(current_user) %></span></div>
-      <% end %>
-      <div class="favorites-message" recipe_message_id="<%= @recipe.id %>"><%= @recipe.favorites_message(current_user) %></div>
-    </div>
-      <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
+    <h4 class="author">
+      <%= link_to @recipe.user do %>
+        <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
+      <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>
   </div>
-<div class="item-img">
-<%= image_tag @recipe.img_url %>
-</div>
-<h3><%= @recipe.description %></h3>
+  <div class="meta">
+      <div class="favorites">
+        <%= link_to favorite_path(id: @recipe.id), method: :post do %>
+        <div class="favorite-btn" recipe_id="<%= @recipe.id %>"><span class="<%= @recipe.heart_class(current_user) %>"></span><span class="count"><%= @recipe.favorites_count(current_user) %></span></div>
+        <% end %>
+        <div class="favorites-message" recipe_message_id="<%= @recipe.id %>"><%= @recipe.favorites_message(current_user) %></div>
+      </div>
+        <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
+    </div>
+  <div class="item-img">
+  <%= image_tag @recipe.img_url %>
+  </div>
+<div style="float:right;">
+  <span class='st_facebook_hcount' displayText='Facebook'></span>
+  <span class='st_twitter_hcount' displayText='Tweet'></span>
+  <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+  <span class='st_email_hcount' displayText='Email'></span>
+</div><br>
+  <h3><%= @recipe.description %></h3>
 
-<h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
+    <h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
 
-<h4>Serves <%= @recipe.servings %></h4>
+    <h4>Serves <%= @recipe.servings %></h4>
 
-<h4>Tools: <%= @recipe.tools %></h4>
-</header>
-<div class="content">
-<h3>Ingredients</h3>
-  <ul>
-    <% @recipe.amounts.each do |amount| %>
-      <li><%= amount.ingredient.name %> Quantity: <%= amount.quantity %> Unit: <%= amount.unit %></li>
-    <% end %>
-  </ul>
-<p><%= @recipe.steps %></p>
-</div>
+    <h4>Tools: <%= @recipe.tools %></h4>
+  </header>
+    <div class="content">
+
+      <div class="ingredients">
+      <h3>Ingredients</h3>
+        <ul>
+          <% @recipe.amounts.each do |amount| %>
+            <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= amount.ingredient.name %></span></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="directions">
+        <p><%= @recipe.steps %></p>
+      </div>
+    </div>
+
+    <h3>Tags:</h3>
+      <ul>
+        <% @recipe.tags.each do |tag| %>
+          <li><%= link_to tag.name, tag_path(tag.name) %></li>
+        <% end %>
+      </ul>
 
 <div class="item-edit">
   <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
   <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
 </div>
 
-<h3>Tags:</h3>
-  <ul>
-    <% @recipe.tags.each do |tag| %>
-      <li><%= link_to tag.name, tag_path(tag.name) %>
-    <% end %>
-  </ul>
+  <h2>Comments:</h2>
+      <div id='reviews'>
+        <%= render partial: @recipe.reload.reviews %>
+      </div>
 
-<%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
-<%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
-
-<h2>Comments:</h2>
-    <div id='reviews'>
-      <%= render partial: @recipe.reload.reviews %>
-    </div>
-
-<h2>Add a Comment:</h2>
-<div id="review-form">
-  <%= render "reviews/form" %>
+  <h2>Add a Comment:</h2>
+  <div id="review-form">
+    <%= render "reviews/form" %>
+  </div>
 </div>
+
 </div>

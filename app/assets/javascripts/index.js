@@ -1,6 +1,5 @@
 $(function() {
   get_sort_params()
-  // get_description()
 })
 
 function get_sort_params() {
@@ -18,7 +17,7 @@ function get_sort_params() {
     $.ajax({
     method: "GET",
     url: "/recipe/sort",
-    data: param_to_sort_by
+    data: {sort: param_to_sort_by, tag: get_tag_from_url()}
     }).done(function( data ) {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
@@ -27,8 +26,12 @@ function get_sort_params() {
   });
  }
 
-// Description shows when image index hovered over.
- // function get_description(){
- //   var recipeDescr = $('h3.recipe-descrp').text()
- //   $.('span.description').append(recipeDescr)
- // }
+ function get_tag_from_url(){
+  url = window.location.href
+  tag = null
+  if (url.indexOf("/tags/") != -1) {
+    tag = url.split('/').pop()
+    tag = tag.split("?")[0]
+  }
+  return tag
+}
