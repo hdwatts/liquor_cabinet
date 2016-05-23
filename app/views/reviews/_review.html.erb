@@ -2,11 +2,11 @@
   <span class="date"><small><%= time_ago_in_words(review.created_at) %> ago</small></span>
 
   <p class="review-comment">
-    <%= sanitize(review.comment) %>
+    <%= review.comment %>
   </p>
 
   <% if signed_in? %>
-      <%= link_to '', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Delete comment?' },
+      <%= link_to 'Delete Comment', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
                   id: "#{review.id}_delete", remote: true %>
   <% end %>
 <% end %>
