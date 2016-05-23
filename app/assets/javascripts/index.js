@@ -1,8 +1,9 @@
 $(function() {
-  get_sort_params()
+  sort_params()
+  search_params()
 })
 
-function get_sort_params() {
+function sort_params() {
   var param_to_sort_by
   $('#index_filter .btn').on('click', function() {
     if ($( this ).hasClass('date')) {
@@ -26,15 +27,14 @@ function get_sort_params() {
   });
  }
 
- function get_search_params() {
-  $('#search form').submit(function(event) {
-    var search_params = $('#search form .search-params').val()
+ function search_params() {
+  $('#search-btn').on("click", function(event) {
+    var search_params = $('.search-params').val()
     // event.preventDefault();
-
     $.ajax({
-      method: "POST",
+      method: "GET",
       url: "/search",
-      data: search_params,
+      data: {query: search_params}
     }).done(function(data) {
       $("#index_recipes").empty();
       $("#index_recipes").append(data);

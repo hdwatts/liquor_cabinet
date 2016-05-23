@@ -7,8 +7,20 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients, through: :amounts
   has_many :reviews
   accepts_nested_attributes_for :amounts
+  accepts_nested_attributes_for :tags
 
 ### DISPLAY
+  def print_tag_names
+    arr = self.tags.map do |tag|
+      tag.name
+    end
+
+    if !arr.empty?
+      arr.join(", ")
+    else
+      ""
+    end
+  end
 
   def display_difficulty
     str = "#{self.difficulty}"
@@ -29,6 +41,18 @@ class Recipe < ActiveRecord::Base
   end
 
 ### RECIPE FORM
+
+  def tag_names=(tag_names)
+    self.tags.clear
+    tag_names.each do |tag_name|
+      if tag_name != ""
+        tag = Tag.find_or_create_by(name: tag_name)
+        self.tags << tag
+      end
+    end
+
+    self.save
+  end
 
   def amounts_attributes= (amounts_attributes)
     self.amounts.clear
@@ -79,8 +103,12 @@ class Recipe < ActiveRecord::Base
     @sorted.reverse
   end
 
-  def self.search
-    @search_results = Recipe.all.find_by(search_params)
+  def self.search(search)
+    if search.present?
+        where('lower(name) LIKE ? OR lower(description) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC")
+    else
+      Recipe.all
+    end
   end
 
 ### USER FAVORITES METHODS

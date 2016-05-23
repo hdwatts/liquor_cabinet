@@ -14,7 +14,9 @@ class AjaxController < ApplicationController
   end
 
   def search
-    params.values[1].split
+    # search_params = params[:search].split
+    # @recipes = Recipe.search(search_params).order("created_at DESC")
+    @recipes = Recipe.search(params[:query])
     render template: "home/_print_recipes", layout: false
   end
 

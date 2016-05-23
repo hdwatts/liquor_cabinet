@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/recipe/sort' => 'ajax#sort'
-  post '/search' => 'ajax#search'
+  get '/search' => 'ajax#search'
+  #post '/search' => 'ajax#search'
   post '/recipe/:id/favorite' => 'recipes#favorite', as: :favorite
 
 

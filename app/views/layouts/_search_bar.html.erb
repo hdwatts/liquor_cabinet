@@ -1,6 +1,7 @@
 <div id="search">
-<%= form_tag('/search', remote: true) do %>
-<%= text_field_tag :search, params[:search], class: 'search-params' %>
-<%= submit_tag 'search', name: nil %>
-<% end %>
+<%#<%= form_tag('/search', remote: true) do %>
+ <%= text_field_tag :search, params[:search], class: 'search-params' %><br>
+<%#<%= submit_tag 'search', name: nil %>
+<%#<% end %>
+<a class="btn btn-default" id="search-btn">Search</a>
 </div>
