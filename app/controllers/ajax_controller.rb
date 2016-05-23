@@ -1,15 +1,21 @@
 class AjaxController < ApplicationController
 
-  def sort
-    @recipes = Recipe.sort_by_ajax(params[:sort], params[:tag], params[:order])
+  def get_recipes
+    @recipes = Recipe.sort_by_date(Recipe.all)
+    if params[:query] != "" && params[:query]
+      @recipes = Recipe.search(params[:query])
+    end
+    
+    if params[:sort] != "" && params[:sort]
+      @recipes = Recipe.sort_by_ajax(@recipes, params[:sort], params[:tag], params[:ingredient], params[:order])
+    end
+    
+    if params[:limit] == "" || !params[:limit]
+      params[:limit] = 15
+    end
+
+    @recipes = @recipes.slice(0, params[:limit].to_i)
+    
     render template: "recipes/_render_recipes", layout: false
   end
-
-  def search
-    # search_params = params[:search].split
-    # @recipes = Recipe.search(search_params).order("created_at DESC")
-    @recipes = Recipe.search(params[:query])
-    render template: "recipes/_render_recipes", layout: false
-  end
-
 end

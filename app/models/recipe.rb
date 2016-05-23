@@ -90,10 +90,13 @@ class Recipe < ActiveRecord::Base
     recipes
   end
 
-  def self.sort_by_ajax(sort, tag, order)
-    recipes = Recipe.all
-    if tag != ""
+  def self.sort_by_ajax(recipes, sort, tag, ingredient, order)
+    if tag != "" && !tag.nil?
       recipes = Recipe.filter_tag(tag)
+    end
+
+    if ingredient != "" && !ingredient.nil?
+      recipes = Recipe.filter_ingredients(ingredient)
     end
 
     case sort
