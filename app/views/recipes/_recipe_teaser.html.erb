@@ -2,7 +2,18 @@
   <div class="item">  
     <%= link_to the_recipe do %>
       <div class="thumbnail">
-        <%= image_tag the_recipe.img_url, class: "thumbnail" %>
+        <% if the_recipe.img_url != "" %>
+          <%= image_tag the_recipe.img_url, class: "thumbnail" %>
+        <% else %>
+          <div class="glass">
+            <div class="water">
+              <% the_recipe.amounts.each do |x| %>
+                <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / the_recipe.amounts.size.to_f) * 100 %>%"></div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
       </div>
       <div class="caption">
         <div class="description" style="display:none;">

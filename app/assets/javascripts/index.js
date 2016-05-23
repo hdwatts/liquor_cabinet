@@ -8,7 +8,20 @@ $(function() {
   sort_params()
   search_params()
   lazy_load()
+  prep();
 })
+
+function prep() {
+  $(".water").each(function(index, elem){
+    setTimeout(function(){act(elem)}, (Math.random() * 1000) + 500)
+  })
+}
+
+function act(elem) {
+  $(elem)
+   .animate({ height: '90%' }, 1000)
+   .animate({ height: '95%' }, 1000, function(){act(elem)});
+}
 
 function sort_params() {
   $('#index-filter .btn').on('click', function() {
@@ -87,6 +100,7 @@ function lazy_load() {
       }).done(function(data) {
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
+        act();
       })
     }
   });
