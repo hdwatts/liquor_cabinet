@@ -8,6 +8,17 @@ body {
   padding-top: 70px;
 }
 
+.navbar .profile_img{
+  max-height: 1em;
+  width: auto;
+  margin-right: 10px;
+}
+
+#search {
+  margin-right: 10px;
+  padding: 5px 5px 5px 10px;
+  // border: none;
+}
 
 .navbar {
   .profile-sm {

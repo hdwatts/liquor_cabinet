@@ -40,7 +40,7 @@ class Recipe < ActiveRecord::Base
     str
   end
 
-### RECIPE FORM 
+### RECIPE FORM
 
   def tag_names=(tag_names)
     self.tags.clear
@@ -69,6 +69,7 @@ class Recipe < ActiveRecord::Base
     self.save
   end
 
+### INDEX SORT
   def self.filter_tag(tag)
     if t = Tag.find_by(name: tag)
       recipes = t.recipes
@@ -79,7 +80,15 @@ class Recipe < ActiveRecord::Base
     recipes
   end
 
-### INDEX SORT  
+  def self.filter_ingredients(ingredient)
+    if i = Ingredient.find_by(name: ingredient)
+      recipes = i.recipes
+    else
+      recipes = []
+    end
+
+    recipes
+  end
 
   def self.sort_by_ajax(sort, tag, order)
     recipes = Recipe.all
@@ -151,6 +160,14 @@ class Recipe < ActiveRecord::Base
       recipe.created_at
     end
     @sorted.reverse
+  end
+
+  def self.search(search)
+    if search.present?
+        self.where('lower(name) LIKE ? OR lower(description) LIKE ?' , "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC")
+    else
+      Recipe.all
+    end
   end
 
 ### USER FAVORITES METHODS

@@ -1,0 +1,17 @@
+<!-- <div id="search">
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: 'search-params' %>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+    </div><! /input-group -->
+
+
+
+<div id="search">
+<%#<%= form_tag('/search', remote: true) do %>
+ <%= text_field_tag :search, params[:search], class: 'search-params' %>
+<%#<%= submit_tag 'search', name: nil %>
+<%#<% end %>
+<a class="btn btn-default btn-sm" id="search-btn">Search</a>
+</div>

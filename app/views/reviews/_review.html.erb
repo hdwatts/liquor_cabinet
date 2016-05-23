@@ -6,7 +6,9 @@
     <%= review.comment %><br>
   </p>
 
-  <%= link_to 'Delete Comment', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
+  <% if review.user.first_name == current_user.first_name %>
+    <%= link_to 'Delete Comment', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
                   id: "#{review.id}_delete", remote: true %><br>
+  <% end  %>  
 <% end %>
 <br>
