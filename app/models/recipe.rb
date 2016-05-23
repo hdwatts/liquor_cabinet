@@ -88,16 +88,16 @@ class Recipe < ActiveRecord::Base
     end
 
     case sort
-    when "date"
-      Recipe.sort_by_date(recipes)
-    when "difficulty"
-      Recipe.sort_by_difficulty(recipes)
-    when "servings"
-      Recipe.sort_by_servings(recipes)
-    when "popularity"
-      Recipe.sort_by_popularity(recipes)
-    else
-      Recipe.all
+      when "date"
+        Recipe.sort_by_date(recipes)
+      when "difficulty"
+        Recipe.sort_by_difficulty(recipes)
+      when "servings"
+        Recipe.sort_by_servings(recipes)
+      when "popularity"
+        Recipe.sort_by_popularity(recipes)
+      else
+        Recipe.all
     end
   end
 
