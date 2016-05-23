@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/search' => 'ajax#search'
   #post '/search' => 'ajax#search'
   get '/tags/:name' => 'tags#show', as: :tag
+  get '/ingredients/:name' => 'ingredients#show', as: :ingredient
   post '/recipe/:id/favorite' => 'recipes#favorite', as: :favorite
 
 

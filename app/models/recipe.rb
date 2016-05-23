@@ -54,18 +54,6 @@ class Recipe < ActiveRecord::Base
     self.save
   end
 
-  def tag_names=(tag_names)
-    self.tags.clear
-    tag_names.each do |tag_name|
-      if tag_name != ""
-        tag = Tag.find_or_create_by(name: tag_name)
-        self.tags << tag
-      end
-    end
-
-    self.save
-  end
-
   def amounts_attributes= (amounts_attributes)
     self.amounts.clear
     amounts_attributes.values.each do |amounts_attributes_attribute|
@@ -85,6 +73,16 @@ class Recipe < ActiveRecord::Base
   def self.filter_tag(tag)
     if t = Tag.find_by(name: tag)
       recipes = t.recipes
+    else
+      recipes = []
+    end
+
+    recipes
+  end
+
+  def self.filter_ingredients(ingredient)
+    if i = Ingredient.find_by(name: ingredient)
+      recipes = i.recipes
     else
       recipes = []
     end
