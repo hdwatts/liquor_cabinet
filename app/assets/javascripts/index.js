@@ -30,6 +30,7 @@ function sort_params() {
  function search_params() {
   $('#search-btn').on("click", function(event) {
     var search_params = $('.search-params').val()
+    // $('input#search.search-params').empty();
     // event.preventDefault();
     $.ajax({
       method: "GET",
