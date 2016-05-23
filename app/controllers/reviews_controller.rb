@@ -1,12 +1,11 @@
 class ReviewsController < ApplicationController
-  before_action :sign_in_user, only: :destroy
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @review = @recipe.reviews.build(review_params)
 
     if @review.save
-      @new_review = @recipe.reviews.new
+      @new_review = @recipe.reviews.build
       respond_to do |format|
         format.html do
           flash[:success] = "Your comment has been posted"
@@ -19,7 +18,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @recipe = @recipe.review
+    @recipe = @review.recipe
     @review.destroy
     respond_to do |format|
       format.html do
@@ -34,7 +33,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment)
+    params.require(:review).permit(:comment, :user_id)
   end
 
 end
