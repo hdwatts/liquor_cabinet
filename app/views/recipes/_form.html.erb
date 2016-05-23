@@ -22,7 +22,6 @@ function addIngredient(){
   //update [X] and _X_
   var hiddenhtml = x.html().replace(/\[\d+\]/g, "["+(num_amounts + 1)+"]");
   hiddenhtml = hiddenhtml.replace(/_\d+_/g, "_"+(num_amounts + 1)+"_");
-  debugger
   $('#amounts-ingredients').append('<div class="blank-amount-ingredient-field">'
                                     + hiddenhtml
                                     + '</div>');

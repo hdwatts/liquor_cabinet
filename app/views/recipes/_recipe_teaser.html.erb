@@ -1,5 +1,5 @@
 <div class="recipe recipe-<%= the_recipe.id %> teaser col-sm-6 col-md-4">
-  <div class="item">  
+  <div class="item">
     <%= link_to the_recipe do %>
       <div class="thumbnail">
         <% if the_recipe.img_url != "" %>
@@ -25,7 +25,7 @@
         </header>
       </div>
     <% end %>
-      
+
     <footer>
       <div class="author col-xs-8 col-sm-5">
         <%= link_to the_recipe.user do %>
@@ -37,11 +37,11 @@
           <span class="username"><%= the_recipe.user.first_name %></span>
         <% end %>
       </div>
-      
-      <div class="meta col-xs-4 col-sm-7">    
+
+      <div class="meta col-xs-4 col-sm-7">
         <div class="reviews col-xs-4"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= the_recipe.reviews.count %></div>
         <div class="difficulty col-xs-4"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span><%= the_recipe.difficulty %></div>
-        
+
         <div class="favorites col-xs-4"><%= link_to favorite_path(id: the_recipe.id), method: :post do %>
           <div class="favorite-btn text-center" recipe_id="<%= the_recipe.id %>">
             <span class="<%= the_recipe.heart_class(current_user) %>"></span>
@@ -53,7 +53,6 @@
         </div>
       <% end %>
     </footer>
-    
+
   </div>
 </div>
-
