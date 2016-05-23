@@ -7,8 +7,26 @@ body {
   padding-top: 70px;
 }
 
-.navbar .profile_img{
-  max-height: 1em;
-  width: auto;
-  margin-right: 10px;
+
+.navbar {
+  .profile-sm {
+    max-height: 1em;
+    width: auto;
+    margin-right: .35em;
+  }
+  .glyphicon-user {
+    margin-right: .35em;
+  }
+
+  .dropdown {
+    display: inline-block; 
+  }
+
+  .btn .caret {
+    margin-left: .35em;
+  }
+}
+
+footer#footer {
+  min-height: 2em;
 }

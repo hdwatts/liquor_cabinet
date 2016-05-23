@@ -31,7 +31,7 @@
   .author .profile-sm {
     height: 1.5em;
     width: auto;
-    margin-right: 10px;
+    margin-right: .35em;
   }
   .meta div {
     padding-right: 0;
@@ -39,8 +39,8 @@
     text-align: right;
   }
 
-  .meta .glyphicon {
-    padding-right: 5px;
+  .glyphicon {
+    padding-right: .35em;
   }
 
   .glyphicon.red-heart {
@@ -48,6 +48,9 @@
   }
   .favorites-message {
   display: none;
+  }
+  .favorites a {
+  text-decoration: none;
   }
 
   footer {
@@ -85,32 +88,6 @@
     color: red !important;
   }
 }
-
-
-// HOMEPAGE SEARCH BAR OPTIONS  
-
-#index_filter {
-  width: 100%;
-  height: 65px;
-  background-color: #ccc;
-  padding: 20px;
-  margin-bottom: 15px;
-  box-shadow: 0px 5px 5px 0px rgb(0,0,0);
-}
-
-#filters > div {
-  float: left;
-  margin-right: 30px;
-  width: 12%;
-}
-
-#index_filter input[type="text"] {
-  width: 2em;
-  border: none;
-  background-color: transparent;
-}
-
-
 
 // NEW AND EDIT FORMS
 
