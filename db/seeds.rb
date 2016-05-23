@@ -60,3 +60,7 @@ daniella.favorites << Favorite.create(recipe: manhattan);
 daniella.favorites << Favorite.create(recipe: sidecar);
 liana.favorites << Favorite.create(recipe: bloody_mary);
 liana.favorites << Favorite.create(recipe: cucumber_margarita);
+
+manhattan.ingredients << spiced_rum
+manhattan.ingredients << tabasco
+manhattan.save
