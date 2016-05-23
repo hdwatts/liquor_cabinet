@@ -1,5 +1,2 @@
 var reviews = $('#reviews');
 reviews.append('<%= escape_javascript(render partial: @review) %>');
-reviews.find('div:last-child').addClass('last-review');
-
-$('#review_content').val('');
