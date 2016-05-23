@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
       @new_review = @recipe.reviews.build
       respond_to do |format|
         format.html do
-          flash[:success] = "Your comment has been posted"
           redirect_to @recipe
         end
         format.js
@@ -22,7 +21,6 @@ class ReviewsController < ApplicationController
     @review.destroy
     respond_to do |format|
       format.html do
-        flash[:success] = "Comment deleted."
         redirect_to @recipe
       end
       format.js
