@@ -47,10 +47,17 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
+  def favorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.update_favorites(current_user)
+    render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id, count: @recipe.favorites_count(current_user) }
+  end
+
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]])
+    params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]], :tag_names => [])
   end
 
 end
