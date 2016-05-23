@@ -43,6 +43,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    correct_user
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to root_path
