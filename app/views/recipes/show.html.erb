@@ -1,3 +1,59 @@
+<style>
+.glass {
+    margin: 30px auto;
+    height: <%= [50 * @recipe.amounts.size, 300].max %>px;
+    width: <%= ([50 * @recipe.amounts.size, 300].max) / 2 %>px;
+    position: relative;
+    border-style: none solid solid solid;
+    border-width: 10px;
+    border-color: lightgray;
+    border-radius: 10px;
+}
+
+.water {
+    width: 100%;
+    height: 95%;
+    
+    position: absolute;
+    bottom: 0;
+    animation-iteration-count:infinite;
+}
+
+.water div div {
+    /* WebKit (Safari/Chrome) Only */
+  vertical-align: middle;
+  text-align:center;
+
+  /* If we weren't using text-shadow, we'd set a fallback color
+     and use this to set color instead
+    -webkit-text-fill-color: white; */
+  
+  color: white;
+  
+  text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+   -1px  1px 0 #000,
+    1px  1px 0 #000;
+}
+</style>
+<script>
+  $(function(){
+      function goDown() {
+        $('.water').animate({
+            height: '90%'
+        }, 1000, 'swing', function(){goUp()})
+      }
+
+      function goUp(){
+        $('.water').animate({
+            height: '95%'
+        }, 1000, 'swing', function(){goDown()})
+      }
+
+      goDown();
+})
+</script>
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "9167ee52-20dc-45c3-8509-e77bd5a5884b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
@@ -24,7 +80,17 @@
         <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
     </div>
   <div class="item-img">
-  <%= image_tag @recipe.img_url %>
+    <% if @recipe.img_url != "" %>
+      <%= image_tag @recipe.img_url %>
+    <% else %>
+      <div class="glass">
+        <div class="water">
+          <% @recipe.amounts.each do |x| %>
+            <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / @recipe.amounts.size.to_f) * 100 %>%"><div style=""><%= x.ingredient.name %></div></div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 <div style="float:right;">
   <span class='st_facebook_hcount' displayText='Facebook'></span>
@@ -43,7 +109,7 @@
     <div class="content">
 
       <div class="ingredients">
-      <h3>Ingredients</h3>
+        <h3>Ingredients</h3>
         <ul>
           <% @recipe.amounts.each do |amount| %>
             <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>

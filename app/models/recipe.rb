@@ -60,7 +60,7 @@ class Recipe < ActiveRecord::Base
       if !amounts_attributes_attribute["ingredient_attributes"].nil? && amounts_attributes_attribute["ingredient_attributes"]["name"] != ""
         quantity = amounts_attributes_attribute["quantity"]
         unit = amounts_attributes_attribute["unit"]
-        amount = Amount.find_or_create_by(quantity: quantity, unit: unit)
+        amount = Amount.create(quantity: quantity, unit: unit)
         amount.ingredient_attributes = amounts_attributes_attribute["ingredient_attributes"]
         self.amounts << amount
       end
