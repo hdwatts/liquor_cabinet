@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  get '/recipe/sort' => 'ajax#sort'
-  get '/search' => 'ajax#search'
+  get '/sort' => 'ajax#get_recipes'
+  get '/search' => 'ajax#get_recipes'
   #post '/search' => 'ajax#search'
   get '/tags/:name' => 'tags#show', as: :tag
   get '/ingredients/:name' => 'ingredients#show', as: :ingredient

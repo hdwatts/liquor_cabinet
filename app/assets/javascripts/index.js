@@ -1,11 +1,16 @@
+var param_limit = 15
+var sort_order = "default"
+var param_to_sort_by = "date"
+var search_query = ""
+
 $(function() {
+  $(".btn.btn-default.date").toggleClass('on');
   sort_params()
   search_params()
+  lazy_load()
 })
 
 function sort_params() {
-  var param_to_sort_by
-  var sort_order 
   $('#index-filter .btn').on('click', function() {
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
@@ -39,10 +44,13 @@ function sort_params() {
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
     }
+    search_query = $('.search-params').val()
+    param_limit = 15
+
     $.ajax({  
     method: "GET",
-    url: "/recipe/sort",
-    data: {sort: param_to_sort_by, tag: get_tag_from_url(), order: sort_order}
+    url: "/sort",
+    data: getData()
     }).done(function( data ) {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
@@ -53,20 +61,47 @@ function sort_params() {
 
  function search_params() {
   $('#search-btn').on("click", function(event) {
-    var search_params = $('.search-params').val()
+    search_query = $('.search-params').val()
+    param_limit = 15
     // $('input#search.search-params').empty();
     // event.preventDefault();
     $.ajax({
       method: "GET",
       url: "/search",
-      data: {query: search_params}
+      data: getData()
     }).done(function(data) {
       $("#index-recipes").empty();
       $("#index-recipes").append(data);
     })
  })
  }
- function get_tag_from_url(){
+
+function lazy_load() {
+  $(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+      param_limit += 3
+      $.ajax({
+        method: "GET",
+        url: "/sort",
+        data: getData()
+      }).done(function(data) {
+        $("#index-recipes").empty();
+        $("#index-recipes").append(data);
+      })
+    }
+  });
+}
+
+function getData() {
+  return {sort: param_to_sort_by,
+          tag: get_tag_from_url(),
+          query: search_query,
+          ingredient: get_ingredient_from_url(),
+          limit: param_limit,
+          order: sort_order};
+}
+
+function get_tag_from_url(){
   url = window.location.href
   tag = null
   if (url.indexOf("/tags/") != -1) {
@@ -74,4 +109,14 @@ function sort_params() {
     tag = tag.split("?")[0]
   }
   return tag
+}
+
+function get_ingredient_from_url(){
+  url = window.location.href
+  ing = null
+  if (url.indexOf("/ingredients/") != -1) {
+    ing = url.split('/').pop()
+    ing = ing.split("?")[0]
+  }
+  return ing
 }

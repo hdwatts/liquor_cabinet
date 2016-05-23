@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.sort_by_date(Recipe.all)
     @max_servings = Recipe.maximum(:servings)
   end
 
