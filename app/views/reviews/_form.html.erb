@@ -1,6 +1,6 @@
 <% if current_user.nil? %>
   <%= link_to 'Create Account', new_user_path %> or <%= link_to 'Log In',login_path %> to Comment
-<% elsif @recipe.user.first_name == current_user.first_name %>
+<% else %>
   <%= form_for [@recipe, @new_review], remote: true do |f| %>
     <% if signed_in? %>
       <%= f.text_area :comment, rows: '3', placeholder: "Comment here..." %>
