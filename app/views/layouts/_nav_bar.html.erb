@@ -1,10 +1,12 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <%= link_to 'Cocktail Cabinet', root_path, class: 'navbar-brand' %>
     <% if current_user %>
       <div class="navbar-right">
         <div class="dropdown">
-         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><%= image_tag current_user.img_url, class: 'profile-sm' %><%= current_user.first_name %><span class="caret"></span></button>
+         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+          <div class="profile-img" style="background-image:url('<%= current_user.img_url %>')"><span></span></div>
+          <%= current_user.first_name %><span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><%= link_to "My Recipes", user_path(current_user) %></li>
           <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
@@ -12,7 +14,7 @@
           <li><a href= '/logout' class="navbar-btn">Sign out</a></li>
         </ul>
         </div>
-        <a href= '/recipes/new' type="button" class="btn btn-default navbar-btn">Add Recipe</a>
+        <a href= '/recipes/new' type="button" class="btn btn-primary navbar-btn">Add Recipe</a>
       </div>
       <% else %>
       <div class="navbar-right">

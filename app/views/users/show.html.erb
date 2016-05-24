@@ -20,7 +20,7 @@
  
 <% if @user.recipes.count > 0  %>
  <div class="user-recipes">
-  <h2>My Recipes</h2>
+  <h3 class="header">My Recipes</h3>
   <% @user.recipes.each do |recipe| %> 
     <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
   <% end %>
@@ -29,7 +29,7 @@
 
   <% if @user.favorites.count > 0 %>
   <div class="user-favorites">
-  <h2>My Favorites</h2>
+  <h3 class="header">My Favorites</h3>
   <% @user.favorites.each do |favorite| %>
     <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: favorite.recipe} %>
   <% end %>
