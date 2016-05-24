@@ -12,7 +12,7 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :steps, presence: true
-  validate :validate_ingredients
+  #validate :validate_ingredients
 
 
   def validate_ingredients

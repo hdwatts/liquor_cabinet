@@ -1,3 +1,12 @@
+<script>
+$(function(){
+  $('input#search').keydown(function (e){
+    if(e.keyCode == 13){
+      doSearch();
+    }
+  })
+});
+</script>
   <div class="input-group">
     <%= text_field_tag :search, params[:search], class: 'search-params form-control' %>
     <span class="input-group-btn">

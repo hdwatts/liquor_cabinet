@@ -9,11 +9,11 @@ $(function() {
   search_params()
   lazy_load()
   prep();
+    favoritePluralize()
 })
 
 function prep() {
   favoriteButtonListener()
-  favoritePluralize()
   $(".thumbnail").on("mouseenter", function(){
     act($(this).find(".water"));
   })
@@ -76,14 +76,18 @@ function sort_params() {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
     prep()
+    thumbnailResize();
   });
 
   });
  }
 
  function search_params() {
-  $('#search-btn').on("click", function(event) {
-    search_query = $('.search-params').val()
+  $('#search-btn').on("click", doSearch)
+ }
+
+ function doSearch() {
+   search_query = $('.search-params').val()
     param_limit = 15
     // $('input#search.search-params').empty();
     // event.preventDefault();
@@ -95,8 +99,8 @@ function sort_params() {
       $("#index-recipes").empty();
       $("#index-recipes").append(data);
       prep()
+      thumbnailResize();
     })
- })
  }
 
 function lazy_load() {

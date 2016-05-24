@@ -6,13 +6,19 @@
 // TEASER CARDS
 .recipe.teaser {
   .item {
-    border: 1px solid #ccc;
+    border: 1px solid #efefef;
     padding: 1em;
     margin-bottom: 3em;
+    box-shadow: 1px 1px 3px #eee
   }
 
   .thumbnail {
     border: none;
+    background-size: cover;
+    background-position: 50%;
+  }
+  .thumbnail img {
+    display: none;
   }
 
   .caption h3{
@@ -46,6 +52,7 @@ div.caption span.description {
     padding-right: 0;
     padding-left: 10px;
     text-align: right;
+    font-size: .95em;
   }
 
   .glyphicon {
@@ -71,15 +78,43 @@ div.caption span.description {
 
 // SHOW PAGES
 .recipe.show {
-
-  .author img {
-    height: 1.5em;
+  .page-header {
+  position: relative;
+  }
+  .author .profile-img {
+    height: 2em;
+    width: 2em;
+    background-size: cover;
+    border-radius: 50%;
+    display: inline-block;
     padding-right: .35em;
+    vertical-align: bottom;
+  }
+  h3.description {
+    line-height: 1.5em;
+    margin: 1.5em 0;
   }
 
+  .author h4 {
+    display: inline-block;
+    margin: 0;
+  }
+  .item-img {
+  text-align: center;
+  }
   .item-img img {
     max-width: 100%;
     height: auto;
+  }
+  .item-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .meta {
+    position: absolute;
+    right: -10px;
+    bottom: 0.5em;
   }
   .meta .favorites, .meta .comments {
     display: inline-block;
@@ -94,6 +129,28 @@ div.caption span.description {
   .glyphicon.red-heart {
     color: red !important;
   }
+
+  .rec-meta {
+    display:inline-block;
+    padding-right: 3em;
+    vertical-align: top;
+  }
+  .ingredients {
+    margin-top: .5em;
+    display:inline-block;
+    line-height: 1.75em;
+  }
+  .directions {
+    margin: 2em 0;
+  }
+  .item-comments {
+    margin-top: 5em;
+  }
+  h3.header {
+    margin-left: 0;
+    margin-right:0;
+  }
+
 }
 
 // NEW AND EDIT FORMS

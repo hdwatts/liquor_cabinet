@@ -28,20 +28,33 @@
     <div class="page-header">
   <h1><%= @recipe.name %></h1>
 
-    <h4 class="author">
+    <div class="author">
       <%= link_to @recipe.user do %>
         <% if @recipe.user.img_url %>
-        <%= image_tag @recipe.user.img_url, class: "profile-sm" %>
+         <div class="profile-img" style="background-image:url('<%= @recipe.user.img_url %>')"></div>
+        <% #= image_tag @recipe.user.img_url, class: "profile-sm" %>
         <% else %>
         <span class="glyphicon glyphicon-user"></span>
         <% end %>
-      <span class="username">by <%= @recipe.user.first_name %></span> <% end %></h4>
-      <div style="float:right;">
+      <h4 class="username">by <%= @recipe.user.first_name %></h4> <% end %></div>
+      <div style="float:right;display:none;">
   <span class='st_facebook_hcount' displayText='Facebook'></span>
   <span class='st_twitter_hcount' displayText='Tweet'></span>
   <span class='st_pinterest_hcount' displayText='Pinterest'></span>
   <span class='st_email_hcount' displayText='Email'></span>
 </div>
+
+<div class="item-edit">
+  <% if current_user.nil? %>
+
+  <% elsif @recipe.user.first_name == current_user.first_name %>
+    <%= link_to "Edit", edit_recipe_path, class: 'btn btn-default btn-s'%>
+    <%= link_to "Delete", recipe_path(@recipe), method: :delete, class: 'btn btn-default btn-s'%>
+  <% end %>
+</div>
+
+
+
 
   <div class="meta">
       <div class="favorites">
@@ -66,22 +79,17 @@
       </div>
     <% end %>
   </div>
-
-  <h3><%= @recipe.description %></h3>
-
-    <h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
-
-    <h4>Serves <%= @recipe.servings %></h4>
-
-    <% if @recipe.tools %>
-      <h4>Tools: <%= @recipe.tools %></h4>
-    <% end %>
-
   </header>
     <div class="content">
+  <h3 class="description"><%= @recipe.description %></h3>
 
+
+    <div class="rec-meta">
+    <h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
+
+    <h4><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><%= @recipe.servings %><% else %>1<% end %></h4>
+  </div>
       <div class="ingredients">
-        <h4>Ingredients</h4>
         <ul>
           <% @recipe.amounts.each do |amount| %>
             <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>
@@ -93,7 +101,7 @@
       </div>
     </div>
 
-      <% if @recipe.tags %>
+      <% if @recipe.tags.count > 0 %>
       <div class="item-tags">
       <h5><span class="label-dark">Filed Under: </span>
         <% @recipe.tags.each do |tag| %>
@@ -103,17 +111,10 @@
       </div>
        <% end %>
 
-<div class="item-edit">
-  <% if current_user.nil? %>
 
-  <% elsif @recipe.user.first_name == current_user.first_name %>
-    <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-info btn-s'%>
-    <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, class: 'btn btn-info btn-s'%>
-  <% end %>
-</div>
 
 <div class="item-comments">
-  <h2>Comments:</h2>
+  <h3 class="header">Comments</h3>
       <div id='reviews'>
         <%= render partial: @recipe.reload.reviews %>
       </div>
