@@ -12,6 +12,8 @@ $(function() {
 })
 
 function prep() {
+  favoriteButtonListener()
+  favoritePluralize()
   $(".thumbnail").on("mouseenter", function(){
     act($(this).find(".water"));
   })
@@ -55,7 +57,7 @@ function sort_params() {
         sort_order = 'default'
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
-      
+
   } else if ($( this ).hasClass('popularity')) {
       param_to_sort_by = 'popularity'
       $( this ).toggleClass('on')
@@ -67,13 +69,14 @@ function sort_params() {
     search_query = $('.search-params').val()
     param_limit = 15
 
-    $.ajax({  
+    $.ajax({
     method: "GET",
     url: "/sort",
     data: getData()
     }).done(function( data ) {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
+    prep()
   });
 
   });
@@ -92,6 +95,7 @@ function sort_params() {
     }).done(function(data) {
       $("#index-recipes").empty();
       $("#index-recipes").append(data);
+      prep()
     })
  })
  }

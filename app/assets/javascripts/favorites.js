@@ -1,7 +1,4 @@
-$(document).ready(function(){
-  favoriteButtonListener()
-  favoritePluralize()
-})
+
 
 function favoriteButtonListener() {
   $('div.favorite-btn').click(function(e){
@@ -25,6 +22,6 @@ function favoritePluralize() {
   if (parseInt($('.recipe.show .glyphicon-heart').siblings().text()) == 1) {
     $('.recipe.show .glyphicon-heart').siblings().append(" Favorite")
   } else {
-    $('.recipe.show .glyphicon-heart').siblings().append(" Favorites") 
+    $('.recipe.show .glyphicon-heart').siblings().append(" Favorites")
  }
 }
