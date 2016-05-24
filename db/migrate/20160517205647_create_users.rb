@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
       t.string :username
-      t.datetime :birth_date
+      t.date :birth_date
       t.text :bio
       t.string :img_url
 

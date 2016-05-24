@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160519203542) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.datetime "birth_date"
+    t.date "birth_date"
     t.text     "bio"
     t.string   "img_url"
     t.datetime "created_at",      null: false

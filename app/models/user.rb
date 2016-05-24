@@ -3,6 +3,16 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :reviews
   has_secure_password
- # validates_presence_of :username, :email, :birth_date, :password
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, uniqueness: { case_sensitive: false }
+  validates :birth_date, presence: true
+  validate :validate_email
+
+  def validate_email
+    if email !~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      errors.add(:email, "is not an email")
+    end
+  end
 
 end

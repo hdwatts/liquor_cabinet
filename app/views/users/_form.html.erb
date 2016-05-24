@@ -1,3 +1,12 @@
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "yy-mm-dd"
+    });
+  });
+</script>
 <%= form_for @user do |f| %>
   <fieldset>
     <%= f.label :first_name %>
@@ -21,7 +30,7 @@
   </fieldset>
   <fieldset>
     <%= f.label :birth_date %>
-    <%= f.date_field :birth_date %>
+    <input type="text" id="datepicker" name="user[birth_date]" value="<%= @user.birth_date %>">
   </fieldset>
   <fieldset>
     <%= f.label :bio %>
