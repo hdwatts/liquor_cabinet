@@ -25,8 +25,8 @@ function act(elem) {
     $(elem)[0].animated = false
 
     $(elem)
-     .animate({ height: '90%' }, (Math.random() * 2000) + 2000, "easeOutElastic")
-     .animate({ height: '95%' }, (Math.random() * 2000) + 2000, "easeOutElastic", function() { $(elem)[0].animated = true });
+     .animate({ height: '90%' }, (Math.random() * 1000) + 1000, "easeInOutBack")
+     .animate({ height: '95%' }, (Math.random() * 1000) + 1000, "easeInOutBack", function() { $(elem)[0].animated = true });
   }
 }
 
