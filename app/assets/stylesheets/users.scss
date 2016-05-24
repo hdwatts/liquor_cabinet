@@ -4,6 +4,9 @@
 
 // SHOW PAGES
 .user.show {
+  .item-body {
+    margin-top: 3em;
+  }
   .item-img {
     height: 8em;
     width: 8em;
@@ -13,12 +16,16 @@
     margin: 0px 3em 3em 0px;
     display: inline-block;
   } 
-    
+  .recipe-count {
+    margin-right: .5em;
+  }  
   .page-header .header {
     display: inline-block;
     vertical-align: top;
   }
-
+  h3.bio {
+    margin: .75em 0;
+  }
   .item-related {
     padding: 3em 0;
   }

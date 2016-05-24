@@ -18,14 +18,12 @@ $(document).ready(ready);
 $(document).on("page:load", ready);
 
 $(window).resize(function(){
-  userImgResize()
-  var win_wid = $('div.thumbnail').width(); 
-  $('div.thumbnail').children().height(win_wid).width('auto');  
+  thumbnailResize() 
     });
 
 function thumbnailResize() {
   var win_wid = $('div.thumbnail').width(); 
-  $('div.thumbnail').children().height(win_wid).width('auto');  
+  $('div.thumbnail').height(win_wid);  
  }
 
  function recipeImgResize() {

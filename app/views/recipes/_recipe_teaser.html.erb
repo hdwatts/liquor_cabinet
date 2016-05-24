@@ -2,7 +2,7 @@
   <div class="item">
     <%= link_to the_recipe do %>
         <% if the_recipe.img_url != "" %>
-          <div class="thumbnail">
+          <div class="thumbnail" style="background-image:url('<%= the_recipe.img_url %>')">
             <%= image_tag the_recipe.img_url, class: "thumbnail" %>
         <% else %>
           <div class="thumbnail">

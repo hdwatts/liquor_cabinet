@@ -9,11 +9,11 @@ $(function() {
   search_params()
   lazy_load()
   prep();
+    favoritePluralize()
 })
 
 function prep() {
   favoriteButtonListener()
-  favoritePluralize()
   $(".thumbnail").on("mouseenter", function(){
     act($(this).find(".water"));
   })
@@ -75,6 +75,7 @@ function sort_params() {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
     prep()
+    thumbnailResize();
   });
 
   });
@@ -94,6 +95,7 @@ function sort_params() {
       $("#index-recipes").empty();
       $("#index-recipes").append(data);
       prep()
+      thumbnailResize();
     })
  })
  }
