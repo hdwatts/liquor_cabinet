@@ -6,13 +6,34 @@
 
 body {
   padding-top: 70px;
+  font-size: 16px;
+  }
+p {
+  line-height: 1.45em;
+}  
+.container, .btn {  
+  font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: .02em;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Oswald', sans-serif;
+}
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+  margin-bottom: .5em;
+}
 .well {
     min-height: 5em;
 }
 
 .navbar {
+  .navbar-brand {
+  font-family: 'Oswald', sans-serif;
+  }
+
   .profile-sm {
     max-height: 1em;
     width: auto;
