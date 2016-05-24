@@ -103,19 +103,24 @@ function sort_params() {
  }
 
 function lazy_load() {
+  var bottom = false;
   $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+    if($(window).scrollTop() == $(document).height() - $(window).height() && bottom == false) {
       param_limit += 3
       $.ajax({
         method: "GET",
         url: "/sort",
         data: getData()
       }).done(function(data) {
+        var curr = $(document).scrollTop();
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
         prep();
         thumbnailResize();
-      })
+        $(document).scrollTop(curr)
+      }).fail(function(){
+        bottom = true
+      });
     }
   });
 }
