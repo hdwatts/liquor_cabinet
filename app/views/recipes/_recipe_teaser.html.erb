@@ -4,6 +4,9 @@
       <div class="thumbnail">
         <% if the_recipe.img_url != "" %>
           <%= image_tag the_recipe.img_url, class: "thumbnail" %>
+          <!-- <span class="description">
+              <%= the_recipe.description %>    <- figure out code here, to display descrp in box over img
+          </span -->
         <% else %>
           <div class="glass">
             <div class="water">
