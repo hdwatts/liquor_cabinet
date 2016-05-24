@@ -4,11 +4,21 @@
 
 // SHOW PAGES
 .user.show {
-  .item-img img {
-    width: 100%;
-    height: auto;
+  .item-img {
+    height: 8em;
+    width: 8em;
+    border-radius: 50%;
+    background-position: 50%;
+    background-size: cover;
+    margin: 0px 3em 3em 0px;
+    display: inline-block;
   } 
     
+  .page-header .header {
+    display: inline-block;
+    vertical-align: top;
+  }
+
   .item-related {
     padding: 3em 0;
   }
