@@ -91,33 +91,26 @@ class Recipe < ActiveRecord::Base
   end
 
 ### INDEX SORT
-  def self.filter_tag(tag)
-    if t = Tag.find_by(name: tag)
-      recipes = t.recipes
-    else
-      recipes = []
+  def self.filter_tag(tag, recipes)
+    recipes.select do |recipe|
+      recipe.tags.detect { |r_tag| r_tag.name == tag }
     end
 
-    recipes
   end
 
-  def self.filter_ingredients(ingredient)
-    if i = Ingredient.find_by(name: ingredient)
-      recipes = i.recipes
-    else
-      recipes = []
+  def self.filter_ingredients(ingredient, recipes)
+    recipes.select do |recipe|
+      recipe.ingredients.detect { |r_tag| r_tag.name == ingredient }
     end
-
-    recipes
   end
 
   def self.sort_by_ajax(recipes, sort, tag, ingredient, order)
     if tag != "" && !tag.nil?
-      recipes = Recipe.filter_tag(tag)
+      recipes = Recipe.filter_tag(tag, recipes)
     end
 
     if ingredient != "" && !ingredient.nil?
-      recipes = Recipe.filter_ingredients(ingredient)
+      recipes = Recipe.filter_ingredients(ingredient, recipes)
     end
 
     case sort

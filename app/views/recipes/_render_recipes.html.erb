@@ -1,5 +1,7 @@
-<% if @recipes %>
+<% if @recipes && !@recipes.empty? %>
   <% @recipes.each do |recipe| %>
     <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
   <% end %>  
+<% else %>
+  <h1>No Recipes Found</h1>
 <% end %>
