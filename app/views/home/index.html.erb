@@ -1,6 +1,7 @@
-<%= render 'age_gate' %>
+<% #= render 'age_gate' %>
 
 <div id="index-filter" class="well">
+  <div id="sort" class="col-lg-6">
   <span class="header">Sort By:</span>
 
 
@@ -11,6 +12,10 @@
     <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
   </div>
 </div>
+  <div id="search" class="col-lg-6">
+    <%= render 'search_bar'%>
+  </div>
+  </div>
 
 <div id="index-recipes" class="row">
   <% @recipes.each do |recipe| %>
