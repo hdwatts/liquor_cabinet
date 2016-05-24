@@ -2,6 +2,8 @@ var param_limit = 15
 var sort_order = "default"
 var param_to_sort_by = "date"
 var search_query = ""
+var scrolling = false;
+var bottom = false
 
 $(function() {
   $(".btn.btn-default.date").toggleClass('on');
@@ -65,8 +67,9 @@ function sort_params() {
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
     }
-    search_query = $('.search-params').val()
     param_limit = 15
+    bottom = false
+    scrolling = 0
 
     $.ajax({
     method: "GET",
@@ -89,6 +92,8 @@ function sort_params() {
  function doSearch() {
    search_query = $('.search-params').val()
     param_limit = 15
+    bottom = false
+    scrolling = 0
     // $('input#search.search-params').empty();
     // event.preventDefault();
     $.ajax({
@@ -104,9 +109,9 @@ function sort_params() {
  }
 
 function lazy_load() {
-  var bottom = false;
   $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height() && bottom == false) {
+      scrolling = 1
       param_limit += 3
       $.ajax({
         method: "GET",
@@ -132,6 +137,7 @@ function getData() {
           query: search_query,
           ingredient: get_ingredient_from_url(),
           limit: param_limit,
+          scrolling: scrolling,
           order: sort_order};
 }
 

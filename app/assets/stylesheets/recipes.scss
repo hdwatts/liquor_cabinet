@@ -48,11 +48,12 @@ div.caption span.description {
     border-radius: 50%;
     display: inline-block;
   }
-  .meta div {
-    padding-right: 0;
-    padding-left: 10px;
+  .meta  {
     text-align: right;
-    font-size: .95em;
+    padding-right: 0;
+  }
+  .meta .reviews {
+      padding-right: .65em;
   }
 
   .glyphicon {
@@ -68,6 +69,7 @@ div.caption span.description {
   .favorites a {
   text-decoration: none;
   }
+
 
   footer {
     clear: both;
@@ -129,6 +131,30 @@ div.caption span.description {
   .glyphicon.red-heart {
     color: red !important;
   }
+  .favorites-message {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 100;
+    justify-content: center;
+  }
+  .favorites-message span {
+    align-self: center;
+    padding: 2em;
+    background: #efefef;
+    border-radius: 5%;
+    box-shadow: 2px 2px 3px #eee;
+    opacity: .95;
+    border: 2px solid #000;
+    font-family: oswald;
+    font-weight: 400;
+    font-size: 1.5em;
+  }
 
   .rec-meta {
     display:inline-block;
@@ -150,7 +176,14 @@ div.caption span.description {
     margin-left: 0;
     margin-right:0;
   }
-
+  .review-comment .content {
+    padding-left: 2.35em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+  }
+  #reviews .review {
+  margin: 2em 0.5em;
+  }
 }
 
 // NEW AND EDIT FORMS
