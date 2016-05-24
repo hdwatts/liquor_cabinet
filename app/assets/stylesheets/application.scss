@@ -10,8 +10,8 @@ body {
   }
 p {
   line-height: 1.45em;
-}  
-.container, .btn {  
+}
+.container, .btn {
   font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
   font-weight: 300;
   letter-spacing: .02em;
@@ -60,13 +60,69 @@ h3.header {
   }
 
   .dropdown {
-    display: inline-block; 
+    display: inline-block;
   }
 
   .btn .caret {
     margin-left: .35em;
   }
 }
+
+#myModal {
+  position: fixed;
+  z-index: 1101;
+  margin: 0 auto;
+  padding-top: 200px;
+  background-color:#fff;
+  border:2px #444;
+  border-radius: 50%;
+  box-shadow: 0 0 13px 0 rgba(0,0,0,.13);
+  font-size: 12px;
+  width: 800px;
+  height: 800px;
+  opacity: 0.85;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  background-position: center 2em;
+  background-repeat: no-repeat;
+  background-size: 90px auto;
+}
+
+.modal-content {
+  	padding-top: 1em;
+  	margin:3em auto 0;
+  	text-align: center;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+
+.button-box {
+  display: block;
+  text-align: center;
+  color: #888;
+  margin: 1em 0 0;
+}
+
+
+// #yes-btn {
+//   display:block;
+//   text-align:left;
+//   width: 65px;
+//   border-radius: 23px;
+//   margin:1em auto 0;
+//   text-decoration: none;
+//   padding:1em;
+//   color: #fff;
+//   font:normal .7em/1em 'AmericanTypwrterITCW01- 731031';
+//   text-transform: none;
+//   letter-spacing: 0;
+// }
 
 footer#footer {
   min-height: 2em;
