@@ -32,7 +32,6 @@
       <%= link_to @recipe.user do %>
         <% if @recipe.user.img_url %>
          <div class="profile-img" style="background-image:url('<%= @recipe.user.img_url %>')"></div>
-        <% #= image_tag @recipe.user.img_url, class: "profile-sm" %>
         <% else %>
         <span class="glyphicon glyphicon-user"></span>
         <% end %>
