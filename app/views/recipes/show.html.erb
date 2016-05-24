@@ -1,57 +1,21 @@
 <style>
 .glass {
-    margin: 30px auto;
-    height: <%= [50 * @recipe.amounts.size, 300].max %>px;
-    width: <%= ([50 * @recipe.amounts.size, 300].max) / 2 %>px;
-    position: relative;
-    border-style: none solid solid solid;
-    border-width: 10px;
-    border-color: lightgray;
-    border-radius: 10px;
-}
-
-.water {
-    width: 100%;
-    height: 95%;
-    
-    position: absolute;
-    bottom: 0;
-}
-
-.water div div {
-    /* WebKit (Safari/Chrome) Only */
-  vertical-align: middle;
-  text-align:center;
-
-  /* If we weren't using text-shadow, we'd set a fallback color
-     and use this to set color instead
-    -webkit-text-fill-color: white; */
-  
-  color: white;
-  
-  text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-   -1px  1px 0 #000,
-    1px  1px 0 #000;
+  margin-left: auto;
+  margin-right: auto;
+  height: <%= [50 * @recipe.amounts.size, 300].max %>px;
+  width: <%= ([50 * @recipe.amounts.size, 300].max) / 2 %>px;
 }
 </style>
 <script>
   $(function(){
-      function goDown() {
-        $('.water').animate({
-            height: '90%'
-        }, 1000, 'swing', function(){goUp()})
-      }
+    function goUp(){
+      $('.water')
+       .animate({ height: '90%' }, (Math.random() * 2000) + 2000, "easeOutElastic")
+       .animate({ height: '95%' }, (Math.random() * 2000) + 2000, "easeOutElastic", goUp);
+    }
 
-      function goUp(){
-        $('.water').animate({
-            height: '95%'
-        }, 1000, 'swing', function(){goDown()})
-      }
-
-      goDown();
-})
+    goUp();
+  })
 </script>
 <script type="text/javascript">var switchTo5x=true;</script>
 <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
