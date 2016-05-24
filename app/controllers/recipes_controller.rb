@@ -14,7 +14,13 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
+      str = ""
+      @recipe.errors.full_messages.each { |error| str << "#{error}.<br>"}
+      @blank_amount = Amount.new
+      @blank_amount.ingredient = Ingredient.new
+      flash[:danger] = str.html_safe 
       render 'new'
+      flash.clear
     end
   end
 
@@ -32,6 +38,9 @@ class RecipesController < ApplicationController
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
+      str = ""
+      @recipe.errors.full_messages.each { |error| str << "#{error}.<br>"}
+      flash[:danger] = str.html_safe 
       redirect_to edit_recipe_path(@recipe)
     end
   end

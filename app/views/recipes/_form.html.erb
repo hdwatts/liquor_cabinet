@@ -53,6 +53,10 @@ function removeIngredient(element){
     <%= f.label :difficulty %>
     <%= f.select :difficulty, [1, 2, 3, 4, 5] %>
   </fieldset>
+  <fieldset class="col-sm-3">
+    <%= f.label :servings %>
+    <%= f.select :servings, [[1,1],[2,2],[3,3],[4,4],[5,5],["6+",6]] %>
+  </fieldset>
 </div>
    <div class="amounts-ingredients">
      <fieldset id='amounts-ingredients'>
@@ -79,10 +83,6 @@ function removeIngredient(element){
   <fieldset>
     <%= f.label :steps %>
     <%= f.text_area :steps %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :servings %>
-    <%= f.text_field :servings %>
   </fieldset>
   <fieldset>
       <%= f.label :img_url %>

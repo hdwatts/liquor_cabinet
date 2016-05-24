@@ -9,7 +9,28 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :amounts
   accepts_nested_attributes_for :tags
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :steps, presence: true
+  validate :validate_ingredients
+
+
+  def validate_ingredients
+    if amounts.size < 1
+      errors.add(:ingredients, "requires at least one ingredient")
+    end
+  end
 ### DISPLAY
+
+  def servings
+    serves = read_attribute(:servings)
+    if serves == 6
+      "6+"
+    else
+      serves ||= 1
+    end
+  end
+
   def print_tag_names
     arr = self.tags.map do |tag|
       tag.name
