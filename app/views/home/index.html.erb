@@ -1,4 +1,4 @@
-<style>
+-<style>
 .glass {
     margin: 30px auto;
     height: 300px;
@@ -19,13 +19,7 @@
 }
 
 .water div div {
-    /* WebKit (Safari/Chrome) Only */
-  vertical-align: middle;
   text-align:center;
-
-  /* If we weren't using text-shadow, we'd set a fallback color
-     and use this to set color instead
-    -webkit-text-fill-color: white; */
   
   color: white;
   
@@ -37,18 +31,16 @@
 }
 </style>
 
+
 <div id="index-filter" class="well">
-  <div id="sort" class="col-lg-6">
-    <span class="header">Sort By:</span>
-    <div class="btn-group sort-by" role="group">
-      <button type="button" class="btn btn-default date"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
-      <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
-      <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
-      <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
-    </div>
-  </div>
-  <div id="search" class="col-lg-6">
-    <%= render 'home/search_bar'%>
+  <span class="header">Sort By:</span>
+
+
+  <div class="btn-group sort-by" role="group">
+    <button type="button" class="btn btn-default date"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
+    <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
+    <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
+    <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
   </div>
 </div>
 

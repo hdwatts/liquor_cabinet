@@ -12,15 +12,22 @@ $(function() {
 })
 
 function prep() {
-  $(".water").each(function(index, elem){
-    setTimeout(function(){act(elem)}, (Math.random() * 1000) + 500)
+  $(".thumbnail").on("mouseenter", function(){
+    act($(this).find(".water"));
   })
 }
 
 function act(elem) {
-  $(elem)
-   .animate({ height: '90%' }, 1000)
-   .animate({ height: '95%' }, 1000, function(){act(elem)});
+  //console.log("running " + elem)
+  if ( $(elem)[0].animated != false) {
+    $(elem)[0].animated = false
+
+    $(elem)
+     .animate({ height: '90%' }, (Math.random() * 1000) + 500)
+     .animate({ height: '95%' }, (Math.random() * 1000) + 500)
+     .animate({ height: '90%' }, (Math.random() * 1000) + 500)
+     .animate({ height: '95%' }, (Math.random() * 1000) + 500, function() { $(elem)[0].animated = true });
+  }
 }
 
 function sort_params() {
@@ -100,7 +107,7 @@ function lazy_load() {
       }).done(function(data) {
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
-        act();
+        prep();
       })
     }
   });
