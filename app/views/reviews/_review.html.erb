@@ -1,15 +1,21 @@
 <%= div_for review do %>
 
-  <p class="review-comment">
-    <%= review.user.first_name %> <small><%= time_ago_in_words(review.created_at) %> ago</small>
-<br>
-    <%= review.comment %><br>
-  </p>
+  <div class="review-comment">
+  <div class="author">
+      <%= link_to review.user do %>
+        <% if review.user.img_url %>
+         <div class="profile-img" style="background-image:url('<%= review.user.img_url %>')"></div>
+        <% else %>
+        <span class="glyphicon glyphicon-user"></span>
+        <% end %>
+      <h4 class="username"> <%= review.user.first_name %></h4> <% end %><small><%= time_ago_in_words(review.created_at) %> ago</small></div>
+      <div class="content"><p><%= review.comment %></p>
+
 
   <% if current_user.nil? %>
   <% elsif review.user.first_name == current_user.first_name %>
-    <%= link_to 'Delete Comment', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
+    <%= link_to 'Delete', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
                   id: "#{review.id}_delete", remote: true %><br>
   <% end  %>
 <% end %>
-<br>
+  </div></div>

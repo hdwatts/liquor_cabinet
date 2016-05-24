@@ -2,7 +2,8 @@
 <div class="item-spacer col-sm-0 col-md-2"></div>
 <div class="item-body col-sm-12 col-md-8">
     <div class="left col-xs-4 col-sm-4 col-lg-4">
-    <div class="item-img" style="background-image:url('<%= @user.img_url %>')">
+    <div class="item-img"<% if @user.img_url %> style="background-image:url('<%= @user.img_url %>')"<% end %>>
+      <span class="glyphicon glyphicon-user"></span>
     </div>
   </div>
     <div class="header col-xs-8 col-sm-8 col-lg-8">

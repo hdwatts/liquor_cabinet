@@ -1,21 +1,23 @@
 
 <%#= render 'age_gate' %>
 
-<div id="index-filter" class="well">
+<div id="index-filter" class="navbar secondary navbar-fixed-top">
+  <div class="container">
   <div id="sort" class="col-lg-6">
-  <span class="header">Sort By:</span>
+  <span class="header small">Sort By</span>
 
 
   <div class="btn-group sort-by" role="group">
-    <button type="button" class="btn btn-default date"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Date Added</button>
-    <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
-    <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
-    <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
+    <button type="button" class="btn btn-default date">Date <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default difficulty">Difficulty <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+    <button type="button" class="btn btn-default servings">Servings <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default popularity">Popularity <span class="glyphicon glyphicon-triangle-bottom"></button>
   </div>
 </div>
   <div id="search" class="col-lg-6">
     <%= render 'home/search_bar'%>
   </div>
+</div>
 </div>
 
 <div id="index-recipes" class="row">

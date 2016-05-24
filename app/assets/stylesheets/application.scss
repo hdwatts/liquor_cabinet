@@ -36,15 +36,12 @@ h3.header {
   padding: 5px;
 }
 
-.well {
-    min-height: 5em;
-}
 
 .navbar {
   .navbar-brand {
-  font-family: 'Oswald', sans-serif;
-  color: #fff;
-    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    font-size: 28px;
     font-weight: 500;
     text-transform: uppercase;
   }
@@ -69,6 +66,30 @@ h3.header {
 
   .btn .caret {
     margin-left: .35em;
+  }
+}
+
+.navbar.secondary { 
+    top: 50px;
+    height: 60px;
+    background-color: #fcfcfc;
+    display: flex;
+    border-bottom: 1px solid #eee;
+
+  .container {
+    align-self: center;
+  }
+  .sort-by .glyphicon {
+    font-size: 75%;
+  }
+  #sort {
+    padding-left: 0;
+  }
+  #sort .small {
+    font-weight: 500;
+    text-transform: uppercase;
+    vertical-align: baseline;
+    margin-right: .5em;
   }
 }
 

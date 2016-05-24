@@ -15,7 +15,17 @@
     background-size: cover;
     margin: 0px 3em 3em 0px;
     display: inline-block;
+    box-shadow: 2px 2px 3px #eee;
+    border: 2px solid #eee;
+    display: flex;
+    justify-content: center;
   } 
+  .item-img span {
+    font-size: 6em;
+    align-self: center;
+    opacity: .5;
+  }
+
   .recipe-count {
     margin-right: .5em;
   }  
