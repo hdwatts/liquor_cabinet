@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   get '/ingredients/:name' => 'ingredients#show', as: :ingredient
   post '/recipe/:id/favorite' => 'recipes#favorite', as: :favorite
 
+  get '/age' => 'sessions#age'
+
 
 end

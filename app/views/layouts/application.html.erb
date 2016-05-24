@@ -8,6 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <% if @age != 1 %>
+    <%= render '/home/age_gate'%>
+  <% end %>
+
   <%= render 'layouts/nav_bar' %>
   <% flash.each do |type, message| %>
     <div class="alert alert-<%= type %>" role="alert"><%= message %></div>

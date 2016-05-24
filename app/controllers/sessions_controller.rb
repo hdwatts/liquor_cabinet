@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :check_age, :age
+
   def new
   end
 
@@ -17,5 +19,10 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to '/'
+  end
+
+  def age
+    session[:age_verification] = 1
+    render js: ''
   end
 end

@@ -1,0 +1,33 @@
+<script> $(function(){
+  $('#myModal').modal('show')
+  $('#yes-btn').on('click', function(){
+    $('#myModal').modal('hide')
+    $.ajax({
+      method: "GET",
+      url: "/age",
+    }).done(function(data) {
+      return data
+    })
+  })
+})
+</script>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ID</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you 21+?</p>
+      </div>
+      <div class="modal-footer">
+        <a id="no-btn" class="btn btn-default">No</a>
+        <a id="yes-btn" media=""class="btn btn-default yes">Yes</a>
+      </div>
+    </div>
+
+  </div>
+</div>

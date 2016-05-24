@@ -32,6 +32,7 @@ function act(elem) {
 
 function sort_params() {
   $('#index-filter .btn').on('click', function() {
+    alert()
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
       $( this ).toggleClass('on')
