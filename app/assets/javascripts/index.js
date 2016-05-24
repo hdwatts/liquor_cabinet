@@ -2,6 +2,8 @@ var param_limit = 15
 var sort_order = "default"
 var param_to_sort_by = "date"
 var search_query = ""
+var scrolling = false;
+var bottom = false
 
 $(function() {
   $(".btn.btn-default.date").toggleClass('on');
@@ -64,8 +66,9 @@ function sort_params() {
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
     }
-    search_query = $('.search-params').val()
     param_limit = 15
+    bottom = false
+    scrolling = 0
 
     $.ajax({
     method: "GET",
@@ -82,9 +85,14 @@ function sort_params() {
  }
 
  function search_params() {
-  $('#search-btn').on("click", function(event) {
-    search_query = $('.search-params').val()
+  $('#search-btn').on("click", doSearch)
+ }
+
+ function doSearch() {
+   search_query = $('.search-params').val()
     param_limit = 15
+    bottom = false
+    scrolling = 0
     // $('input#search.search-params').empty();
     // event.preventDefault();
     $.ajax({
@@ -97,23 +105,27 @@ function sort_params() {
       prep()
       thumbnailResize();
     })
- })
  }
 
 function lazy_load() {
   $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+    if($(window).scrollTop() == $(document).height() - $(window).height() && bottom == false) {
+      scrolling = 1
       param_limit += 3
       $.ajax({
         method: "GET",
         url: "/sort",
         data: getData()
       }).done(function(data) {
+        var curr = $(document).scrollTop();
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
         prep();
         thumbnailResize();
-      })
+        $(document).scrollTop(curr)
+      }).fail(function(){
+        bottom = true
+      });
     }
   });
 }
@@ -124,6 +136,7 @@ function getData() {
           query: search_query,
           ingredient: get_ingredient_from_url(),
           limit: param_limit,
+          scrolling: scrolling,
           order: sort_order};
 }
 

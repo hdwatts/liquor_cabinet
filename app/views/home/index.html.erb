@@ -21,7 +21,5 @@
 </div>
 
 <div id="index-recipes" class="row">
-  <% @recipes.each do |recipe| %>
-      <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
-  <% end %>
+  <%= render partial: "recipes/render_recipes" %>
 </div>
