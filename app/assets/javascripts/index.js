@@ -21,7 +21,7 @@ function prep() {
 
 function act(elem) {
   //console.log("running " + elem)
-  if ( $(elem)[0].animated != false) {
+  if ( $(elem)[0] != undefined && $(elem)[0].animated != false) {
     $(elem)[0].animated = false
 
     $(elem)
