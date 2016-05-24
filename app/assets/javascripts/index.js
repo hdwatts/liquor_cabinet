@@ -81,8 +81,11 @@ function sort_params() {
  }
 
  function search_params() {
-  $('#search-btn').on("click", function(event) {
-    search_query = $('.search-params').val()
+  $('#search-btn').on("click", doSearch)
+ }
+
+ function doSearch() {
+   search_query = $('.search-params').val()
     param_limit = 15
     // $('input#search.search-params').empty();
     // event.preventDefault();
@@ -95,7 +98,6 @@ function sort_params() {
       $("#index-recipes").append(data);
       prep()
     })
- })
  }
 
 function lazy_load() {
