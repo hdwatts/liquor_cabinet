@@ -1,17 +1,18 @@
 <div class="recipe recipe-<%= the_recipe.id %> teaser col-sm-6 col-md-4">
   <div class="item">
     <%= link_to the_recipe do %>
-      <div class="thumbnail">
         <% if the_recipe.img_url != "" %>
-          <%= image_tag the_recipe.img_url, class: "thumbnail" %>
+          <div class="thumbnail">
+            <%= image_tag the_recipe.img_url, class: "thumbnail" %>
         <% else %>
-          <div class="glass">
-            <div class="water">
-              <% the_recipe.amounts.each do |x| %>
-                <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / the_recipe.amounts.size.to_f) * 100 %>%"></div>
-              <% end %>
+          <div class="thumbnail">
+            <div class="glass">
+              <div class="water">
+                <% the_recipe.amounts.each do |x| %>
+                  <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / the_recipe.amounts.size.to_f) * 100 %>%"></div>
+                <% end %>
+              </div>
             </div>
-          </div>
         <% end %>
 
       </div>
