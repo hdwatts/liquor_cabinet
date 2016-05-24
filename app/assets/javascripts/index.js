@@ -108,6 +108,7 @@ function lazy_load() {
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
         prep();
+        thumbnailResize();
       })
     }
   });
