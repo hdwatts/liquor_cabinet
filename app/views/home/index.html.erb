@@ -31,8 +31,10 @@
 }
 </style>
 
+<%#= render 'age_gate' %>
 
 <div id="index-filter" class="well">
+  <div id="sort" class="col-lg-6">
   <span class="header">Sort By:</span>
 
 
@@ -41,6 +43,10 @@
     <button type="button" class="btn btn-default difficulty"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Difficulty</button>
     <button type="button" class="btn btn-default servings"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Servings</button>
     <button type="button" class="btn btn-default popularity"><span class="glyphicon glyphicon-sort-by-attributes"></span>  Popularity</button>
+  </div>
+</div>
+  <div id="search" class="col-lg-6">
+    <%= render 'search_bar'%>
   </div>
 </div>
 
