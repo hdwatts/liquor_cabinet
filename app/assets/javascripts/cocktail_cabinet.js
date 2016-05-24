@@ -6,9 +6,15 @@ var ready = function() {
   $('form input').addClass('form-control')
   $('form textarea').addClass('form-control')
 
-// replace empty profile imgs with icons
+// replace empty imgs
   $('img[src=""]').hide()
-//
+  $('.favorites-message').hide()
+
+  if ( $('#index-filter').length ) {
+    $('body').css('margin-top', '80px')
+  }
+
+  hasUserImg()
   thumbnailResize()
   recipeImgResize()
   userImgResize()
@@ -35,5 +41,14 @@ function userImgResize() {
   var win_w = $('.user.show .left').width(); 
   $('.item-img').width(win_w).height(win_w);
  }
+
+ function hasUserImg() {
+  $('.user.show .item-img span').hide()
+    if ($('.user.show .item-img').css("background-image") == "none") {
+      $('.user.show .item-img span').show()
+    }
+  }
+
+ 
 
  

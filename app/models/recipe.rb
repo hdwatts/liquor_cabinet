@@ -196,7 +196,7 @@ class Recipe < ActiveRecord::Base
     if user_favorited?(user)
       "<span class='added'>Saved to your favorites.</span>".html_safe
     else
-      "<span class='removed'></span>".html_safe
+      "<span class='removed'>Removed from your favorites.</span>".html_safe
     end
   end
 
