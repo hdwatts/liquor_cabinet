@@ -42,7 +42,33 @@ Amount.create!([
   {recipe_id: 14, ingredient_id: 26, quantity: "1", unit: "oz"},
   {recipe_id: 15, ingredient_id: 27, quantity: "1", unit: ""},
   {recipe_id: 16, ingredient_id: 28, quantity: "1", unit: ""},
-  {recipe_id: 16, ingredient_id: 3, quantity: "1", unit: "oz"}
+  {recipe_id: 16, ingredient_id: 3, quantity: "1", unit: "oz"},
+  {recipe_id: 22, ingredient_id: 32, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 33, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 33, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 33, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
+  {recipe_id: 23, ingredient_id: 35, quantity: "1", unit: "shot"},
+  {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
+  {recipe_id: nil, ingredient_id: 37, quantity: "1", unit: "part"},
+  {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
+  {recipe_id: nil, ingredient_id: 37, quantity: "1", unit: "part"},
+  {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
+  {recipe_id: nil, ingredient_id: 37, quantity: "1", unit: "part"},
+  {recipe_id: nil, ingredient_id: 38, quantity: "5", unit: "part"},
+  {recipe_id: 24, ingredient_id: 36, quantity: "1 ", unit: "part"},
+  {recipe_id: 24, ingredient_id: 37, quantity: "1", unit: "part"}
+])
+Favorite.create!([
+  {user_id: 1, recipe_id: 14},
+  {user_id: 6, recipe_id: 24},
+  {user_id: 6, recipe_id: 16}
 ])
 Ingredient.create!([
   {name: "Bitters"},
@@ -75,7 +101,14 @@ Ingredient.create!([
   {name: "Mint"},
   {name: "Rum"},
   {name: "Sugar Cube"},
-  {name: "tequila"}
+  {name: "tequila"},
+  {name: "Linus"},
+  {name: "test"},
+  {name: "Cup"},
+  {name: "Test"},
+  {name: "red wine"},
+  {name: "coke"},
+  {name: "poison"}
 ])
 Recipe.create!([
   {user_id: 3, name: "Bloody Mary", description: "Neutral spirits, restorative juices, salts, spicy spices, capsaicins, and other volatile oils -- indicates that its origins lie in the shadowy world of the hangover cure, never to be listed on the more rarefied roster of nocturnal libations.", steps: "Squeeze the liquid out of the horseradish, then shake ingredients well with cracked ice in a chilled cocktail shaker, then strain into a Collins glass with 2 or 3 ice cubes in it; add a pinch of salt and a grind or two of fresh pepper, to taste. Garnish, if necessary, with a stalk of celery.", tools: nil, difficulty: 5, img_url: "http://esq.h-cdn.co/assets/cm/15/07/54dab41b0a606_-_bloodymary-004-de1.jpg", servings: 1},
@@ -98,7 +131,8 @@ Recipe.create!([
   {user_id: 3, name: "Old Fashioned", description: "The Old Fashioned is a cocktail made by muddling sugar with bitters, then adding alcohol, such as whiskey or brandy, and a twist of citrus rind.", steps: "Place sugar cube in old fashioned glass and saturate with bitters, add a dash of plain water. Muddle until dissolved. Fill the glass with ice cubes and add whiskey. Garnish with orange slice, and a cocktail cherry.", tools: nil, difficulty: 2, img_url: "http://liquor.s3.amazonaws.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg", servings: 1},
   {user_id: 3, name: "Sazerac", description: "The Sazerac is a local New Orleans variation of a Cognac or whiskey cocktail, named for the Sazerac de Forge et Fils brand of Cognac brandy that served as its original main ingredient", steps: "Rinse a chilled old-fashioned glass with the absinthe, add crushed ice and set it aside. Stir the remaining ingredients over ice and set it aside. Discard the ice and any excess absinthe from the prepared glass, and strain the drink into the glass. Add the Lemon peel for garnish.", tools: nil, difficulty: 3, img_url: "http://liquor.s3.amazonaws.com/wp-content/uploads/2013/05/Maison-Premiere-Sazerac.jpg", servings: 1},
   {user_id: 3, name: "Cosmopolitan", description: "A cosmopolitan, or informally a cosmo, is a cocktail made with vodka, triple sec, cranberry juice, and freshly squeezed or sweetened lime juice.", steps: "Add all ingredients into cocktail shaker filled with ice. Shake well and double strain into large cocktail glass.", tools: nil, difficulty: 2, img_url: "http://www.bevdig.com/uploads/2/6/7/4/26740497/3472197_orig.jpg", servings: 1},
-  {user_id: 3, name: "Long Island Iced Tea", description: "A Long Island Iced Tea is a type of alcoholic mixed drink typically made with tequila, vodka, light rum, triple sec, gin, and a splash of cola, which gives the drink the same amber hue as its namesake.", steps: "Add all ingredients into highball glass filled with ice. Stir gently. Garnish with lemon spiral. Serve with straw.", tools: nil, difficulty: 2, img_url: "http://liquor.s3.amazonaws.com/wp-content/uploads/2013/07/Long-Island-Iced-Tea.jpg", servings: 2}
+  {user_id: 3, name: "Long Island Iced Tea", description: "A Long Island Iced Tea is a type of alcoholic mixed drink typically made with tequila, vodka, light rum, triple sec, gin, and a splash of cola, which gives the drink the same amber hue as its namesake.", steps: "Add all ingredients into highball glass filled with ice. Stir gently. Garnish with lemon spiral. Serve with straw.", tools: nil, difficulty: 2, img_url: "http://liquor.s3.amazonaws.com/wp-content/uploads/2013/07/Long-Island-Iced-Tea.jpg", servings: 2},
+  {user_id: 6, name: "Calimocho", description: "Red wine and coke. Sounds gross but trust me it is DEE-lishous! They drink it in Spain all the time!!", steps: "1. Pour red wine.\r\n2. Pour coke\r\n3. Enjoy!", tools: nil, difficulty: 1, img_url: "http://www.thebestspanishrecipes.com/wp-content/uploads/2014/07/calimocho.jpg", servings: 1}
 ])
 RecipesTag.create!([
   {recipe_id: 1, tag_id: 1},
@@ -142,7 +176,16 @@ RecipesTag.create!([
   {recipe_id: 18, tag_id: 34},
   {recipe_id: 19, tag_id: 19},
   {recipe_id: 20, tag_id: 35},
-  {recipe_id: 21, tag_id: 8}
+  {recipe_id: 21, tag_id: 8},
+  {recipe_id: 23, tag_id: 37},
+  {recipe_id: 24, tag_id: 38},
+  {recipe_id: 24, tag_id: 39},
+  {recipe_id: 24, tag_id: 40}
+])
+Review.create!([
+  {user_id: 1, recipe_id: 8, comment: "Not to be confused with Roy Rogers!", img_url: nil, rating: nil},
+  {user_id: 6, recipe_id: 24, comment: "Clearly the best recipe on here. Just sayin'.", img_url: nil, rating: nil},
+  {user_id: 6, recipe_id: 21, comment: "You would Dean", img_url: nil, rating: nil}
 ])
 Tag.create!([
   {name: "manhattan"},
@@ -179,11 +222,18 @@ Tag.create!([
   {name: "rum"},
   {name: "fashioned"},
   {name: "sugar"},
-  {name: "cosmo"}
+  {name: "cosmo"},
+  {name: "linus"},
+  {name: "test"},
+  {name: "wine"},
+  {name: "coke"},
+  {name: "yum"}
 ])
 User.create!([
-  {username: nil, birth_date: "2012-12-12", bio: "I love to drink!", img_url: "http://www.clikklac.com/design_services/media/k2/items/cache/2a14beb1aee2d71c6fecb12f25c690f7_XL.jpg", password_digest: "$2a$10$wVE5r1miMRNh9gWgv8KI6.LdbbTLmwCBKq9BDd8f2iqfdNmOI.4Qe", email: "daniella@cocktails.com", first_name: "Daniella", last_name: "Corricelli"},
   {username: nil, birth_date: "2012-12-12", bio: "I love to drink!", img_url: nil, password_digest: "$2a$10$Y/.Jgm8P08o8uXhWpVLny.YylkHk5l2h2vDFM4kHQ7WQza2.VZozi", email: "liana@cocktails.com", first_name: "Liana", last_name: "Grobstein"},
   {username: nil, birth_date: "2012-12-12", bio: "I love to drink!", img_url: nil, password_digest: "$2a$10$e1qlijJx9WsY/6rogHY9VeEq9canZfOtw2j9Q9.6nLUKTtiE4hCJe", email: "dean@cocktails.com", first_name: "Dean", last_name: "Watts"},
-  {username: nil, birth_date: "2012-12-12", bio: "I love to drink!", img_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTTFQDxzvS7GngqGB5qC4Ik2wNdagZWwSrsIYTkiVkIwJcpD2FPfaq-XIY", password_digest: "$2a$10$zj28KcdLR1kRyVDUza.Rvu5JJ0SrP5gbvuQdK7GZjHIAqb6HPlh1y", email: "eve@cocktails.com", first_name: "Eve", last_name: "Essex"}
+  {username: nil, birth_date: "2012-12-12", bio: "I love to drink!", img_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTTFQDxzvS7GngqGB5qC4Ik2wNdagZWwSrsIYTkiVkIwJcpD2FPfaq-XIY", password_digest: "$2a$10$zj28KcdLR1kRyVDUza.Rvu5JJ0SrP5gbvuQdK7GZjHIAqb6HPlh1y", email: "eve@cocktails.com", first_name: "Eve", last_name: "Essex"},
+  {username: nil, birth_date: "1988-07-28", bio: "I love to drink!", img_url: "http://www.clikklac.com/design_services/media/k2/items/cache/2a14beb1aee2d71c6fecb12f25c690f7_XL.jpg", password_digest: "$2a$10$wVE5r1miMRNh9gWgv8KI6.LdbbTLmwCBKq9BDd8f2iqfdNmOI.4Qe", email: "daniella@cocktails.com", first_name: "Daniella", last_name: "Corricelli"},
+  {username: nil, birth_date: "2006-11-24", bio: "I love to drink!", img_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAPpAAAAJGQzMDZkZWVhLWYxMzMtNGQ2MS1iYmYwLWZlZWFmMTJjODcyNQ.jpg", password_digest: "$2a$10$VugFfrONJwjnTNLIbpVK4eDz3PJ2oJHJMoKZIYmBMr5msWyKsD73m", email: "alexseth1124@gmail.com", first_name: "Alex", last_name: "Martin"},
+  {username: nil, birth_date: "2006-11-24", bio: "I love to drink!", img_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAPpAAAAJGQzMDZkZWVhLWYxMzMtNGQ2MS1iYmYwLWZlZWFmMTJjODcyNQ.jpg", password_digest: "$2a$10$k2JcqsOSorVjKpSNNN/AR.it48afLEcZA/KAlmCqSNOvOQJ2t8g5y", email: "alex.martin@flatironschool.com", first_name: "Alex", last_name: "Martin"}
 ])
