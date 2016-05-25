@@ -8,10 +8,26 @@
 
 
   <div class="btn-group sort-by" role="group">
-    <button type="button" class="btn btn-default date">Date <span class="glyphicon glyphicon-triangle-bottom"></button>
-    <button type="button" class="btn btn-default difficulty">Difficulty <span class="glyphicon glyphicon-triangle-bottom"></span></button>
-    <button type="button" class="btn btn-default servings">Servings <span class="glyphicon glyphicon-triangle-bottom"></button>
-    <button type="button" class="btn btn-default popularity">Popularity <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default sort-btn date">Date <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default sort-btn difficulty">Difficulty <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+    <button type="button" class="btn btn-default sort-btn servings">Servings <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default sort-btn popularity">Popularity <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <div class="btn-group" role="group">
+      <button class="btn btn-default dropdown-toggle" type="button" id="categoryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Categories
+        <span class="glyphicon glyphicon-triangle-bottom"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="categoryMenu">
+        <li><a href="/tags/whiskey">Whiskey</a></li>
+        <li><a href="/tags/vodka">Vodka</a></li>
+        <li><a href="/tags/liquer">Liqueur</a></li>
+        <li><a href="/tags/gin">Gin</a></li>
+        <li><a href="/tags/rum">Rum</a></li>
+        <li><a href="/tags/brandy">Brandy</a></li>
+        <li><a href="/tags/tequila">Tequila</a></li>
+        <li><a href="/tags/aquavit">Aquavit</a></li>
+      </ul>
+    </div>
   </div>
 </div>
   <div id="search" class="col-lg-6">

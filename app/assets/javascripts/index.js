@@ -34,7 +34,7 @@ function act(elem) {
 
 function sort_params() {
   $('#index-filter .btn').removeClass('on')
-  $('#index-filter .btn').on('click', function() {
+  $('#index-filter .sort-btn').on('click', function() {
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
       $( this ).toggleClass('on')
