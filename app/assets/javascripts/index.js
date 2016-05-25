@@ -11,7 +11,7 @@ $(function() {
   search_params()
   lazy_load()
   prep();
-    favoritePluralize()
+  favoritePluralize()
 })
 
 function prep() {
@@ -33,38 +33,47 @@ function act(elem) {
 }
 
 function sort_params() {
+  $('#index-filter .btn').removeClass('on')
   $('#index-filter .btn').on('click', function() {
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
       $( this ).toggleClass('on')
+      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
       if ($( this ).hasClass('on')) {
         sort_order = 'default'
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
+      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
 
   } else if ($( this ).hasClass('difficulty')) {
       param_to_sort_by = 'difficulty'
       $( this ).toggleClass('on')
+      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
       if ($( this ).hasClass('on')) {
         sort_order = 'default'
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
+      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
 
   } else if ($( this ).hasClass('servings')) {
       param_to_sort_by = 'servings'
       $( this ).toggleClass('on')
+      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
       if ($( this ).hasClass('on')) {
         sort_order = 'default'
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
+      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
 
   } else if ($( this ).hasClass('popularity')) {
       param_to_sort_by = 'popularity'
+      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')      
       $( this ).toggleClass('on')
       if ($( this ).hasClass('on')) {
         sort_order = 'default'
       } else { sort_order = 'reverse' }
       $( this ).siblings().removeClass('on')
+      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
     }
     param_limit = 15
     bottom = false
