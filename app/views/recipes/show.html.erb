@@ -91,7 +91,7 @@
       <div class="ingredients">
         <ul>
           <% @recipe.amounts.each do |amount| %>
-            <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>
+            <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name.capitalize, ingredient_path(amount.ingredient.name.downcase) %></span></li>
           <% end %>
         </ul>
       </div>
