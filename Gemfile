@@ -31,8 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 #CarrierWave img upload
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
-gem 'fog'
-gem 'figaro'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
