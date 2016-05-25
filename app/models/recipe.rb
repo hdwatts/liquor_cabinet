@@ -116,10 +116,10 @@ class Recipe < ActiveRecord::Base
     case sort
       when "date"       
         if order == "default"
-          Recipe.sort_by_date(recipes)
-        else
           recipes = Recipe.sort_by_date(recipes)
           recipes.reverse
+        else
+          Recipe.sort_by_date(recipes)          
         end
       when "difficulty"
         if order == "default"
