@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20160525183822) do
     t.integer  "servings"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "img_upload"
   end
 
   create_table "recipes_tags", force: :cascade do |t|
