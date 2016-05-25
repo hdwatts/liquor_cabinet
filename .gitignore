@@ -14,3 +14,4 @@
 
 # Ignore byebug history
 /.byebug_history
+/.secrets.yml
