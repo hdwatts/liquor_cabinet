@@ -1,6 +1,12 @@
 <div class="recipe recipe-<%= the_recipe.id %> teaser col-sm-6 col-md-4">
   <div class="item">
     <%= link_to the_recipe do %>
+        <div class="description active-state" >
+          <h3><%= the_recipe.description %></h3>
+          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>Difficulty<%= the_recipe.difficulty %></div>
+          <div class="servings"><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if the_recipe.servings %><%= the_recipe.servings %><% else %>1<% end %></div>
+        </div>
+  <div class="static-state">
         <% if the_recipe.img_url != "" %>
           <div class="thumbnail" style="background-image:url('<%= the_recipe.img_url %>')">
             <%= image_tag the_recipe.img_url, class: "thumbnail" %>
@@ -17,16 +23,13 @@
 
       </div>
       <div class="caption">
-        <div class="description" style="display:none;">
-          <%= the_recipe.description %>
-          <!--         <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span><%= the_recipe.difficulty %></div> -->
-        </div>
-
         <header>
           <h3><%= the_recipe.name %></h3>
         </header>
       </div>
-    <% end %>
+    </div>
+  <% end %>
+
 
     <footer>
       <div class="author col-xs-8 col-sm-6">
