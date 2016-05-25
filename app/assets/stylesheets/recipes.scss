@@ -58,7 +58,9 @@ div.caption span.description {
   .meta .reviews {
       padding-right: .65em;
   }
-
+  .meta .favorites {
+  display: inline-block;
+  }
   .glyphicon {
     padding-right: .35em;
   }

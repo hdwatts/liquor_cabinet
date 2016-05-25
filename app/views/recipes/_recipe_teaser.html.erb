@@ -44,16 +44,17 @@
       <div class="meta col-xs-4 col-sm-6">
         <span class="reviews"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= the_recipe.reviews.count %></span>
 
-        <span class="favorites"><%= link_to favorite_path(id: the_recipe.id), method: :post do %>
-          <span class="favorite-btn text-center" recipe_id="<%= the_recipe.id %>">
+        <div class="favorites">
+          <%= link_to favorite_path(id: the_recipe.id), method: :post do %>
+          <div class="favorite-btn" recipe_id="<%= the_recipe.id %>">
             <span class="<%= the_recipe.heart_class(current_user) %>"></span>
             <span class="count"><%= the_recipe.favorites_count(current_user) %></span>
-          </span>
-          <div class="favorites-message" recipe_message_id="<%= the_recipe.id %>">
+            </div>
+          <!-- <div class="favorites-message" recipe_message_id="<%= the_recipe.id %>">
             <%= the_recipe.favorites_message(current_user) %>
-          </div>
-        </span>
-      <% end %>
+          </div> -->
+          <% end %>
+        </div>
     </footer>
 
   </div>

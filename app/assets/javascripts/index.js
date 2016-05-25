@@ -6,7 +6,6 @@ var scrolling = false;
 var bottom = false
 
 $(function() {
-  $(".btn.btn-default.date").toggleClass('on');
   sort_params()
   search_params()
   lazy_load()
@@ -33,7 +32,6 @@ function act(elem) {
 }
 
 function sort_params() {
-  $('#index-filter .btn').removeClass('on')
   $('#index-filter .sort-btn').on('click', function() {
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
