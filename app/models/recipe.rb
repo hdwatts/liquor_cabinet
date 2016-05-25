@@ -181,7 +181,7 @@ class Recipe < ActiveRecord::Base
 
   def self.search(search)
     if search.present?
-        self.where('lower(name) LIKE ? OR lower(description) LIKE ?' , "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC")
+        Recipe.joins(:ingredients).joins(:tags).where('lower(ingredients.name) LIKE ? OR lower(tags.name) LIKE ? OR lower(recipes.name) LIKE ? OR lower(recipes.description) LIKE ?' , "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%").order("created_at DESC").distinct()
     else
       Recipe.all
     end

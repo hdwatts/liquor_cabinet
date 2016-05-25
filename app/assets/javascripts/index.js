@@ -1,5 +1,5 @@
 var param_limit = 15
-var sort_order = "default"
+var sort_order = "reverse"
 var param_to_sort_by = "date"
 var search_query = ""
 var scrolling = false;
@@ -39,26 +39,26 @@ function act(elem) {
 function toggleClasses(elem, flip){
   $( elem ).toggleClass('on')
   $( elem ).children('.glyphicon').removeClass('glyphicon-menu-down')
-  $( elem ).children('.glyphicon').removeClass('glyphicon-triangle-bottom')
-  $( elem ).children('.glyphicon').removeClass('glyphicon-triangle-top')
+  $( elem ).children('.glyphicon').removeClass('glyphicon-chevron-down')
+  $( elem ).children('.glyphicon').removeClass('glyphicon-chevron-up')
   if ($( elem ).hasClass('on')) {
-    var topBottom = 'top'
+    var topBottom = 'up'
     if (flip) {
-      topBottom = 'bottom'
+      topBottom = 'down'
     }
-    $( elem ).children('.glyphicon').addClass('glyphicon-triangle-'+topBottom)
+    $( elem ).children('.glyphicon').addClass('glyphicon-chevron-'+topBottom)
     sort_order = 'default'
   } else {
-    var topBottom = 'bottom'
+    var topBottom = 'down'
     if (flip) {
-      topBottom = 'top'
+      topBottom = 'up'
     }
-    $( elem ).children('.glyphicon').addClass('glyphicon-triangle-'+topBottom)
+    $( elem ).children('.glyphicon').addClass('glyphicon-chevron-'+topBottom)
     sort_order = 'reverse'
   }
   $( elem ).siblings().removeClass('on')
-  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
-  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-bottom')
+  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-chevron-down')
+  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-chevron-up')
   $( elem ).siblings().children('.glyphicon').addClass('glyphicon-menu-down')
 }
 
@@ -134,7 +134,7 @@ function ajaxSlider() {
 
 function lazy_load() {
   $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height() && bottom == false) {
+    if($(window).scrollTop() >= $(document).height() - $(window).height() && bottom == false) {
       scrolling = 1
       param_limit += 3
       $.ajax({

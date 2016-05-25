@@ -60,12 +60,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
-    @recipe.ingredients.each do |ingred|
-      ingred.name.upcase!
-    end
-    @recipe.tags.each do |tag|
-      tag.name.upcase!
-    end
     @new_review = @recipe.reviews.new
   end
 

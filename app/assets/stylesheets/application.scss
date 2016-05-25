@@ -117,7 +117,6 @@ h3.header {
   background-position: center 2em;
   background-repeat: no-repeat;
   background-size: 90px auto;
-
 }
 
 .modal-content {
@@ -219,4 +218,10 @@ footer#footer {
 
 .modal-body {
   background-color: #fffffa;
+}
+
+.modal-backdrop {
+  background-image: url(http://www.tailsfromthebarstool.com/sites/default/files/field/image/bar_cocktail_02_0.jpg);
+  opacity: 1 !important;
+  background-size: cover;
 }
