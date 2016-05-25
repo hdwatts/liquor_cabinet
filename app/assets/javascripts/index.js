@@ -15,6 +15,11 @@ $(function() {
 
 function prep() {
   favoriteButtonListener()
+  hasUserImg()
+  thumbnailResize()
+  recipeImgResize()
+  userImgResize()
+  hoverState()
   $(".thumbnail").on("mouseenter", function(){
     act($(this).find(".water"));
   })
@@ -88,7 +93,6 @@ function sort_params() {
     $("#index-recipes").empty();
     $("#index-recipes").append(data);
     prep()
-    thumbnailResize();
   });
 
   });
@@ -113,7 +117,6 @@ function sort_params() {
       $("#index-recipes").empty();
       $("#index-recipes").append(data);
       prep()
-      thumbnailResize();
     })
  }
 
@@ -131,7 +134,6 @@ function lazy_load() {
         $("#index-recipes").empty();
         $("#index-recipes").append(data);
         prep();
-        thumbnailResize();
         $(document).scrollTop(curr)
       }).fail(function(){
         bottom = true
