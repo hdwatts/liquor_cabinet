@@ -62,7 +62,11 @@
         <% end %>
         <div class="favorites-message" recipe_message_id="<%= @recipe.id %>"><%= @recipe.favorites_message(current_user) %></div>
       </div>
+        <% if @recipe.reviews.count > 1 %>
+          <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comments</div>
+        <% else  %>
         <div class="comments"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= @recipe.reviews.count %> Comment</div>
+        <% end %>
     </div>
       </div>
   <div class="item-img">
