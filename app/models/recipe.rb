@@ -164,7 +164,7 @@ class Recipe < ActiveRecord::Base
   def self.sort_by_servings(recipes)
     @sorted = recipes.sort_by do |recipe|
       if recipe.servings != nil
-        recipe.servings
+        recipe.servings.to_i
       else
         1
       end
