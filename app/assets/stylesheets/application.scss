@@ -68,7 +68,12 @@ h3.header {
     margin-left: .35em;
   }
 }
-
+.navbar-fixed-top {
+  z-index: 100;
+}
+.navbar-inverse.navbar-fixed-top {
+  z-index: 200;
+}
 .navbar.secondary { 
     top: 50px;
     height: 60px;
