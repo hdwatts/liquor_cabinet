@@ -31,48 +31,50 @@ function act(elem) {
   }
 }
 
+function toggleClasses(elem, flip){
+  $( elem ).toggleClass('on')
+  $( elem ).children('.glyphicon').removeClass('glyphicon-menu-down')
+  $( elem ).children('.glyphicon').removeClass('glyphicon-triangle-bottom')
+  $( elem ).children('.glyphicon').removeClass('glyphicon-triangle-top')
+  if ($( elem ).hasClass('on')) {
+    var topBottom = 'top'
+    if (flip) {
+      topBottom = 'bottom'
+    }
+    $( elem ).children('.glyphicon').addClass('glyphicon-triangle-'+topBottom)
+    sort_order = 'default'
+  } else {
+    var topBottom = 'bottom'
+    if (flip) {
+      topBottom = 'top'
+    }
+    $( elem ).children('.glyphicon').addClass('glyphicon-triangle-'+topBottom)
+    sort_order = 'reverse'
+  }
+  $( elem ).siblings().removeClass('on')
+  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
+  $( elem ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-bottom')
+  $( elem ).siblings().children('.glyphicon').addClass('glyphicon-menu-down')
+}
+
 function sort_params() {
   $('#index-filter .sort-btn').on('click', function() {
 
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
-      $( this ).toggleClass('on')
-      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
-      if ($( this ).hasClass('on')) {
-        sort_order = 'default'
-      } else { sort_order = 'reverse' }
-      $( this ).siblings().removeClass('on')
-      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
+      toggleClasses(this)
 
   } else if ($( this ).hasClass('difficulty')) {
       param_to_sort_by = 'difficulty'
-      $( this ).toggleClass('on')
-      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
-      if ($( this ).hasClass('on')) {
-        sort_order = 'default'
-      } else { sort_order = 'reverse' }
-      $( this ).siblings().removeClass('on')
-      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
+      toggleClasses(this)
 
   } else if ($( this ).hasClass('servings')) {
       param_to_sort_by = 'servings'
-      $( this ).toggleClass('on')
-      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
-      if ($( this ).hasClass('on')) {
-        sort_order = 'default'
-      } else { sort_order = 'reverse' }
-      $( this ).siblings().removeClass('on')
-      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
+      toggleClasses(this)
 
   } else if ($( this ).hasClass('popularity')) {
       param_to_sort_by = 'popularity'
-      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
-      $( this ).toggleClass('on')
-      if ($( this ).hasClass('on')) {
-        sort_order = 'default'
-      } else { sort_order = 'reverse' }
-      $( this ).siblings().removeClass('on')
-      $( this ).siblings().children('.glyphicon').removeClass('glyphicon-triangle-top')
+      toggleClasses(this, true)
     }
     param_limit = 15
     bottom = false
