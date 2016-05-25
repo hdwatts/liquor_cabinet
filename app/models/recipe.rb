@@ -6,6 +6,7 @@ class Recipe < ActiveRecord::Base
   has_many :amounts
   has_many :ingredients, through: :amounts
   has_many :reviews, dependent: :destroy
+  mount_uploader :img_upload, ImageUploader
   accepts_nested_attributes_for :amounts
   accepts_nested_attributes_for :tags
 
@@ -13,7 +14,6 @@ class Recipe < ActiveRecord::Base
   validates :description, presence: true
   validates :steps, presence: true
   #validate :validate_ingredients
-
 
   def validate_ingredients
     if amounts.size < 1
@@ -114,12 +114,12 @@ class Recipe < ActiveRecord::Base
     end
 
     case sort
-      when "date"       
+      when "date"
         if order == "default"
           recipes = Recipe.sort_by_date(recipes)
           recipes.reverse
         else
-          Recipe.sort_by_date(recipes)          
+          Recipe.sort_by_date(recipes)
         end
       when "difficulty"
         if order == "default"
@@ -204,7 +204,7 @@ class Recipe < ActiveRecord::Base
     if user_favorited?(user)
       self.favorites.count
     else
-      self.favorites.count 
+      self.favorites.count
     end
   end
 
