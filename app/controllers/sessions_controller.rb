@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_action :check_age, :age
+  skip_before_action :check_age, :only => [:age]
 
   def new
   end
 
   def create
-
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
