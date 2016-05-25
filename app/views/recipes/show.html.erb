@@ -74,7 +74,6 @@
       <%= image_tag @recipe.img_url %>
     <% end %>
     <% if @recipe.img_upload != "" %>
-     <%= binding.pry %>
       <%= image_tag @recipe.img_upload.url %>
     <% else %>
       <div class="glass">
