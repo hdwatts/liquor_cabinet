@@ -18,6 +18,7 @@ hasUserImg()
 thumbnailResize()
 recipeImgResize()
 userImgResize()
+hoverState()
 };
 
 $(document).ready(ready);
@@ -48,3 +49,14 @@ function hasUserImg() {
       $('.user.show .item-img span').show()
     }
 }
+
+function hoverState() {
+  $('.recipe.teaser').mouseenter(function() {
+		$(this).children().children().children('.static-state').stop().animate({ opacity: 0.15 }, "fast");
+    $(this).children().children().children('.active-state').stop().animate({ opacity: 1.0 }, "fast");
+	})
+  $('.recipe.teaser').mouseleave(function() {
+    $(this).children().children().children('.static-state').stop().animate({ opacity: 1.0 }, "fast");
+    $(this).children().children().children('.active-state').stop().animate({ opacity: 0.0 }, "fast");
+  })
+};
