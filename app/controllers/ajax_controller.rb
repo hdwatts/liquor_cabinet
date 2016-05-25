@@ -14,7 +14,7 @@ class AjaxController < ApplicationController
       params[:limit] = 15
     end
 
-    if params[:limit].to_i > @recipes.size + 3 && params[:scrolling] == 1
+    if params[:limit].to_i > @recipes.size + 3 && params[:scrolling] == "1"
       render nothing: true, :status => 400
     else
       @recipes = @recipes.slice(0, params[:limit].to_i)
