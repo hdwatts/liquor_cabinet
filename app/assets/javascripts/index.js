@@ -122,7 +122,7 @@ function sort_params() {
 
 function lazy_load() {
   $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height() && bottom == false) {
+    if($(window).scrollTop() >= $(document).height() - $(window).height() && bottom == false) {
       scrolling = 1
       param_limit += 3
       $.ajax({
