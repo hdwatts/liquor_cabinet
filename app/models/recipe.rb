@@ -216,6 +216,25 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def similar_recipes
+    similar_ing = []
+    similar_tag = []
+    i = self.ingredients.ids
+    t = self.tags.ids
+
+    recipes = Amount.select('recipe_id').where("ingredient_id in (?)", i).group('recipe_id').having("COUNT(recipe_id) >= 2")
+    tags = RecipesTag.select('recipe_id').where("tag_id in (?)", t).group('recipe_id').having("COUNT(recipe_id) >= 2")
+
+    recipes.each do |r_id|
+      similar_ing << Recipe.find(r_id.recipe_id) if r_id.recipe_id != self.id
+    end
+    tags.each do |t_id|
+      similar_tag << Recipe.find(t_id.recipe_id) if t_id.recipe_id != self.id
+    end
+
+    [similar_ing, similar_tag]
+  end
+
 private
   def user_favorited?(user)
     self.favorites.where(user: user).any?

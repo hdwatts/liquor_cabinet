@@ -100,7 +100,7 @@
       </div>
     </div>
 
-      <% if @recipe.tags.count > 0 %>
+    <% if @recipe.tags.count > 0 %>
       <div class="item-tags">
       <h5><span class="label-dark">Filed Under: </span>
         <% @recipe.tags.each do |tag| %>
@@ -108,7 +108,28 @@
         <% end %>
       </h5>
       </div>
-       <% end %>
+    <% end %>
+
+    <% similar_r = @recipe.similar_recipes %>
+    <% if similar_r.flatten.count > 0 %>
+      <br>
+      <div class="similar-recipes">
+        <% if similar_r[0].count > 0 %>
+          <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
+          <% similar_r[0].each do |sim| %>
+            <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
+          <% end %>
+          </h5>
+        <% end %>
+        <% if similar_r[1].count > 0 %>
+          <h5><span class="label-dark">Similar Recipes by Tag: </span>
+          <% similar_r[1].each do |sim| %>
+            <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
+          <% end %>
+          </h5>
+        <% end %>
+      </div>
+    <% end %>
 
 
 
