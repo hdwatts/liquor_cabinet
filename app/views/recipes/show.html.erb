@@ -110,29 +110,6 @@
       </div>
     <% end %>
 
-    <% similar_r = @recipe.similar_recipes %>
-    <% if similar_r.flatten.count > 0 %>
-      <br>
-      <div class="similar-recipes">
-        <% if similar_r[0].count > 0 %>
-          <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
-          <% similar_r[0].each do |sim| %>
-            <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-          <% end %>
-          </h5>
-        <% end %>
-        <% if similar_r[1].count > 0 %>
-          <h5><span class="label-dark">Similar Recipes by Tag: </span>
-          <% similar_r[1].each do |sim| %>
-            <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-          <% end %>
-          </h5>
-        <% end %>
-      </div>
-    <% end %>
-
-
-
 <div class="item-comments">
   <h3 class="header">Comments</h3>
       <div id='reviews'>
@@ -143,5 +120,25 @@
     <%= render "reviews/form" %>
   </div>
 </div>
+<% similar_r = @recipe.similar_recipes %>
+<% if similar_r.flatten.count > 0 %>
+  <br>
+  <div class="similar-recipes">
+    <% if similar_r[0].count > 0 %>
+      <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
+      <% similar_r[0].each do |sim| %>
+        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
+      <% end %>
+      </h5>
+    <% end %>
+    <% if similar_r[1].count > 0 %>
+      <h5><span class="label-dark">Similar Recipes by Tag: </span>
+      <% similar_r[1].each do |sim| %>
+        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
+      <% end %>
+      </h5>
+    <% end %>
+  </div>
+<% end %>
 </div>
 </div>
