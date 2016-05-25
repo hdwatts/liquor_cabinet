@@ -93,14 +93,14 @@ class Recipe < ActiveRecord::Base
 ### INDEX SORT
   def self.filter_tag(tag, recipes)
     recipes.select do |recipe|
-      recipe.tags.detect { |r_tag| r_tag.name == tag }
+      recipe.tags.detect { |r_tag| r_tag.name.downcase == tag.downcase }
     end
 
   end
 
   def self.filter_ingredients(ingredient, recipes)
     recipes.select do |recipe|
-      recipe.ingredients.detect { |r_tag| r_tag.name == ingredient }
+      recipe.ingredients.detect { |r_tag| r_tag.name.downcase == ingredient.downcase }
     end
   end
 
