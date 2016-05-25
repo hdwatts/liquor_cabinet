@@ -35,6 +35,7 @@ function act(elem) {
 function sort_params() {
   $('#index-filter .btn').removeClass('on')
   $('#index-filter .sort-btn').on('click', function() {
+
     if ($( this ).hasClass('date')) {
       param_to_sort_by = 'date'
       $( this ).toggleClass('on')
@@ -67,7 +68,7 @@ function sort_params() {
 
   } else if ($( this ).hasClass('popularity')) {
       param_to_sort_by = 'popularity'
-      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')      
+      $( this ).children('.glyphicon').toggleClass('glyphicon-triangle-top')
       $( this ).toggleClass('on')
       if ($( this ).hasClass('on')) {
         sort_order = 'default'
