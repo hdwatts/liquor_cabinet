@@ -7,18 +7,27 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700,300italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<div class="slider"></div>
+<div id="loader-wrapper" style="display:none;">
+    <div id="loader"></div>
 
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+ 
+</div>
   <% if @age != 1 %>
     <%= render '/home/age_gate'%>
   <% end %>
 
   <%= render 'layouts/nav_bar' %>
+  <%= render 'home/search_bar'%>
   <% flash.each do |type, message| %>
     <div class="alert alert-<%= type %>" role="alert"><%= message %></div>
   <% end %>
-<div class= 'container' >  <%= yield %> </div>
+<div class= 'container main' style="opacity:0;">  <%= yield %> </div>
 
   <footer id="footer">
   </footer>
