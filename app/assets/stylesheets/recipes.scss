@@ -9,7 +9,8 @@
     border: 1px solid #efefef;
     padding: 1em;
     margin-bottom: 3em;
-    box-shadow: 1px 1px 3px #eee
+    box-shadow: 1px 1px 3px #eee;
+    position: relative;
   }
 
   .thumbnail {
@@ -25,13 +26,10 @@
     text-align: center;
   }
 
-div.caption span.description {
-  text-align: center;
-  width: 100%;
-  display:block;
-}
-  .index_description{
-    min-height:120px;
+  .description.active-state {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .author {
