@@ -229,6 +229,7 @@
 
     ul {
       display: inline-block;
+      min-width: 300px;
     }
   }
 
@@ -256,6 +257,10 @@
     border-bottom: 1px solid;
     padding: 5px 2px;
     margin: 15px 0;
+  }
+
+  .item-related {
+    margin-top:6em;
   }
   .review-comment  {
 
