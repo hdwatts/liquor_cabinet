@@ -69,11 +69,10 @@
     </div>
       </div>
   <div class="item-img">
-    <% if @recipe.img_url != "" %>
+    <% if @recipe.img_url != "" && @recipe.img_upload != "" %>
+       <%= image_tag @recipe.img_upload.url %>
+    <% elsif @recipe.img_upload == "" && @recipe.img_url != "" %>
       <%= image_tag @recipe.img_url %>
-    <% end %>
-    <% if @recipe.img_upload != "" %>
-      <%= image_tag @recipe.img_upload.url %>
     <% else %>
       <div class="glass">
         <div class="water">
@@ -95,6 +94,7 @@
 
     <h5><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><span class="count"><%= @recipe.servings %></span><% else %>1<% end %></h5>
   </div>
+  <div class="divider"></div>
       <div class="ingredients">
         <div class="ing-label">
           <h4>Ingredients</h4>
@@ -112,7 +112,7 @@
 
     <% if @recipe.tags.count > 0 %>
       <div class="item-tags">
-      <h5><span class="label-dark">Filed Under: </span>
+      <h5><span class="label-dark">Filed Under </span>
         <% @recipe.tags.each do |tag| %>
           <span class="btn btn-default btn-sm"><%= link_to tag.name, tag_path(tag.name) %></span>
         <% end %>
