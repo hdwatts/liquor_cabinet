@@ -14,4 +14,4 @@
 
 # Ignore byebug history
 /byebug_history
-/application.yml
+/config/application.yml
