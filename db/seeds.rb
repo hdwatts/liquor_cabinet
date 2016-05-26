@@ -54,7 +54,7 @@ Amount.create!([
   {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
   {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
   {recipe_id: nil, ingredient_id: 34, quantity: "", unit: ""},
-  {recipe_id: 23, ingredient_id: 35, quantity: "1", unit: "shot"},
+  {recipe_id: 18, ingredient_id: 35, quantity: "1", unit: "shot"},
   {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
   {recipe_id: nil, ingredient_id: 37, quantity: "1", unit: "part"},
   {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
@@ -62,13 +62,13 @@ Amount.create!([
   {recipe_id: nil, ingredient_id: 36, quantity: "1 ", unit: "part"},
   {recipe_id: nil, ingredient_id: 37, quantity: "1", unit: "part"},
   {recipe_id: nil, ingredient_id: 38, quantity: "5", unit: "part"},
-  {recipe_id: 24, ingredient_id: 36, quantity: "1 ", unit: "part"},
-  {recipe_id: 24, ingredient_id: 37, quantity: "1", unit: "part"}
+  {recipe_id: 16, ingredient_id: 36, quantity: "1 ", unit: "part"},
+  {recipe_id: 17, ingredient_id: 37, quantity: "1", unit: "part"}
 ])
 Favorite.create!([
   {user_id: 1, recipe_id: 14},
-  {user_id: 6, recipe_id: 24},
-  {user_id: 6, recipe_id: 16}
+  {user_id: 2, recipe_id: 24},
+  {user_id: 3, recipe_id: 16}
 ])
 Ingredient.create!([
   {name: "bitters"},
@@ -174,16 +174,12 @@ RecipesTag.create!([
   {recipe_id: 18, tag_id: 34},
   {recipe_id: 19, tag_id: 19},
   {recipe_id: 20, tag_id: 35},
-  {recipe_id: 21, tag_id: 8},
-  {recipe_id: 23, tag_id: 37},
-  {recipe_id: 24, tag_id: 38},
-  {recipe_id: 24, tag_id: 39},
-  {recipe_id: 24, tag_id: 40}
+  {recipe_id: 21, tag_id: 8}
 ])
 Review.create!([
   {user_id: 1, recipe_id: 8, comment: "Not to be confused with Roy Rogers!", img_url: nil, rating: nil},
-  {user_id: 6, recipe_id: 24, comment: "Clearly the best recipe on here. Just sayin'.", img_url: nil, rating: nil},
-  {user_id: 6, recipe_id: 21, comment: "You would Dean", img_url: nil, rating: nil}
+  {user_id: 2, recipe_id: 20, comment: "Clearly the best recipe on here. Just sayin'.", img_url: nil, rating: nil},
+  {user_id: 3, recipe_id: 21, comment: "You would Dean", img_url: nil, rating: nil}
 ])
 Tag.create!([
   {name: "manhattan"},
