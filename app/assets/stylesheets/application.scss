@@ -56,7 +56,9 @@ h3.header {
   font-size: 58px;
 }
 .login-form .btn-primary, 
-.new_user .btn-primary {
+.new_user .btn-primary,
+.edit_user .btn-primary, 
+.new_review .btn-primary {
       line-height: 2em;
     min-height: 3em;
     background-color: #222;

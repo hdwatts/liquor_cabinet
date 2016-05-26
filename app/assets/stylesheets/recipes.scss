@@ -263,11 +263,16 @@
     margin-top:6em;
   }
   .review-comment  {
-
+    .glyphicon-user {
+      margin-right: 1em;
+    }
     .author h3 {
       display: inline-block;
       margin-bottom: 0.25em;
       margin-left: .35em;
+    }
+    .author .small {
+    font-style: italic;
     }
 
     .content {
