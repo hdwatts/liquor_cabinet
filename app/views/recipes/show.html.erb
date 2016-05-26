@@ -112,7 +112,7 @@
 
     <% if @recipe.tags.count > 0 %>
       <div class="item-tags">
-      <h5><span class="label-dark">Filed Under: </span>
+      <h5><span class="label-dark">Filed Under </span>
         <% @recipe.tags.each do |tag| %>
           <span class="btn btn-default btn-sm"><%= link_to tag.name, tag_path(tag.name) %></span>
         <% end %>

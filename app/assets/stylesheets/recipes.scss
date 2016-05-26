@@ -234,9 +234,15 @@
 
   .directions {
     margin: 2em 0;
+    padding-bottom: 2.5em;
+  }
+  .item-tags  {
+    margin-top: 2em;
   }
   .item-tags .label-dark {
     font-weight: 700;
+    font-size: 1.2em;
+    margin-right: 1em;
   }
   .item-tags a {
     text-transform: capitalize;
@@ -396,4 +402,5 @@ form .amounts-ingredients {
 
 .directions p {
   white-space:pre-wrap;
+  font-size: 1.2em
 }
