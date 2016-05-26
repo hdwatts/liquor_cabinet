@@ -138,11 +138,10 @@
     <div class="user-recipes">
     <h3 class="header">Related</h3>
     <% if similar_r[0].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
+      <h5><span class="label-dark">Similar Recipes by Ingredient: </span></h5>
       <% similar_r[0].each do |sim| %>
         <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
       <% end %>
-      </h5>
     </div>
     <% end %>
     <% if similar_r[1].count > 0 %>
