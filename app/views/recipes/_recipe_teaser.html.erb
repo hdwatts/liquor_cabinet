@@ -3,7 +3,7 @@
     <%= link_to the_recipe do %>
         <div class="description active-state" >
           <h3><%= truncate(the_recipe.description, :length => 200, :separator => ' ') %></h3>
-          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>Difficulty<%= the_recipe.difficulty %></div>
+          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>Difficulty <%= the_recipe.difficulty %></div>
           <div class="servings"><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if the_recipe.servings %><%= the_recipe.servings %><% else %>1<% end %></div>
         </div>
   <div class="static-state">
@@ -27,7 +27,7 @@
       </div>
       <div class="caption">
         <header>
-          <h3><%= the_recipe.name %></h3>
+          <h2><%= the_recipe.name %></h2>
         </header>
       </div>
     </div>

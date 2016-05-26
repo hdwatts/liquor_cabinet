@@ -13,7 +13,7 @@ function favoriteButtonListener() {
       $('div[recipe_message_id=' + response.recipe + ']').html(response.message)
       $('div[recipe_id=' + response.recipe + '] span.count').html(response.count)
       $('.favorites-message').show()
-      $('.favorites-message').fadeOut( "slow" )
+      $('.favorites-message').fadeOut( 1500 )
       favoritePluralize()
      }
    })
