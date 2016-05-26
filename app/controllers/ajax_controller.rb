@@ -14,11 +14,23 @@ class AjaxController < ApplicationController
       params[:limit] = 15
     end
 
+    if params[:query] != "" && params[:query]
+      @search_msg = "Search for '#{params[:query]}' found #{@recipes.size} result(s)"
+      if params[:tag] != "" && !params[:tag].nil?
+        @search_msg << " that have the #{params[:tag]} tag"
+      end
+      if params[:ingredient] != "" && !params[:ingredient].nil?
+        @search_msg << " that use #{params[:ingredient]}"
+      end
+      @search_msg << "."
+    end
+
     if params[:limit].to_i > @recipes.size + 3 && params[:scrolling] == "1"
       render nothing: true, :status => 400
     else
       @recipes = @recipes.slice(0, params[:limit].to_i)
       render template: "recipes/_render_recipes", layout: false
     end
+
   end
 end
