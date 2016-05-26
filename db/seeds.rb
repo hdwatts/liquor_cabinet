@@ -182,8 +182,8 @@ RecipesTag.create!([
 ])
 Review.create!([
   {user_id: 1, recipe_id: 8, comment: "Not to be confused with Roy Rogers!", img_url: nil, rating: nil},
-  {user_id: 6, recipe_id: 24, comment: "Clearly the best recipe on here. Just sayin'.", img_url: nil, rating: nil},
-  {user_id: 6, recipe_id: 21, comment: "You would Dean", img_url: nil, rating: nil}
+  {user_id: 2, recipe_id: 24, comment: "Clearly the best recipe on here. Just sayin'.", img_url: nil, rating: nil},
+  {user_id: 3, recipe_id: 21, comment: "You would Dean", img_url: nil, rating: nil}
 ])
 Tag.create!([
   {name: "manhattan"},
