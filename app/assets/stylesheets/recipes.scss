@@ -14,6 +14,7 @@
     margin-bottom: 3em;
     box-shadow: 1px 1px 3px #eee;
     position: relative;
+    background-color: #fff;
   }
 
   .thumbnail {
@@ -112,8 +113,13 @@
 
 // SHOW PAGES
 .recipe.show {
+  max-width: 650px;
+  margin: 0 auto;
+
   .page-header {
-  position: relative;
+    position: relative;
+    text-align: center;
+    border: none;
   }
   .author .profile-img {
     height: 2em;
@@ -131,10 +137,9 @@
 
   .author h4 {
     display: inline-block;
-    margin: 0;
   }
   .item-img {
-  text-align: center;
+    text-align: center;
   }
   .item-img img {
     max-width: 100%;
@@ -146,9 +151,9 @@
     right: 0;
   }
   .meta {
-    position: absolute;
+ /*   position: absolute;
     right: -10px;
-    bottom: 0.5em;
+    bottom: 0.5em; */
   }
   .meta .favorites, .meta .comments {
     display: inline-block;
@@ -188,30 +193,68 @@
     font-size: 1.5em;
   }
 
-  .rec-meta {
+  .rec-meta h5 {
     display:inline-block;
-    padding-right: 3em;
-    vertical-align: top;
+    margin-right: 3em;
   }
+
+
   .ingredients {
     margin-top: .5em;
     display:inline-block;
     line-height: 1.75em;
+
+    a {
+      border-bottom: 1px solid;
+    }
+
+    .ing-label {
+      display: inline-block;
+      vertical-align: top;
+      h4 {
+      font-weight: 700;
+      }
+    }
+
+    ul {
+      display: inline-block;
+    }
   }
+
   .directions {
     margin: 2em 0;
+  }
+  .item-tags a {
+    text-transform: capitalize;
   }
   .item-comments {
     margin-top: 5em;
   }
   h3.header {
-    margin-left: 0;
-    margin-right:0;
+    font-weight: 300;
+    font-style: italic;
+    border-bottom: 1px solid;
+    padding: 5px 2px;
+    margin: 15px 0;
   }
-  .review-comment .content {
-    padding-left: 2.35em;
-    padding-top: .5em;
-    padding-bottom: .5em;
+  .review-comment  {
+
+    .author h3 {
+      display: inline-block;
+      margin-bottom: 0.25em;
+      margin-left: .35em;
+    }
+
+    .content {
+      padding-left: 2.85em;
+      padding-top: .5em;
+      padding-bottom: .5em;
+
+      a {
+        font-size: small;
+        text-decoration: underline;
+      }
+    }
   }
   #reviews .review {
   margin: 2em 0.5em;

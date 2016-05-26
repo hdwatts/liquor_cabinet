@@ -1,5 +1,7 @@
 var ready = function() {
 
+$('#index-filter').hide()
+
 // add bootstrap styles to forms
 $('form fieldset').addClass('form-group')
 $('form label').addClass('form-control-label')
@@ -24,7 +26,7 @@ hoverState()
 };
 
 $(document).ready(function(){ 
-   $('#index-filter').hide()
+   
    $('.slider').animate({
     width: $(window).width()
     }, 2000)
