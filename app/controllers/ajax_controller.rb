@@ -6,6 +6,8 @@ class AjaxController < ApplicationController
       @recipes = Recipe.search(params[:query])
     end
 
+    debugger
+
     if params[:sort] != "" && params[:sort]
       @recipes = Recipe.sort_by_ajax(@recipes, params[:sort], params[:tag], params[:ingredient], params[:order])
     end
