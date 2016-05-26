@@ -16,7 +16,7 @@ $('input#search').keydown(function (e){
     if(e.keyCode == 13){
       doSearch();
     }
-  })    
+  })
 
 hasUserImg()
 thumbnailResize()
@@ -25,16 +25,16 @@ userImgResize()
 hoverState()
 };
 
-$(document).ready(function(){ 
-   
+$(document).ready(function(){
+
    $('.slider').animate({
     width: $(window).width()
     }, 2000)
 });
 
 $(window).load(ready);
-$(window).load(function(){ 
-  slideLoader() 
+$(window).load(function(){
+  slideLoader()
   pageLoader()
 })
 
@@ -51,7 +51,7 @@ function pageLoader() {
   }
     $('.container.main').animate({
     opacity: 1}, 1500);
-} 
+}
 function slideLoader() {
     $('.slider').animate({
           backgroundColor: "#222"

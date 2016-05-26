@@ -3,11 +3,7 @@
 <div class="item-body col-sm-12 col-md-8">
     <div class="left col-xs-4 col-sm-4 col-lg-4">
 
-      <% if @user.img_url %>
-        <div class="item-img" style="background-image:url('<%= @user.img_url %>')">
-          <span class="glyphicon glyphicon-user"></span>
-        </div>
-      <% elsif @user.img_upload%>
+      <% if @user.img_upload%>
         <div class="item-img" style="background-image:url('<%= @user.img_upload %>')">
           <span class="glyphicon glyphicon-user"></span>
         </div>
