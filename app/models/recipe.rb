@@ -222,8 +222,8 @@ class Recipe < ActiveRecord::Base
     i = self.ingredients.ids
     t = self.tags.ids
 
-    recipes = Amount.select('recipe_id').where("ingredient_id in (?)", i).group('recipe_id').having("COUNT(recipe_id) >= 2")
-    tags = RecipesTag.select('recipe_id').where("tag_id in (?)", t).group('recipe_id').having("COUNT(recipe_id) >= 2")
+    recipes = Amount.select('recipe_id', 'count(recipe_id) AS recipe_count').where("ingredient_id in (?)", i).group('recipe_id').having("COUNT(recipe_id) >= 2").order("recipe_count DESC").limit(3)
+    tags = RecipesTag.select('recipe_id', 'count(recipe_id) AS recipe_count').where("tag_id in (?)", t).group('recipe_id').having("COUNT(recipe_id) >= 2").order("recipe_count DESC").limit(3)
 
     recipes.each do |r_id|
       similar_ing << Recipe.find(r_id.recipe_id) if r_id.recipe_id != self.id
