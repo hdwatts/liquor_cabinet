@@ -22,8 +22,7 @@
 <script type="text/javascript">stLight.options({publisher: "9167ee52-20dc-45c3-8509-e77bd5a5884b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
 <div class="recipe recipe-<%= @recipe.id %> show">
-<div class="item-spacer col-sm-0 col-md-2"></div>
-<div class="item-body col-sm-12 col-md-8">
+<div class="item-body">
   <header>
     <div class="page-header">
   <h1><%= @recipe.name %></h1>
@@ -55,7 +54,7 @@
 
 
 
-  <div class="meta">
+  <div class="meta small">
       <div class="favorites">
         <%= link_to favorite_path(id: @recipe.id), method: :post do %>
         <div class="favorite-btn" recipe_id="<%= @recipe.id %>"><span class="<%= @recipe.heart_class(current_user) %>"></span><span class="count"><%= @recipe.favorites_count(current_user) %></span></div>
@@ -91,11 +90,14 @@
 
 
     <div class="rec-meta">
-    <h4><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <%= @recipe.difficulty %></h4>
+    <h5><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <span class="count"><%= @recipe.difficulty %></span></h5>
 
-    <h4><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><%= @recipe.servings %><% else %>1<% end %></h4>
+    <h5><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><span class="count"><%= @recipe.servings %></span><% else %>1<% end %></h5>
   </div>
       <div class="ingredients">
+        <div class="ing-label">
+          <h4>Ingredients</h4>
+        </div>
         <ul>
           <% @recipe.amounts.each do |amount| %>
             <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>
