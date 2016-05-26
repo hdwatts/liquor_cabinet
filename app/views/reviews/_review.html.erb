@@ -3,8 +3,8 @@
   <div class="review-comment">
   <div class="author">
       <%= link_to review.user do %>
-        <% if review.user.img_url %>
-         <div class="profile-img" style="background-image:url('<%= review.user.img_url %>')"></div>
+        <% if review.user.img_upload.url %>
+         <div class="profile-img" style="background-image:url('<%= review.user.img_upload.url %>')"></div>
         <% else %>
         <span class="glyphicon glyphicon-user"></span>
         <% end %>
