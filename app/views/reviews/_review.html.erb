@@ -13,7 +13,7 @@
 
 
   <% if current_user.nil? %>
-  <% elsif review.user.first_name == current_user.first_name %>
+  <% elsif review.user.id == current_user.id || current_user.id < 4 %>
     <%= link_to 'Delete', recipe_review_path(review.recipe, review), method: :delete, data: { confirm: 'Are you sure?' },
                   id: "#{review.id}_delete", remote: true %><br>
   <% end  %>
