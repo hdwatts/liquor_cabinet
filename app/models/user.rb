@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validates :birth_date, presence: true
   validate :validate_email
+  mount_uploader :img_upload, ImageUploader
 
   def validate_email
     if email !~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
