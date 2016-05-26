@@ -120,26 +120,6 @@
       </div>
     <% end %>
 
-    <% similar_r = @recipe.similar_recipes %>
-<% if similar_r.flatten.count > 0 %>
-  <div class="similar-recipes" style="margin-top:5em">
-  <h3 class="header">Related</h3>
-    <% if similar_r[0].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
-      <% similar_r[0].each do |sim| %>
-        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-      <% end %>
-      </h5>
-    <% end %>
-    <% if similar_r[1].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Tag: </span>
-      <% similar_r[1].each do |sim| %>
-        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-      <% end %>
-      </h5>
-    <% end %>
-  </div>
-<% end %>
 <div class="item-comments">
   <h3 class="header">Comments</h3>
       <div id='reviews'>
@@ -152,3 +132,26 @@
 </div>
 </div>
 </div>
+<% similar_r = @recipe.similar_recipes %>
+<% if similar_r.flatten.count > 0 %>
+  <div class="item-related">
+    <div class="user-recipes">
+    <h3 class="header">Related</h3>
+    <% if similar_r[0].count > 0 %>
+      <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
+      <% similar_r[0].each do |sim| %>
+        <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
+      <% end %>
+      </h5>
+    </div>
+    <% end %>
+    <% if similar_r[1].count > 0 %>
+     <div class="user-recipes">
+      <h5><span class="label-dark">Similar Recipes by Tag: </span></h5>
+        <% similar_r[1].each do |sim| %>
+          <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
