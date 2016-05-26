@@ -20,7 +20,7 @@ function prep() {
   recipeImgResize()
   userImgResize()
   hoverState()
-  $(".thumbnail").on("mouseenter", function(){
+  $(".item").on("mouseenter", function(){
     act($(this).find(".water"));
   })
 }
