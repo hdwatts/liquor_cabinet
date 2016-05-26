@@ -52,8 +52,16 @@ h3.header {
   margin: 15px;
   padding: 5px;
 }
-
-
+.form-signin-heading {
+  font-size: 58px;
+}
+.login-form .btn-primary, 
+.new_user .btn-primary {
+      line-height: 2em;
+    min-height: 3em;
+    background-color: #222;
+    font-weight: 700;
+}
 .navbar {
   .navbar-right{
     margin-right: 0;
