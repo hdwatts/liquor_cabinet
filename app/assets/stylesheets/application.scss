@@ -52,8 +52,16 @@ h3.header {
   margin: 15px;
   padding: 5px;
 }
-
-
+.form-signin-heading {
+  font-size: 58px;
+}
+.login-form .btn-primary, 
+.new_user .btn-primary {
+      line-height: 2em;
+    min-height: 3em;
+    background-color: #222;
+    font-weight: 700;
+}
 .navbar {
   .navbar-right{
     margin-right: 0;
@@ -69,7 +77,7 @@ h3.header {
       padding-top: 5px;
     }
     li.add-new {
-      margin-top: 7px;
+      margin-top: 6px;
     }
   }
   .navbar-brand {
@@ -102,6 +110,12 @@ h3.header {
   .btn .caret {
     margin-left: .75em;
   }
+  .navbar-right.anon .navbar-btn {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-weight: 900;
+    margin-left: .75em;
+    }
   #search {
     padding-right: 0;
   }
@@ -219,7 +233,7 @@ footer#footer {
 
 .modal-welcome {
   font-weight: lighter;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 #yes-btn {
@@ -264,6 +278,7 @@ footer#footer {
 
 .modal-body {
   background-color: #fffffa;
+  font-weight: 900;
 }
 
 .modal-backdrop {

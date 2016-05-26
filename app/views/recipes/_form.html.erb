@@ -88,5 +88,11 @@ function removeIngredient(element){
     <%= f.label "Upload a photo" %>
     <%= f.file_field :img_upload %>
   <fieldset><br>
-<%= f.submit %>
+<span class="btn btn-primary"><%= f.submit %></span>
 <% end %>
+
+<script>
+function getFile(){
+      document.getElementById("upfile").click();
+  }
+</script>

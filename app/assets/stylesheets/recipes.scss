@@ -132,7 +132,8 @@
   }
   h3.description {
     line-height: 1.5em;
-    margin: 1.5em 0;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
   }
 
   .author h4 {
@@ -147,13 +148,14 @@
   }
   .item-edit {
     position: absolute;
-    top: 0;
+    top: -2.5em;
     right: 0;
   }
   .meta {
  /*   position: absolute;
     right: -10px;
     bottom: 0.5em; */
+    margin-top: 1em;
   }
   .meta .favorites, .meta .comments {
     display: inline-block;
@@ -193,9 +195,16 @@
     font-size: 1.5em;
   }
 
+  .divider {
+    height: 2px;
+    margin: 1.5em 0;
+    background-color: #333;
+    width: 4em;
+  }
   .rec-meta h5 {
     display:inline-block;
     margin-right: 3em;
+    font-weight: 700;
   }
 
 
@@ -211,8 +220,10 @@
     .ing-label {
       display: inline-block;
       vertical-align: top;
+
       h4 {
       font-weight: 700;
+      margin-top: 0.25em;
       }
     }
 
@@ -223,6 +234,15 @@
 
   .directions {
     margin: 2em 0;
+    padding-bottom: 2.5em;
+  }
+  .item-tags  {
+    margin-top: 2em;
+  }
+  .item-tags .label-dark {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-right: 1em;
   }
   .item-tags a {
     text-transform: capitalize;
@@ -259,9 +279,26 @@
   #reviews .review {
   margin: 2em 0.5em;
   }
+  #review-form .anon {
+    border-bottom: 1px solid;
+  }
 }
 
 // NEW AND EDIT FORMS
+
+.edit_recipe .btn.btn-primary,
+.new_recipe .btn.btn-primary {
+  background-color: #222;
+}
+.edit_recipe .btn.btn-primary .form-control,
+.new_recipe .btn.btn-primary .form-control {
+  background: none transparent;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: 700;
+}
 
 .blank-amount-ingredient-field {
   display: none;
@@ -379,6 +416,7 @@ form .amounts-ingredients {
 
 .directions p {
   white-space:pre-wrap;
+  font-size: 1.2em
 }
 
 h2.search-msg {
