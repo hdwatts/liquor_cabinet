@@ -26,8 +26,8 @@
 
     <div class="author">
       <%= link_to @recipe.user do %>
-        <% if @recipe.user.img_url %>
-         <div class="profile-img" style="background-image:url('<%= @recipe.user.img_url %>')"></div>
+        <% if @recipe.user.img_upload.url %>
+         <div class="profile-img" style="background-image:url('<%= @recipe.user.img_upload.url %>')"></div>
         <% else %>
         <span class="glyphicon glyphicon-user"></span>
         <% end %>
