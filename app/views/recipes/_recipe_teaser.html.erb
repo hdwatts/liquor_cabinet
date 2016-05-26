@@ -7,7 +7,7 @@
           <div class="servings"><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if the_recipe.servings %><%= the_recipe.servings %><% else %>1<% end %></div>
         </div>
   <div class="static-state">
-        <% if the_recipe.img_upload.url ®%>
+        <% if the_recipe.img_upload.url %>
           <div class="thumbnail" style="background-image:url('<%= the_recipe.img_upload.url %>')">
             <%= image_tag the_recipe.img_upload.url, class: "thumbnail" %>
         <% else %>
