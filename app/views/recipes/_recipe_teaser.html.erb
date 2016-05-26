@@ -9,10 +9,10 @@
   <div class="static-state">
         <% if the_recipe.img_url %>
           <div class="thumbnail" style="background-image:url('<%= the_recipe.img_url %>')">
-            <%= image_tag the_recipe.img_url, class: "thumbnail" %>
+
         <% elsif the_recipe.img_upload %>
           <div class="thumbnail" style="background-image:url('<%= the_recipe.img_upload.url %>')">
-            <%= image_tag the_recipe.img_upload.url, class: "thumbnail" %>
+
         <% else %>
           <div class="thumbnail">
             <div class="glass">

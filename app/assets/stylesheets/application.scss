@@ -102,6 +102,12 @@ h3.header {
   .btn .caret {
     margin-left: .75em;
   }
+  .navbar-right.anon .navbar-btn {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-weight: 900;
+    margin-left: .75em;
+    }
   #search {
     padding-right: 0;
   }
@@ -219,7 +225,7 @@ footer#footer {
 
 .modal-welcome {
   font-weight: lighter;
-  font-size: 35px;
+  font-size: 30px;
 }
 
 #yes-btn {
@@ -264,6 +270,7 @@ footer#footer {
 
 .modal-body {
   background-color: #fffffa;
+  font-weight: 900;
 }
 
 .modal-backdrop {
