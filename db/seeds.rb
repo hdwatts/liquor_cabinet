@@ -67,7 +67,6 @@ Amount.create!([
 ])
 Favorite.create!([
   {user_id: 1, recipe_id: 14},
-  {user_id: 2, recipe_id: 24},
   {user_id: 3, recipe_id: 16}
 ])
 Ingredient.create!([
