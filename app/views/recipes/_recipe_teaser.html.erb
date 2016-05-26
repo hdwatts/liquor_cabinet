@@ -34,8 +34,8 @@
     <footer>
       <div class="author col-xs-8 col-sm-6">
         <%= link_to the_recipe.user do %>
-          <% if the_recipe.user.img_url %>
-          <div class="profile-img" style="background-image:url('<%= the_recipe.user.img_url %>')">
+          <% if the_recipe.user.img_upload.url %>
+          <div class="profile-img" style="background-image:url('<%= the_recipe.user.img_upload.url %>')">
            </div>
           <% else %>
             <span class="glyphicon glyphicon-user"></span>
