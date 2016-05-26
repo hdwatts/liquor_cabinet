@@ -76,6 +76,7 @@
     <% else %>
       <div class="glass">
         <div class="water">
+          <img class="water_top" src="/water_top.png">
           <% @recipe.amounts.each do |x| %>
             <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / @recipe.amounts.size.to_f) * 100 %>%"><div style=""><%= x.ingredient.name %></div></div>
           <% end %>

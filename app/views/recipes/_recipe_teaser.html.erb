@@ -17,6 +17,7 @@
           <div class="thumbnail">
             <div class="glass">
               <div class="water">
+                <img class="water_top" src="/water_top.png">
                 <% the_recipe.amounts.each do |x| %>
                   <div style="background-color:#<%= "%06x" % (rand * 0xffffff) %>;height:<%= (1 / the_recipe.amounts.size.to_f) * 100 %>%"></div>
                 <% end %>
