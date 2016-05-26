@@ -2,27 +2,35 @@
 <div class="item-spacer col-sm-0 col-md-2"></div>
 <div class="item-body col-sm-12 col-md-8">
     <div class="left col-xs-4 col-sm-4 col-lg-4">
-    <div class="item-img"<% if @user.img_url %> style="background-image:url('<%= @user.img_url %>')"<% end %>>
-      <span class="glyphicon glyphicon-user"></span>
-    </div>
+
+      <% if @user.img_url %>
+        <div class="item-img" style="background-image:url('<%= @user.img_url %>')">
+          <span class="glyphicon glyphicon-user"></span>
+        </div>
+      <% elsif @user.img_upload%>
+        <div class="item-img" style="background-image:url('<%= @user.img_upload %>')">
+          <span class="glyphicon glyphicon-user"></span>
+        </div>
+      <% end %>
+
   </div>
     <div class="header col-xs-8 col-sm-8 col-lg-8">
     <h1 class="author"><%= @user.first_name %> <%= @user.last_name %></h1>
     <div class="meta">
       <span class="recipe-count"><%= @user.recipes.count %> Recipes</span>
-      <span class="recipe-count"><%= @user.favorites.count %> Favorites</span> 
-    </div> 
-    <h3 class="bio"><%= @user.bio %></h3> 
+      <span class="recipe-count"><%= @user.favorites.count %> Favorites</span>
+    </div>
+    <h3 class="bio"><%= @user.bio %></h3>
     <%= link_to "Edit Profile", edit_user_path, class: 'btn btn-default btn-s'%>
   </div>
-</div>  
+</div>
 
-<div class="item-related">  
- 
+<div class="item-related">
+
 <% if @user.recipes.count > 0  %>
  <div class="user-recipes">
   <h3 class="header">My Recipes</h3>
-  <% @user.recipes.each do |recipe| %> 
+  <% @user.recipes.each do |recipe| %>
     <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: recipe} %>
   <% end %>
   </div>
@@ -37,5 +45,3 @@
   </div>
    <% end %>
 </div>
-
-

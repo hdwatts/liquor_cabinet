@@ -84,11 +84,9 @@ function removeIngredient(element){
     <%= f.label :steps %>
     <%= f.text_area :steps %>
   </fieldset>
-  <fieldset>
-      <%= f.label :img_url %>
-      <%= f.text_field :img_url%>
   </fieldset>
-
-
+    <%= f.label "Upload a photo" %>
+    <%= f.file_field :img_upload %>
+  <fieldset><br>
 <%= f.submit %>
 <% end %>

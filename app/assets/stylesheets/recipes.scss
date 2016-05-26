@@ -5,6 +5,9 @@
 
 // TEASER CARDS
 .recipe.teaser {
+  a:hover {
+  text-decoration: none;
+  }
   .item {
     border: 1px solid #efefef;
     padding: 1em;
@@ -22,20 +25,28 @@
     display: none;
   }
 
-  .caption h3{
+  .caption h2{
     text-align: center;
+    text-decoration: none !important;
+    margin-bottom: 0;
   }
 
+  .static-state {
+    z-index: 1;
+  }
   .description.active-state {
     position: absolute;
     padding: 2em;
     top: 0;
     left: 0;
     opacity: 0;
+    z-index: 10;
+   color: #222;
 
     h3 {
       line-height: 1.45em;
-      margin-top: 0;
+      margin-top: -0.25em;
+
     }
 
     .difficulty {

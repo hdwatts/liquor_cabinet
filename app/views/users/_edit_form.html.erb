@@ -24,8 +24,8 @@
     <%= f.text_area :bio %>
   </fieldset>
   <fieldset>
-    <%= f.label :img_url %>
-    <%= f.text_field :img_url %>
+    <%= f.label "Upload a profile pic"%>
+    <%= f.file_field :img_upload %>
   </fieldset>
   <fieldset>
 <%= f.submit class: 'btn btn-lg btn-primary btn-block' %>

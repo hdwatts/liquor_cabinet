@@ -72,6 +72,9 @@
   <div class="item-img">
     <% if @recipe.img_url != "" %>
       <%= image_tag @recipe.img_url %>
+    <% end %>
+    <% if @recipe.img_upload != "" %>
+      <%= image_tag @recipe.img_upload.url %>
     <% else %>
       <div class="glass">
         <div class="water">
@@ -96,7 +99,7 @@
       <div class="ingredients">
         <ul>
           <% @recipe.amounts.each do |amount| %>
-            <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name.capitalize, ingredient_path(amount.ingredient.name.downcase) %></span></li>
+            <li><span class="quantity"><%= amount.quantity %></span> <span class="unit"><%= amount.unit %></span> <span class="ingredient"><%= link_to amount.ingredient.name, ingredient_path(amount.ingredient.name) %></span></li>
           <% end %>
         </ul>
       </div>

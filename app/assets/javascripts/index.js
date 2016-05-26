@@ -91,12 +91,24 @@ function sort_params() {
     data: getData()
     }).done(function( data ) {
     $("#index-recipes").empty();
+    ajaxSlider()
+    $('.container.main').css("opacity", 0)
     $("#index-recipes").append(data);
+    $('.container.main').animate({
+    opacity: 1}, 1500);
+    slideLoader()
     prep()
   });
 
   });
  }
+
+function ajaxSlider() {
+  $('.slider').width(0).css("background-color", "#C00")
+  $('.slider').animate({
+    width: $(window).width()
+    }, 2000)
+}
 
  function search_params() {
   $('#search-btn').on("click", doSearch)
