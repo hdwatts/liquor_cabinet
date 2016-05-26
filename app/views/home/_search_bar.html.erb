@@ -1,16 +1,42 @@
-<script>
-$(function(){
-  $('input#search').keydown(function (e){
-    if(e.keyCode == 13){
-      doSearch();
-    }
-  })
-});
-</script>
+<div id="index-filter" class="navbar secondary navbar-fixed-top">
+  <div class="container">
 
-  <div class="input-group">
+  <div id="sort" class="col-lg-6">
+  <span class="header small">Sort By</span>
+
+
+  <div class="btn-group sort-by" role="group">
+    <div class="btn-group" role="group">
+      <button class="btn btn-default dropdown-toggle" type="button" id="categoryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Categories
+        <span class="glyphicon glyphicon-triangle-bottom"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="categoryMenu">
+        <li><a href="/tags/whiskey">Whiskey</a></li>
+        <li><a href="/tags/vodka">Vodka</a></li>
+        <li><a href="/tags/liquer">Liqueur</a></li>
+        <li><a href="/tags/gin">Gin</a></li>
+        <li><a href="/tags/rum">Rum</a></li>
+        <li><a href="/tags/brandy">Brandy</a></li>
+        <li><a href="/tags/tequila">Tequila</a></li>
+        <li><a href="/tags/aquavit">Aquavit</a></li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-default sort-btn date">Date <span class="glyphicon glyphicon-triangle-bottom"></button>
+    <button type="button" class="btn btn-default sort-btn difficulty">Difficulty <span class="glyphicon glyphicon-menu-down"></span></button>
+    <button type="button" class="btn btn-default sort-btn servings">Servings <span class="glyphicon glyphicon-menu-down"></button>
+    <button type="button" class="btn btn-default sort-btn popularity">Popularity <span class="glyphicon glyphicon-menu-down"></button>  
+  </div>
+</div>
+  <div id="search" class="col-lg-6">
+     <div class="input-group">
     <%= text_field_tag :search, params[:search], class: 'search-params form-control' %>
     <span class="input-group-btn">
       <a class="btn btn-default btn" id="search-btn">Search</a>
     </span>
   </div>
+  </div>
+</div>
+</div>
+
+

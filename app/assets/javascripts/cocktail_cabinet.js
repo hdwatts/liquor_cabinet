@@ -10,9 +10,11 @@ $('form textarea').addClass('form-control')
 $('img[src=""]').hide()
 $('.favorites-message').hide()
 
-if ( $('#index-filter').length ) {
-  $('body').css('margin-top', '80px')
-}
+$('input#search').keydown(function (e){
+    if(e.keyCode == 13){
+      doSearch();
+    }
+  })    
 
 hasUserImg()
 thumbnailResize()
@@ -21,12 +23,38 @@ userImgResize()
 hoverState()
 };
 
-$(document).ready(ready);
+$(document).ready(function(){ 
+   $('#index-filter').hide()
+   $('.slider').animate({
+    width: $(window).width()
+    }, 2000)
+});
+
+$(window).load(ready);
+$(window).load(function(){ 
+  slideLoader() 
+  pageLoader()
+})
+
 $(document).on("page:load", ready);
 
 $(window).resize(function(){
   thumbnailResize()
   });
+
+function pageLoader() {
+  if ($('.container.main #index-recipes').length ) {
+    $('body').css('margin-top', '80px')
+    $('#index-filter').show()
+  }
+    $('.container.main').animate({
+    opacity: 1}, 1500);
+} 
+function slideLoader() {
+    $('.slider').animate({
+          backgroundColor: "#222"
+        }, 1000 );
+}
 
 function thumbnailResize() {
   var win_wid = $('div.thumbnail').width();
