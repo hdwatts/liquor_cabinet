@@ -22,7 +22,7 @@ hasUserImg()
 thumbnailResize()
 recipeImgResize()
 userImgResize()
-hoverState()
+// hoverState()
 };
 
 $(document).ready(function(){

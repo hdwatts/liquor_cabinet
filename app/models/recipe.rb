@@ -43,6 +43,18 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def downcase_tags
+    self.tags.map do |tag|
+      tag.name.downcase
+    end
+  end
+
+  def downcase_ingredients
+    self.ingredients.map do |ingred|
+      ingred.name.downcase
+    end
+  end
+
   def display_difficulty
     str = "#{self.difficulty}"
     case self.difficulty

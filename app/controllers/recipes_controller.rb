@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, except: [:new, :create]
 
   def new
     @recipe = Recipe.new
@@ -11,12 +12,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user_id = current_user.id
-    @recipe.ingredients.map do |ingred|
-      ingred.name.downcase!
-    end
-    @recipe.tags.map do |tag|
-      tag.name.downcase!
-    end
+    @recipe.downcase_ingredients
+    @recipe.downcase_tags
     if @recipe.save
       redirect_to recipe_path(@recipe)
     else
@@ -32,21 +29,15 @@ class RecipesController < ApplicationController
 
   def edit
     correct_user
-    @recipe = Recipe.find(params[:id])
     @blank_amount = Amount.new
     @blank_amount.ingredient = Ingredient.new
     #@recipe.amounts << @blank_amount
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
     @recipe.user_id = current_user.id
-    @recipe.ingredients.map do |ingred|
-      ingred.name.downcase!
-    end
-    @recipe.tags.map do |tag|
-      tag.name.downcase!
-    end
+    @recipe.downcase_ingredients
+    @recipe.downcase_tags
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -58,26 +49,27 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
     @reviews = @recipe.reviews
     @new_review = @recipe.reviews.new
   end
 
   def destroy
     correct_user
-    @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to root_path
   end
 
   def favorite
-    @recipe = Recipe.find(params[:id])
     @recipe.update_favorites(current_user)
     render json: {heart: @recipe.heart_class(current_user), message: @recipe.favorites_message(current_user), recipe: @recipe.id, count: @recipe.favorites_count(current_user) }
   end
 
 
   private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 
   def recipe_params
     params.require(:recipe).permit(:name, :description, :tools, :steps, :difficulty, :img_url, :img_upload, :servings, amounts_attributes: [:id, :quantity, :unit, ingredient_attributes: [:name, :id]], :tag_names => [])
