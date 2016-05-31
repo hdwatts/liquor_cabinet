@@ -229,6 +229,7 @@
 
     ul {
       display: inline-block;
+      min-width: 300px;
     }
   }
 
@@ -257,12 +258,21 @@
     padding: 5px 2px;
     margin: 15px 0;
   }
-  .review-comment  {
 
+  .item-related {
+    margin-top:6em;
+  }
+  .review-comment  {
+    .glyphicon-user {
+      margin-right: 1em;
+    }
     .author h3 {
       display: inline-block;
       margin-bottom: 0.25em;
       margin-left: .35em;
+    }
+    .author .small {
+    font-style: italic;
     }
 
     .content {
@@ -285,6 +295,20 @@
 }
 
 // NEW AND EDIT FORMS
+
+.edit_recipe .btn.btn-primary,
+.new_recipe .btn.btn-primary {
+  background-color: #222;
+}
+.edit_recipe .btn.btn-primary .form-control,
+.new_recipe .btn.btn-primary .form-control {
+  background: none transparent;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 1.25em;
+    font-weight: 700;
+}
 
 .blank-amount-ingredient-field {
   display: none;

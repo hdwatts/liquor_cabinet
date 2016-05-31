@@ -47,6 +47,9 @@ class RecipesController < ApplicationController
     @recipe.tags.map do |tag|
       tag.name.downcase!
     end
+    @recipe.amounts.clear
+    @recipe.tags.clear
+
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
@@ -85,7 +88,7 @@ class RecipesController < ApplicationController
 
   def correct_user
     @recipe = Recipe.find(params[:id])
-    redirect_to(user_path(current_user)) unless current_user?(@recipe.user)
+    redirect_to(user_path(current_user)) unless current_user?(@recipe.user) || current_user.id < 4
   end
 
 end

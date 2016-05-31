@@ -34,6 +34,8 @@ gem 'mini_magick', '~> 4.3'
 gem 'fog'
 gem 'figaro'
 
+gem 'rails_12factor', group: :production
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
