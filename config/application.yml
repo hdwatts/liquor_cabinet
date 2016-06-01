@@ -11,4 +11,8 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 S3_KEY:
+<<<<<<< HEAD
 S3_SECRET: 
+=======
+S3_SECRET:
+>>>>>>> e720933c4a50d2b68723f94ef03719f2fce28052
