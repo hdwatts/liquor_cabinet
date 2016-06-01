@@ -34,6 +34,8 @@ gem 'mini_magick', '~> 4.3'
 gem 'fog'
 gem 'figaro'
 
+gem 'rails_12factor', group: :production
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
   gem 'seed_dump'
+  gem 'rspec-rails'
 end
 
 group :development do

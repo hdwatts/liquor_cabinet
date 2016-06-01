@@ -3,7 +3,8 @@
 <div class="item-body col-sm-12 col-md-8">
     <div class="left col-xs-4 col-sm-4 col-lg-4">
 
-      <% if @user.img_upload%>
+
+      <% if @user.img_upload %>
         <div class="item-img" style="background-image:url('<%= @user.img_upload.url %>')">
           <span class="glyphicon glyphicon-user"></span>
         </div>
@@ -17,7 +18,10 @@
       <span class="recipe-count"><%= @user.favorites.count %> Favorites</span>
     </div>
     <h3 class="bio"><%= @user.bio %></h3>
+    <% if current_user.nil? %>
+    <% elsif @recipe.user.id == current_user.id || current_user.id < 4 %>
     <%= link_to "Edit Profile", edit_user_path, class: 'btn btn-default btn-s'%>
+    <% end %>
   </div>
 </div>
 

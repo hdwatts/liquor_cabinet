@@ -17,9 +17,6 @@
     goUp();
   })
 </script>
-<script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "9167ee52-20dc-45c3-8509-e77bd5a5884b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
 <div class="recipe recipe-<%= @recipe.id %> show">
 <div class="item-body">
@@ -29,23 +26,17 @@
 
     <div class="author">
       <%= link_to @recipe.user do %>
-        <% if @recipe.user.img_url %>
-         <div class="profile-img" style="background-image:url('<%= @recipe.user.img_url %>')"></div>
+        <% if @recipe.user.img_upload.url %>
+         <div class="profile-img" style="background-image:url('<%= @recipe.user.img_upload.url %>')"></div>
         <% else %>
         <span class="glyphicon glyphicon-user"></span>
         <% end %>
       <h4 class="username">by <%= @recipe.user.first_name %></h4> <% end %></div>
-      <div style="float:right;display:none;">
-  <span class='st_facebook_hcount' displayText='Facebook'></span>
-  <span class='st_twitter_hcount' displayText='Tweet'></span>
-  <span class='st_pinterest_hcount' displayText='Pinterest'></span>
-  <span class='st_email_hcount' displayText='Email'></span>
-</div>
 
 <div class="item-edit">
   <% if current_user.nil? %>
 
-  <% elsif @recipe.user.first_name == current_user.first_name %>
+  <% elsif @recipe.user.id == current_user.id || current_user.id < 4 %>
     <%= link_to "Edit", edit_recipe_path, class: 'btn btn-default btn-s'%>
     <%= link_to "Delete", recipe_path(@recipe), method: :delete, class: 'btn btn-default btn-s'%>
   <% end %>
@@ -149,3 +140,26 @@
 </div>
 </div>
 </div>
+
+<% similar_r = @recipe.similar_recipes %>
+<% if similar_r.flatten.count > 0 %>
+  <div class="item-related">
+    <div class="user-recipes">
+    <h3 class="header">Related</h3>
+    <% if similar_r[0].count > 0 %>
+      <h5><span class="label-dark">Similar Recipes by Ingredient: </span></h5>
+      <% similar_r[0].each do |sim| %>
+        <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
+      <% end %>
+    </div>
+    <% end %>
+    <% if similar_r[1].count > 0 %>
+     <div class="user-recipes">
+      <h5><span class="label-dark">Similar Recipes by Tag: </span></h5>
+        <% similar_r[1].each do |sim| %>
+          <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
