@@ -3,25 +3,20 @@
 <div class="item-body col-sm-12 col-md-8">
     <div class="left col-xs-4 col-sm-4 col-lg-4">
 
-
-      <% if @user.img_upload %>
-        <div class="item-img" style="background-image:url('<%= @user.img_upload.url %>')">
-          <span class="glyphicon glyphicon-user"></span>
-        </div>
-      <% end %>
-
+    <div class="item-img" style="background-image:url('<% if @user.img_upload %><%= @user.img_upload.url %>') <% end %>">
+      <span class="glyphicon glyphicon-user"></span>
+    </div>
   </div>
     <div class="header col-xs-8 col-sm-8 col-lg-8">
-    <h1 class="author"><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h1 class="author"><%= @user.full_name %></h1>
     <div class="meta">
       <span class="recipe-count"><%= @user.recipes.count %> Recipes</span>
       <span class="recipe-count"><%= @user.favorites.count %> Favorites</span>
     </div>
     <h3 class="bio"><%= @user.bio %></h3>
-    <% if current_user.nil? %>
-    <% elsif @recipe.user.id == current_user.id || current_user.id < 4 %>
+   <% if @user.id == current_user.id %>
     <%= link_to "Edit Profile", edit_user_path, class: 'btn btn-default btn-s'%>
-    <% end %>
+    <% end %> 
   </div>
 </div>
 
