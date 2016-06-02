@@ -31,25 +31,15 @@ class RecipesController < ApplicationController
     correct_user
     @blank_amount = Amount.new
     @blank_amount.ingredient = Ingredient.new
-    #@recipe.amounts << @blank_amount
   end
 
   def update
     @recipe.user_id = current_user.id
-<<<<<<< HEAD
     @recipe.downcase_ingredients
     @recipe.downcase_tags
-=======
-    @recipe.ingredients.map do |ingred|
-      ingred.name.downcase!
-    end
-    @recipe.tags.map do |tag|
-      tag.name.downcase!
-    end
     @recipe.amounts.clear
     @recipe.tags.clear
 
->>>>>>> master
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else

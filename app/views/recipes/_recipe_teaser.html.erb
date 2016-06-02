@@ -3,7 +3,7 @@
     <%= link_to the_recipe do %>
         <div class="description active-state" >
           <h3><%= truncate(the_recipe.description, :length => 200, :separator => ' ') %></h3>
-          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>Difficulty<%= the_recipe.difficulty %></div>
+          <div class="difficulty"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>Difficulty <%= the_recipe.difficulty %></div>
           <div class="servings"><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if the_recipe.servings %><%= the_recipe.servings %><% else %>1<% end %></div>
         </div>
   <div class="static-state">
@@ -46,16 +46,12 @@
 
       <div class="meta col-xs-4 col-sm-6">
         <span class="reviews"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><%= the_recipe.reviews.count %></span>
-
         <div class="favorites">
           <%= link_to favorite_path(id: the_recipe.id), method: :post do %>
           <div class="favorite-btn" recipe_id="<%= the_recipe.id %>">
             <span class="<%= the_recipe.heart_class(current_user) %>"></span>
             <span class="count"><%= the_recipe.favorites_count(current_user) %></span>
             </div>
-          <!-- <div class="favorites-message" recipe_message_id="<%= the_recipe.id %>">
-            <%= the_recipe.favorites_message(current_user) %>
-          </div> -->
           <% end %>
         </div>
     </footer>

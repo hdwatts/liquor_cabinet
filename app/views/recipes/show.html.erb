@@ -34,8 +34,7 @@
       <h4 class="username">by <%= @recipe.user.first_name %></h4> <% end %></div>
 
 <div class="item-edit">
-  <% if current_user.nil? %>
-
+  <%  if current_user.nil? %>
   <% elsif @recipe.user.id == current_user.id || current_user.id < 4 %>
     <%= link_to "Edit", edit_recipe_path, class: 'btn btn-default btn-s'%>
     <%= link_to "Delete", recipe_path(@recipe), method: :delete, class: 'btn btn-default btn-s'%>
@@ -76,13 +75,6 @@
   </header>
     <div class="content">
   <h3 class="description"><%= @recipe.description %></h3>
-
-
-    <div class="rec-meta">
-    <h5><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <span class="count"><%= @recipe.difficulty %></span></h5>
-
-    <h5><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><span class="count"><%= @recipe.servings %></span><% else %>1<% end %></h5>
-  </div>
       <div class="ingredients">
         <div class="ing-label">
           <h4>Ingredients</h4>
@@ -93,12 +85,20 @@
           <% end %>
         </ul>
       </div>
+
       <div class="directions">
-        <pre><%= @recipe.steps %></pre>
+        <p><%= simple_format(@recipe.steps) %></p>
       </div>
     </div>
 
-    <% if @recipe.tags.count > 0 %>
+    <div class="rec-meta">
+    <h5><span class="glyphicon glyphicon-signal" aria-hidden="true"></span> Difficulty <span class="count"><%= @recipe.difficulty %></span></h5>
+
+    <h5><span class="glyphicon glyphicon-glass" aria-hidden="true"></span> Serves <% if @recipe.servings %><span class="count"><%= @recipe.servings %></span><% else %>1<% end %></h5>
+  </div>
+  <div class="divider"></div>
+
+    <% if @recipe.tags.any? %>
       <div class="item-tags">
       <h5><span class="label-dark">Filed Under: </span>
         <% @recipe.tags.each do |tag| %>
@@ -108,26 +108,6 @@
       </div>
     <% end %>
 
-    <% similar_r = @recipe.similar_recipes %>
-<% if similar_r.flatten.count > 0 %>
-  <div class="similar-recipes" style="margin-top:5em">
-  <h3 class="header">Related</h3>
-    <% if similar_r[0].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Ingredient: </span>
-      <% similar_r[0].each do |sim| %>
-        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-      <% end %>
-      </h5>
-    <% end %>
-    <% if similar_r[1].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Tag: </span>
-      <% similar_r[1].each do |sim| %>
-        <span class="btn btn-default btn-sm"><%= link_to sim.name, recipe_path(sim) %></span>
-      <% end %>
-      </h5>
-    <% end %>
-  </div>
-<% end %>
 <div class="item-comments">
   <h3 class="header">Comments</h3>
       <div id='reviews'>
@@ -147,7 +127,6 @@
     <div class="user-recipes">
     <h3 class="header">Related</h3>
     <% if similar_r[0].count > 0 %>
-      <h5><span class="label-dark">Similar Recipes by Ingredient: </span></h5>
       <% similar_r[0].each do |sim| %>
         <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
       <% end %>
@@ -155,7 +134,6 @@
     <% end %>
     <% if similar_r[1].count > 0 %>
      <div class="user-recipes">
-      <h5><span class="label-dark">Similar Recipes by Tag: </span></h5>
         <% similar_r[1].each do |sim| %>
           <%= render partial: "recipes/recipe_teaser", locals: {the_recipe: sim} %>
         <% end %>

@@ -7,8 +7,6 @@ class HomeController < ApplicationController
     end
 
     @recipes = @recipes.slice(0, params[:limit].to_i)
-
-    @max_servings = Recipe.maximum(:servings)
   end
 
 

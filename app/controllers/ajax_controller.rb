@@ -2,11 +2,11 @@ class AjaxController < ApplicationController
 
   def get_recipes
     @recipes = Recipe.sort_by_date(Recipe.all)
-    if params[:query] != "" && params[:query]
+    if params[:query].length > 0
       @recipes = Recipe.search(params[:query])
     end
 
-    if params[:sort] != "" && params[:sort]
+    if params[:sort].length > 0
       @recipes = Recipe.sort_by_ajax(@recipes, params[:sort], params[:tag], params[:ingredient], params[:order])
     end
 
@@ -14,7 +14,7 @@ class AjaxController < ApplicationController
       params[:limit] = 15
     end
 
-    if params[:query] != "" && params[:query]
+    if params[:query].length > 0
       @search_msg = "Search for '#{params[:query]}' found #{@recipes.size} result(s)"
       if params[:tag] != "" && !params[:tag].nil?
         @search_msg << " that have the #{params[:tag]} tag"
