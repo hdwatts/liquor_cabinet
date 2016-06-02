@@ -1,28 +1,14 @@
 class AjaxController < ApplicationController
 
   def get_recipes
-    @recipes = Recipe.sort_by_date(Recipe.all)
-    if params[:query].length > 0
-      @recipes = Recipe.search(params[:query])
-    end
-
-    if params[:sort].length > 0
-      @recipes = Recipe.sort_by_ajax(@recipes, params[:sort], params[:tag], params[:ingredient], params[:order])
-    end
+    @recipes = AjaxCaller.filter(params)
 
     if params[:limit] == "" || !params[:limit]
       params[:limit] = 15
     end
 
-    if params[:query].length > 0
-      @search_msg = "Search for '#{params[:query]}' found #{@recipes.size} result(s)"
-      if params[:tag] != "" && !params[:tag].nil?
-        @search_msg << " that have the #{params[:tag]} tag"
-      end
-      if params[:ingredient] != "" && !params[:ingredient].nil?
-        @search_msg << " that use #{params[:ingredient]}"
-      end
-      @search_msg << "."
+    if params[:query] != "" && params[:query]
+      @search_msg = AjaxCaller.search_msg(params, @recipes)
     end
 
     if params[:limit].to_i > @recipes.size + 3 && params[:scrolling] == "1"
@@ -33,4 +19,3 @@ class AjaxController < ApplicationController
     end
 
   end
-end
